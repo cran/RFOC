@@ -30,7 +30,7 @@ function(az ,   iang)
 
     N = length(x);
 
-    Ir = 180*atan2(Rd, sqrt(Rn^2+Re^2))/pi;
+    Ir = 180*atan2( sqrt(Rn^2+Re^2), Rd )/pi;
     Dr = 180*atan2(Re, Rn)/pi;
 
     R = sqrt(Rn^2+Re^2+Rd^2)
