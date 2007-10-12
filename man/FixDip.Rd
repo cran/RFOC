@@ -25,8 +25,6 @@ Quadrants are determined by the sine and cosine of the dip angle:\cr
   \code{quad[co>=0 & si<0] = 4 }\cr
 }
 
-
-}
 \value{
     List:
   \item{az}{azimuthm angle, degrees}

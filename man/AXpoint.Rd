@@ -6,14 +6,19 @@
 Interactive extract axis point on Stereonet
 }
 \usage{
-AXpoint(UP = TRUE)
+AXpoint(UP = TRUE, col=2, n=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{UP}{logical, TRUE=upper hemisphere }
+  \item{col}{plotting color }
+  \item{n}{maximum number to locate, default=unlimited }
+  
 }
 \details{
-  Program uses locator to create a vector of poles.
+  Program uses locator to create a vector of poles.  Points outside the
+  focal sphere (r>1) are ignored.  If n is missing, locator continues
+  until stopped (middle mouse in linux, stop in windows).
 }
 \value{
 
@@ -29,7 +34,7 @@ AXpoint(UP = TRUE)
 
 \author{Jonathan M. Lees<jonathan.lees@unc.edu>}
 
-\seealso{EApoint }
+\seealso{locator, qpoint, EApoint}
 \examples{
 ####################  this is interactive
 \dontrun{

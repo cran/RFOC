@@ -1,6 +1,7 @@
 `PlotPTsmooth` <-
 function(paz, pdip, x=0, y=0, siz=1, bcol='white', border="black", IMAGE=TRUE, CONT=TRUE, cont.col = 'black', pal=terrain.colors(100), LABS=FALSE, add=FALSE)
   {
+    
     ############  plot a smoothed density plot of the P and T axes
     ##########       smoothed focal mechanism summary
     if(missing(LABS)) { LABS=FALSE }

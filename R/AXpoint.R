@@ -1,15 +1,27 @@
 `AXpoint` <-
-function(UP=TRUE)
+function(UP=TRUE, col=2, n=1)
 {
                    #   to plot points on an equal area stero net:
   if(missing(UP)) { UP = TRUE}
+  if(missing(col)) {col='red' }
+  if(missing(n)) { n = NULL }
+  
   deg2rad = pi/180
   rad2deg = 180/pi
-  p = locator(n=1, type='p', col=2)
+  
+  if(is.null(n))
+     { p = locator(type='p', col=col) }
+  else
+    { p = locator(n=n, type='p', col=col)  }
+
+
   r = sqrt(p$x^2+p$y^2)
-  if(r>1) return(list(az=0, dip=0))
-  iang = rad2deg*2*asin(r/sqrt(2))
-  phiang = rad2deg*( pi/2 - atan2(p$y,p$x))
+
+  goodones = r<=1
+  
+  iang = rad2deg*2*asin(r[goodones]/sqrt(2))
+  phiang = rad2deg*( pi/2 - atan2(p$y[goodones],p$x[goodones]))
+  
   if(UP==TRUE)
     {
       iang = 180-iang
