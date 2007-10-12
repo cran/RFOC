@@ -20,7 +20,7 @@ as individual plots or distributed spatially maps.
 \tabular{ll}{
 Package: \tab RFOC\cr
 Type: \tab Package\cr
-Version: \tab 1.0-1\cr
+Version: \tab 1.0-2\cr
 Date: \tab 2007-10-11\cr
 License: \tab GPL\cr
 }
@@ -35,6 +35,22 @@ Jonathan M. Lees
 Maintainer: Jonathan M. Lees <jonathan.lees@unc.edu>
 }
 \references{
+  J. M.  Lees.  Geotouch: Software for three and four dimensional
+  GIS in the earth sciences.   {\em Computers  &  Geosciences} ,
+  26(7):751--761, 2000.
+  
+
+  K.~Aki and P.~G. Richards.{\em Quantitative seismology}. University
+  Science Books, Sausalito, Calif., 2nd edition, 2002.
+
+  Snyder, John P., 1987,  Map Projections-a working manual,
+  USGS-Professional Paper, 383p.
+
+  C. Frohlich.   Triangle   diagrams:   ternary  graphs   to display
+  similarity and   diversity  of earthquake    focal
+  mechanisms.   {\em  Physics  of the Earth  and Planetary Interiors},
+  75:193-198,   1992.
+
 
 }
 \keyword{ package }
