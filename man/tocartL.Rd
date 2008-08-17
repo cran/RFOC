@@ -1,6 +1,6 @@
 \name{tocartL}
 \alias{tocartL}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Convert to cartesian coordinate}
 \description{
  Convert azimuth-dip to cartesian coordinates with list as argument
@@ -8,11 +8,13 @@
 \usage{
 tocartL(A)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{A}{
+    \describe{
    \item{az}{degrees, azimuth}
    \item{dip}{degrees, dip}
+   }
    }
    
 }

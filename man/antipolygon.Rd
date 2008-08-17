@@ -1,18 +1,20 @@
 \name{antipolygon}
 \alias{antipolygon}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Fill the complement of a polygon}
 \description{
  Fill a plot with a color outside the confines of a polygon.
 }
 \usage{
-antipolygon(x, y, col = 0)
+antipolygon(x, y, col = 0, corner = 1)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{x}{x coordinates of polygon}
   \item{y}{y coordinates of polygon}
   \item{col}{Fill color}
+ \item{corner}{Corner on the plot to connect to at the end: 1 = LowerLeft(default) ; 2:UpperLeft 3 = UpperRight; 4=LowerRight}
+   
 }
 \details{
   antipolygon uses par("usr") to determine the external bounds of

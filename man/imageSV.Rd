@@ -25,7 +25,7 @@ imageSV(phiS, del, lam, SCALE = FALSE, UP = FALSE, col = NULL)
   Used for the graphical side effect
 }
 \references{
-K.~Aki and P.~G. Richards.{\em Quantitative seismology}. University Science Books, Sausalito, Calif., 2nd edition, 2002.
+K.~Aki and P.~G. Richards.\emph{Quantitative seismology}. University Science Books, Sausalito, Calif., 2nd edition, 2002.
 }
 \author{Jonathan M. Lees <jonathan.lees@unc.edu>}
 

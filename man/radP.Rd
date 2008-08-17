@@ -24,7 +24,7 @@ radP(del, phiS, lam, ichi, phi)
 \value{
 Amplitude of the P wave
 }
-\references{K.~Aki and P.~G. Richards.{\em Quantitative seismology}. University Science Books, Sausalito, Calif., 2nd edition, 2002.}
+\references{K.~Aki and P.~G. Richards.\emph{Quantitative seismology}. University Science Books, Sausalito, Calif., 2nd edition, 2002.}
 \author{Jonathan M. Lees <jonathan.lees@unc.edu>}
 \seealso{radP, radSV, imageP}
 \examples{

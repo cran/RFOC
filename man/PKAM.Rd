@@ -15,6 +15,7 @@
   The data is selected from the CMT catalog.  Parameters are
   extracted from the standard web distribution.  Format of the list
   of data save in PKAM is:
+  \describe{ 
 item{Paz}{P-axis azimuth angle}
 item{Pdip}{P-axis dip angle}
 item{Taz}{T-axis  azimuth angle}
@@ -28,7 +29,7 @@ item{IFcol}{integer pointer to internal color}
 item{yr}{year, not used}
 item{JDHM}{Julian Day, hour, minute, not used}
 item{JDHMS}{Julian Day, hour, minute, seconds}
-
+}
   
 
 }
@@ -37,7 +38,7 @@ item{JDHMS}{Julian Day, hour, minute, seconds}
 
 }
 \references{
-  G. Ekstrom.     Rapid    earthquake   analysis  utilizes the internet.  Computers     in Physics,   8:632-638,  1994.
+  G. Ekstrom. Rapid earthquake analysis utilizes the internet.  Computers in Physics,   8:632-638,  1994.
 }
  
 \examples{
