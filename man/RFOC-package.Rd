@@ -20,7 +20,7 @@ as individual plots or distributed spatially maps.
 \tabular{ll}{
 Package: \tab RFOC\cr
 Type: \tab Package\cr
-Version: \tab 1.0-5\cr
+Version: \tab 1.0-6\cr
 Date: \tab 2008-08-17\cr
 License: \tab GPL\cr
 }
@@ -54,8 +54,7 @@ Maintainer: Jonathan M. Lees <jonathan.lees@unc.edu>
 
 }
 \keyword{ package }
-\seealso{Rsac
-\code{\link[Rsac:Rsac-package]{Rsac}}
+\seealso{RSEIS
 }
 \examples{
 
