@@ -20,8 +20,8 @@ as individual plots or distributed spatially maps.
 \tabular{ll}{
 Package: \tab RFOC\cr
 Type: \tab Package\cr
-Version: \tab 1.0-2\cr
-Date: \tab 2007-10-11\cr
+Version: \tab 1.0-4\cr
+Date: \tab 2008-08-17\cr
 License: \tab GPL\cr
 }
 Visualize focal mechanisms in a

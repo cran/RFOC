@@ -1,6 +1,6 @@
 \name{GreatDist}
 \alias{GreatDist}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Distance Along Great Circle Arc}
 \description{
  Distance Along Great Circle Arc in degrees, kilometers
@@ -8,7 +8,7 @@
 \usage{
 GreatDist(LON1, LAT1, LON2, LAT2, EARTHRAD= 6371)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{LON1}{Longitude, point1}
   \item{LAT1}{Latitude, point1}
@@ -17,9 +17,7 @@ GreatDist(LON1, LAT1, LON2, LAT2, EARTHRAD= 6371)
   \item{EARTHRAD}{optional earth radius,  default  = 6371}
   
 }
-\details{
-  
-}
+
 \value{
   LIST:
   \item{drad}{distance in radians}

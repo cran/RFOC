@@ -1,6 +1,6 @@
 \name{PlotTernfoc}
 \alias{PlotTernfoc}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Ternary Distribution of focal mechanisms }
 \description{
   Create and plot a ternary diagram using rake angle
@@ -20,9 +20,7 @@ PlotTernfoc(h, v, x = 0, y = 0, siz = 1, fcols = "black", LABS = FALSE, add = FA
   \item{LABS}{logical, TRUE=add labels at vertices of Ternary plot}
   \item{add}{logical, add to plot=TRUE}
 }
-\details{
-  
-}
+
 \value{
  Used for graphical side effect.
 }

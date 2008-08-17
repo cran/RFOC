@@ -1,6 +1,6 @@
 \name{imageSCALE}
 \alias{imageSCALE}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{add scale on sice of image}
 \description{
   add scale to side of an image plot
@@ -8,7 +8,7 @@
 \usage{
 imageSCALE(z, col, x, y = NULL, size = NULL, digits = 2, labels = c("breaks", "ranges"), nlab = 10)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{z}{elevation matrix }
   \item{col}{palette for plotting }
@@ -26,7 +26,7 @@ imageSCALE(z, col, x, y = NULL, size = NULL, digits = 2, labels = c("breaks", "r
 
 \author{Jonathan M. Lees <jonathan.lees@unc.edu>}
 
-\seealso{}
+
 \examples{
 data(volcano)
 image(volcano, col=rainbow(100) )

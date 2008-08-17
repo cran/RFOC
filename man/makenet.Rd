@@ -1,6 +1,6 @@
 \name{makenet}
 \alias{makenet}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Equal-Angle Stereonet}
 \description{
 Creates but does not plot an Equal-Angle (Schmidt) Stereonet
@@ -8,10 +8,7 @@ Creates but does not plot an Equal-Angle (Schmidt) Stereonet
 \usage{
 makenet()
 }
-%- maybe also 'usage' for other objects documented here.
-\details{
 
-}
 \value{
   
  

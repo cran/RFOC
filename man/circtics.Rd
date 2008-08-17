@@ -1,6 +1,6 @@
 \name{circtics}
 \alias{circtics}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Draw circular ticmarks}
 \description{
   Draw circular ticmarks
@@ -8,7 +8,7 @@
 \usage{
 circtics(r = 1, dr = 0.02, dang = 10, ...)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{r}{radius}
   \item{dr}{length of tics}
@@ -22,7 +22,7 @@ circtics(r = 1, dr = 0.02, dang = 10, ...)
 
 \author{Jonathan M. Lees <jonathan.lees@unc.edu> }
 
-\seealso{}
+
 \examples{
 
  phi = seq(from =0, to = 2 * pi, length=360)

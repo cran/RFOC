@@ -1,0 +1,1026 @@
+\documentclass{article}
+\usepackage{amsmath} %Never write a paper without using amsmath for its many new commands
+\usepackage{amssymb} %Some extra symbols
+\usepackage{makeidx} %If you want to generate an index, automatically
+\usepackage{graphicx} %If you want to include postscript graphics
+%%%  \usepackage{mystyle} 
+%Create your own file, mystyle.sty where you put all your own \newcommand statements
+%%%
+%%%
+\usepackage{amscd}
+
+\usepackage{Sweave}
+
+
+%%\VignetteIndexEntry{Example Focal Mechs}
+
+%%% \usepackage{Sweave}
+
+\begin{document}
+
+%%%\renewcommand\floatpagefraction{.9}
+%%%\renewcommand\topfraction{.9}
+%%%\renewcommand\bottomfraction{.9}
+%%%\renewcommand\textfraction{.1}
+%%%\setcounter{totalnumber}{50}
+%%%\setcounter{topnumber}{50}
+%%%\setcounter{bottomnumber}{50}
+
+\setkeys{Gin}{width=0.9\textwidth}
+
+
+
+\numberwithin{equation}{section}
+
+%%%   \SweaveOpts{prefix.string=focal}
+\SweaveOpts{prefix=TRUE,prefix.string=focal,include=TRUE}
+
+
+\author{Jonathan M. Lees\\
+University of North Carolina, Chapel Hill\\
+Department of Geological Sciences\\
+CB \#3315, Mitchell Hall\\
+Chapel Hill, NC  27599-3315\\
+email: jonathan.lees@unc.edu\\
+ph: (919) 962-0695
+}
+%%  \address{University of North Carolina, Chapel Hill}
+%% \contact{Jonathan M. Lees}
+%% \contactaddress{Department of Geological Sciences, CB #3315, Mitchell Hall, Chapel Hill, NC  27599-3315}
+%% \contactemail{jonathan.lees@unc.edu}
+%% \contactphone{(919) 962-0695}
+\title{Seismic Focal Mechanisms in R}
+\date{March, 2008}
+
+\maketitle
+
+
+\begin{abstract}
+Plot focal Mechanisms and stereonets for  seismic data.
+\end{abstract}
+
+\section{Example}
+
+Start out by calling the RFOC library,
+
+<<fig=FALSE, echo=TRUE, results=HIDE>>=
+library(RFOC)
+data(PKAM)
+numk = length(PKAM$LATS)
+payr = paste(collapse="-", range(PKAM$yr))
+
+
+@ 
+\section{Focal Mechanisms and seismic radiation}
+
+One meta-data parameter stored on seismic data is the polarity of the
+first motion.  The polarity is recorded from the waveform display, and
+it indicates whether the motion on the vertical component was up or
+down during the first arrival of the waves.  Polarity data are stored
+and used to derive the earthquake {\em focal mechanism}, which describes
+the orientation and slip of the fault that produced the earthquake at
+he hypocenter.  Inversion programs are used to determine the best
+fitting focal mechanism, which are then displayed graphically
+to visualize sense of rupture in the subsurface.  
+The inversions are usually derived via grid 
+search and there are several established codes available 
+for this purpose.
+Here we will not be concerned with programs that 
+invert the polarity but rather with the 
+graphical display and manipulations of the results.
+The R codes presented here are not limited to analysis of focal mechanisms,
+but can be applied to numerous other spherically distributed
+data that often arise in Geological applications.
+
+\section{Stereo-net representation of fault mechanics}
+
+Stereo-nets, planar projections of spherical data, are common
+in geology and geophysical applications.  For earthquake analysis,
+fault studies, crystallography, material fabric analysis and numerous
+other spherically distributed data, equal-area (Schmidt) and
+equal-angle (Wulff) are the most common projections, with occasional
+polar representations employed.  In geological applications,
+representations of fault planes are displayed as great circles or
+poles on the stereo-net.  Motions of continents in plate
+tectonics are represented as poles and great circles.  In seismology,
+stereo-nets are used to describe earthquake double couple focal
+mechanisms and particle motion at a single station in
+three-dimensions.  All of these involve either global or local
+projection of data on a sphere.
+The programs presented here in RFOC are 
+general and may be used for any kind of spherically distributed
+information.  The specific application of focal mechanisms,
+however, requires calculation and display of
+information derived from the strike, dip and rake of
+an earthquake. 
+The slip vectors correspond possibly to
+striations one might observe on the fault surface as the earth scrapes
+the two planes during rupture.
+
+<<echo=FALSE, results=HIDE, label=fig1plot, include=FALSE>>=
+load(file='./EYEVIEW.RData')
+
+`emptyplot` <-
+function(...)
+  {
+
+  plot(c(-1,1), c(-1,1), asp=1, type='n', axes=FALSE, ann=FALSE)
+}
+`rotsym` <-
+function(sym , alpha, reflect=FALSE)
+  {
+    if(missing(reflect)) { reflect=FALSE }
+    rphi = pi*alpha/180
+    cphi = cos(rphi)
+    sphi = sin(rphi)
+
+
+    ###########  rotation
+   for(i in 1:length(sym)  )
+      {
+
+         if(reflect==TRUE)
+           {
+
+             sym[[i]]$x = (-1)*sym[[i]]$x
+
+           }
+
+        ax = cphi*sym[[i]]$x  + sphi*sym[[i]]$y
+        ay = -sphi*sym[[i]]$x  + cphi*sym[[i]]$y
+
+
+        sym[[i]]$x = ax
+          sym[[i]]$y =ay
+      }
+    return(sym)
+  }
+`recentersym` <-
+function(sym)
+  {
+
+    gx = rep(NA, 2)
+    gy = rep(NA, 2)
+
+    for(i in 1:length(sym)  )
+      {
+
+        gx = range(c(gx, sym[[i]]$x), na.rm=TRUE)
+        gy = range(c(gy, sym[[i]]$y), na.rm=TRUE)
+
+      }
+    rx = gx[2] - gx[1]
+    ry = gy[2] - gy[1]
+    for(i in 1:length(sym)  )
+      {
+        sym[[i]]$x = 2* (((sym[[i]]$x-gx[1])/rx)-0.5)
+        sym[[i]]$y = 2* (((sym[[i]]$y-gy[1])/ry)-0.5)
+
+
+      }
+
+
+    attr(sym, "DX") = c(-1,1)
+    attr(sym, "DY") = c(-1,1)
+    attr(sym, "OUT") = TRUE
+
+     return(sym)
+
+  }
+
+`draw.sym` <-
+function(x,  y, sym, siz=siz, col=rgb(83/255, 157/255, 194/255), border="black" )
+  {
+    if(missing(col)) { col=rep(rgb(83/255, 157/255, 194/255),length=length(x)) }
+    if(missing(siz)) { siz=rep(.2,length=length(x)) }
+    if(missing(border)) { border=rep("black",length=length(x)) }
+
+    if(length(siz)==1) { siz=rep(siz,length=length(x)) }
+    if(length(col)==1) { col=rep(col,length=length(x)) }
+    if(length(border)==1) { border=rep(border,length=length(x)) }
+
+    up = par("usr")
+    ui = par("pin")
+
+    ratx = (up[2]-up[1])/ui[1]
+    raty=  (up[4]-up[3])/ui[2]
+
+    for(i in 1:length(x))
+      {
+        x0 = x[i]
+        y0 = y[i]
+
+        usizx = siz[i]*ratx
+        usizy = siz[i]*raty
+###  print(i)
+        A = prep.sym(sym, X=c(x0-usizx, x0+usizx),  Y=c(y0-usizy, y0+usizy),  delx=attr(sym, "DX"), dely=attr(sym, "DY"))
+        attr(A, "OUT") = FALSE
+        JREdraw(A)
+      }
+  }
+
+`prep.sym` <-
+function(KALL, X=c(0,1),  Y=c(0,1),  delx=c(0,1), dely=c(0,1))
+  {
+    ########  remove the mean value and scale everything from
+    ########  -1 to 1  or -.5 to .5
+    K = 0
+    NALL = list()
+     NKALL = length(KALL)
+    if(NKALL<1) return
+    for(i in 1:NKALL )
+      {
+        if(is.null(KALL[[i]])) next
+       K = K+1
+        NALL[[K]] = KALL[[i]]
+        NALL[[K]]$x = RESCALE(KALL[[i]]$x, X[1], X[2], delx[1], delx[2])
+        NALL[[K]]$y = RESCALE(KALL[[i]]$y, Y[1], Y[2], dely[1], dely[2])
+
+      }
+
+    attr(NALL, "DX") =  X
+    attr(NALL, "DY") =  Y
+     attr(NALL, "OUT") = TRUE
+    return(NALL)
+
+  }
+`RESCALE` <-
+function(x, nx1, nx2, minx, maxx)
+{
+  #    rescale a vector
+  nx = nx1+(nx2-nx1)*(x-minx)/(maxx-minx)
+  return(nx)
+}
+
+`JREdraw` <-
+function(KALL)
+  {
+
+    if(attr(KALL,"OUT")==TRUE)
+      {
+        DX = attr(KALL, "DX")
+        DY = attr(KALL, "DY")
+        rect(DX[1], DY[1], DX[2] , DY[2], col=NA, border='black' )
+      }
+
+    NKALL = length(KALL)
+    if(NKALL<1) return
+    for(i in 1:NKALL )
+      {if(is.null(KALL[[i]])) next
+
+        if(KALL[[i]]$type=="lines")
+          { lines(KALL[[i]]$x, KALL[[i]]$y, col=KALL[[i]]$col, lwd=KALL[[i]]$lwd) }
+
+        if(KALL[[i]]$type=="points")
+          { points(KALL[[i]]$x, KALL[[i]]$y, col=KALL[[i]]$col) }
+
+        if(KALL[[i]]$type=="polygon")
+          { polygon(KALL[[i]]$x, KALL[[i]]$y, col=KALL[[i]]$col, border=KALL[[i]]$border) }
+
+        if(KALL[[i]]$type=="circles")
+          { makecircles(KALL[[i]], col=KALL[[i]]$col, border=KALL[[i]]$border) }
+
+        if(KALL[[i]]$type=="rects")
+          { makerects(KALL[[i]], col=KALL[[i]]$col, border=KALL[[i]]$border,  lwd=KALL[[i]]$lwd) }
+
+        if(KALL[[i]]$type=="arrows")
+          { makearrows(KALL[[i]], col=KALL[[i]]$col,  lwd=KALL[[i]]$lwd) }
+
+      }
+
+  }
+
+
+
+C = circle()
+
+cex1 = 1.5
+
+i=seq(from=0, to=-pi, length=180)
+cx = cos(i);
+cy = sin(i);
+emptyplot()
+title("Lower Hemisphere Projection View from Side")
+####axis(1)
+####axis(2)
+lines(cx, cy)
+
+i=seq(from=0, to=-pi/4, length=180)
+
+cx = cos(i);
+cy = sin(i);
+
+polygon(c(0, cx, 0), c(0, cy, 0) , col=grey(0.85), border='black')
+
+i=seq(from=-3*pi/4, to=-pi, length=180)
+
+cx = cos(i);
+cy = sin(i);
+
+polygon(c(0, cx, 0), c(0, cy, 0) , col=grey(0.85), border='black')
+
+segments(-0.25*cx[1], -0.25*cy[1], cx[1], cy[1], lwd=2, lty=2)
+text(cx[1], cy[1], labels="Auxilliary Plane", srt=45, adj=c(1,0), font=2, xpd=TRUE, cex=cex1)
+
+i=seq(from=0, to=-pi/4, length=180)
+
+cx = cos(i);
+cy = sin(i);
+
+segments(-0.25*cx[180], -0.25*cy[180], cx[180], cy[180], lwd=2, lty=2)
+
+segments(-0.25*cx[180], -0.25*cy[180], 0.25*cx[180], 0.25*cy[180], lwd=4, lty=1)
+
+segments(-0.1*cx[180]+.01, -0.1*cy[180]+.01, 0.1*cx[180]+.01, 0.1*cy[180]+.01, lwd=2, lty=1)
+segments(0.1*cx[180]+.01, 0.1*cy[180]+.01,0.1*cx[180]+.01, 0.1*cy[180]+.01+.05, lwd=2, lty=1)
+
+
+segments(-0.1*cx[180]-0.01, -0.1*cy[180]-0.01, 0.1*cx[180]-0.01, 0.1*cy[180]-0.01, lwd=2, lty=1)
+
+segments(-0.1*cx[180]-0.01, -0.1*cy[180]-0.01, -0.1*cx[180]-0.01, -0.1*cy[180]-0.01-.05, lwd=2, lty=1)
+
+
+text(-0.25*cx[180], -0.25*cy[180] , labels="Fault Plane",  adj=c(1,0), font=2, xpd=TRUE, cex=cex1)
+text(cx[180], cy[180] , labels="Fault Plane Projection",  adj=c(0,0), srt=-45, font=2, xpd=TRUE, cex=cex1)
+
+
+
+
+abline(h=.35)
+text(0,0.35, "Surface of Earth", pos=3, cex=cex1)
+
+arrows(-1.05, 0, -1.05, -0.5)
+text(-1.05, -0.25, "Depth", srt=-90, adj=c(1,-0.1), cex=cex1)
+
+points(c(1, 0), c(0, -1), pch=20, cex=2, col=c("blue", "red") )
+
+text(1,0, labels="T", pos=4, xpd=TRUE, font=2, col="blue", cex=cex1)
+
+text(0,-1, labels="P", pos=1, xpd=TRUE, font=2, col="red", cex=cex1)
+
+############  eye part
+###  get.syms()
+
+### data(EYEVIEW)
+EYEVIEW2 = rotsym(EYEVIEW, -90, reflect=FALSE)
+
+EYEVIEW2 = recentersym(EYEVIEW2)
+
+draw.sym(0,0.8, EYEVIEW2, siz=.4)
+
+MFOC2 = SDRfoc(0,45,-90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
+    ###  Fcol2 = foc.color(foc.icolor(MFOC2$rake1), pal=1)
+  Fcol2 =  grey(0.85)
+    justfocXY( MFOC2, fcol = Fcol2, .9, .9 , size = c(.2,.2) )
+
+
+
+@ 
+
+\begin{figure}
+\begin{center}
+<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig1plot>>
+@ 
+\end{center}
+\caption{Cross section of focal mechanism in earth}
+\label{fig:ILLUSTR}
+\end{figure}
+
+
+
+
+\begin{figure}
+\begin{center}
+<<fig=TRUE, echo=FALSE, results=HIDE >>=
+### par(asp=1)
+
+TEACHFOC(65, 32, -34, up=TRUE)
+
+@ 
+\end{center}
+\caption{Sample focal mechanism with mark up for teaching purposes.}
+\label{fig:TEACH}
+\end{figure}
+
+
+When earthquakes occur below the surface they radiate energy along two
+sets of orthogonal directions forming two sets of force couples called
+a double couple.  (Landslides can radiate single couple patterns and
+explosions have an isotropic component.)  The double couple solutions can be
+derived from the first motions recorded at seismographic stations distributed
+at the surface by projecting the ray-paths of the waves back to the
+hypocenter and plotting the directions of the first motions on a
+stereographic projection of the focal sphere.  The resulting solution
+is a set of two planes, one representing the actual fault plane where
+the earth ruptured, the other is called the auxiliary plane that also
+radiates energy towards the surface.  The data consists of points on
+the focal sphere indicating whether the motion was away or towards the
+earthquake hypocenter.  These are plotted and a set of best fitting
+orthogonal planes are determined, usually by grid search methods.  
+A cross sectional view of how a geophysicist views 
+the an example double couple solution is shown in Figure~\ref{fig:ILLUSTR}
+where are a normal fault is shown from the side and 
+in mapview showing the beachball representation.
+A second 
+example showing relavent 
+quantitative measures 
+derived from the focal solution
+are shown  in Figure~\ref{fig:TEACH}.  
+
+A set of poles (points on the sphere)
+can be extracted from the focal mechanism
+that relate geophysical information about the nature of the
+earthquake orientation and slip vector and the compressional and
+tensional radiation axes. 
+In RFOC one can extract the relevant information
+easily with a call to a conversion program and plotting,
+<<fig=FALSE, echo=TRUE, results=verbatim>>=
+
+ mc = CONVERTSDR(65, 32, -34 )
+
+printMEC(mc)
+
+@ 
+and, since a plotting function has been defined for the MEC
+structure, the result can be graphically viewed with,
+<<fig=FALSE, echo=TRUE, results=HIDE>>=
+plotMEC(mc, detail=2, up=FALSE)
+@ 
+as shown in Figure~\ref{fig:TEACH}.
+The codes presented here can obviously be used to 
+plot poles and fault planes on the focal sphere 
+as commonly presented in summaries of geological 
+presentations of fault strike-dip data, for example the following code
+will plot ten (random) poles and the corresponding fault planes:
+
+<<fig=TRUE, echo=TRUE, results=hide>>=
+K = 10
+rakes = runif(K, 30, 60)
+dips = runif(K, 40, 55)
+strikes = runif(K, 25,75)
+
+ net(add=FALSE)
+
+for(i in 1:K)
+{
+ mc = CONVERTSDR(floor(rakes[i]), floor( dips[i]),   floor(strikes[i]))
+LP1 = lowplane( mc$M$az1-90, mc$M$d1, col='blue', UP=TRUE)
+## LP2 = lowplane( mc$M$az2, mc$M$d2, col='red', UP=TRUE)
+  U = focpoint(mc$V$az, mc$V$dip, col=6,  lab="", UP=TRUE)
+}
+
+@ 
+here the net() function plots the equal-area stereonet and
+lowplane() and focpoint() plot planes and poles on the stereonet
+respectively.
+
+The following code shows how the focal mechanisms are interpreted by
+a geologist for three end-member cases.  These figures can be animated
+for student easier understanding of faulting in an interactive R session.
+
+<<fig=TRUE, echo=TRUE, results=HIDE, label=faults1>>=
+opar <- par(no.readonly = TRUE)
+
+  par(MFA=c(1,3))
+    par(mas=c(0.1, .1, 0.2, 0.1) )
+    anim=0
+############
+###   graphics.off();  X11(w=8, h=10)
+    strikeslip.fault(anim=anim, Light=c(45,90) )
+    MFOC1 = SDRfoc(65,90,1, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
+    Fcol1 = foc.color(foc.icolor(MFOC1$rake1), pal=1)
+    justfocXY( MFOC1, fcol = Fcol1, .5, .7 , size = c(.4,.4) )
+      mtext("Strike-slip fault", side = 3, line =-1.5)
+#### box()
+@ 
+<<fig=TRUE, echo=TRUE, results=HIDE, label=faults2>>=
+############
+    normal.fault(45, anim=anim, KAPPA=4, Light=c(-20, 80))
+    MFOC2 = SDRfoc(135,45,-90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
+    Fcol2 = foc.color(foc.icolor(MFOC2$rake1), pal=1)
+
+    justfocXY( MFOC2, fcol = Fcol2, .5, 1 , size = c(.45,.45) )
+       mtext("Normal fault", side = 3, line =-1.5)
+#### box()
+@ 
+<<fig=TRUE, echo=TRUE, results=HIDE, label=faults3>>=
+############
+    thrust.fault(anim=anim, KAPPA=4, Light=c(-20, 80))
+    MFOC3 = SDRfoc(135,45,90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
+    Fcol3 = foc.color(foc.icolor(MFOC3$rake1), pal=1)
+    justfocXY( MFOC3, fcol = Fcol3, 0, -1 , size = c(.45,.45) )
+    mtext("Reverse (Thrust) fault", side = 3, line =-1.5 )
+####   box()
+par(opar)
+
+@
+
+
+\section{Radiation Patterns}
+
+The beachball representation of earthquake focal mechanisms
+is actually a simplification of the P-wave radiation pattern
+for a double couple earthquake. The full radiation 
+patterns are usually not plotted for standard seismological investigation
+but they can be useful for extracting details of seismic radiation 
+that are usually overlooked.
+In RFOC an option for plotting the radiation patterns for all three
+of the
+P, SV and SH waves is available as
+shown in Figure~\ref{fig:focArad}.
+In RFOC  conventions as described in are adhered to.
+One advantage of using an R package like RFOC for calculating
+radiation amplitudes is
+that one can extract the predicted amplitudes of
+the radiate waves and  compare with 
+observations on seismograms.
+This approach was used by to relate radiation patterns 
+and reflections of waves of an interface in a geothermal field.
+
+The code to produce the radiation pattern display first sets up a 
+nice color palette with two simple functions and
+then calls the radiation routines.
+
+<<include=FALSE, echo=TRUE, results=HIDE, label=focArad>>=
+`tomo.colors` <-
+function(n, alpha = 1)
+  {
+    if ((n <- as.integer(n[1])) > 0)
+      {
+        k <- n%/%2
+        h <- c(0/12, 2/12, 8/12)
+        s <- c(1, 0, 1)
+        v <- c(0.9, 0.9, 0.95)
+
+        c(hsv(h = seq.int(h[1], h[2], length = k),
+              s = seq.int(s[1], s[2], length = k),
+              v = seq.int(v[1], v[2], length = k),
+              alpha = alpha),
+          hsv(h = seq.int(h[2], h[3], length = n - k + 1)[-1],
+              s = seq.int(s[2], s[3], length = n -  k + 1)[-1],
+              v = seq.int(v[2], v[3], length = n - k + 1)[-1],
+              alpha = alpha))
+      }
+
+    else character(0)
+  }
+`Gcols` <-
+function(plow=10, phi=10,  N=100, pal="rainbow", mingray=0.5)
+{
+  ###   get a palette with the upper or lower parts replaced
+  if(missing(plow)) { plow = 10 }
+  if(missing(phi)) { phi = 10 }
+  if(missing(N)) { N = 100 }
+  if(missing(pal)) { pal = "rainbow" }
+  if(missing(mingray)) { mingray=0.5 }
+
+
+  nlow = floor(plow*N/100)
+  nhi = floor(phi*N/100)
+  LOW = grey(seq(from=mingray, to =1, length=nlow))
+  HI  = grey(seq(from=mingray, to =1, length=nhi))
+  K = N-nlow-nhi
+
+     FUN = match.fun(pal)
+     Z = FUN(K)
+  #####  Z = rainbow(K)
+  return(c(LOW  , Z, HI) )
+}
+
+
+
+ mc  = CONVERTSDR(65, 32, -34 )
+   
+    MEC = MRake(mc$M)
+    
+
+     MEC$strike = mc$strike
+    MEC$dipdir = mc$dipdir
+    MEC$dip = mc$dip
+    MEC$rake = mc$rake
+
+
+    MEC$UP = FALSE
+## 
+
+
+mycol = Gcols(plow=0, phi=0,  N=100, pal="tomo.colors")
+
+#######   graphics.off(); X11( width=15, height=7)
+
+par(mfrow=c(1,3))
+par(mai=c(.5,0.1,.5,0.1) )
+
+
+radiateP(MEC, col=mycol )
+text(0,1, labels="P-wave  radiation, Lower Hemisphere", pos=3, cex=1.5)
+
+# dev.set(which = dev.next())
+radiateSV(MEC, col=mycol )
+text(0,1, labels="SV-wave  radiation, Lower Hemisphere", pos=3, cex=1.5)
+
+# dev.set(which = dev.next())
+radiateSH(MEC, col=mycol )
+text(0,1, labels="SH-wave  radiation, Lower Hemisphere", pos=3, cex=1.5)
+
+
+@  
+\begin{figure}[ht]
+\centering
+<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<focArad>>
+@ 
+\caption{Radiation Patterns}\label{fig:focArad}
+\end{figure}
+
+
+
+\section{Map Views}
+
+Once focal mechanisms are determined for each earthquake they can be
+plotted in map view using standard projections as a set of beach balls
+(Figure~\ref{fig:FOCMAP1}).  The beach balls relate the nature of changing stress in
+the earth during earthquake swarms.  In RFOC they are color coded to
+indicate the sense of the faults during rupture.
+Focal mechanism plots can be scaled and plotted on top of 
+maps to indicate spatial distribution of 
+earthquake rupture patterns, stress variations and alignment
+of faults.  
+In a flexible environment like R one 
+can quickly develop complex graphical 
+representations that illustrate 
+geological correlation.  In this case I am just plotting
+the location with simple geographic (longitude, latitude) values.  As such these will 
+not be correctly projected, of course, since in the far north the value
+of a latitude in degrees is not the same as a longitude.  Please consult package GEOmap
+for details on how to plot the focal mechanisms with maps properly projected.
+
+<<fig=FALSE, echo=TRUE, results=hide, label=focmap1>>=
+
+data(KAMCORN)
+
+plot(range(KAMCORN$LON), range(KAMCORN$LAT), type='n', xlab="LON", ylab="LAT", asp=1) 
+ 
+for(i in 1:length(KAMCORN$LAT) )
+{
+  mc  = CONVERTSDR(KAMCORN$STRIKE[i], KAMCORN$DIP[i], KAMCORN$RAKE[i] )
+ 
+  MEC <- MRake(mc$M)
+  MEC$UP = FALSE
+  Fcol <- foc.color(foc.icolor(MEC$rake1), pal=1)
+
+  justfocXY( MEC,  x=KAMCORN$LON[i],  y=KAMCORN$LAT[i], size = c(.5,.5), fcol = Fcol, xpd=FALSE )
+
+
+}
+
+@ 
+\begin{figure}
+\begin{center}
+<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<focmap1>>
+@ 
+\end{center}
+\caption{Beachball focal mechanisms plotted at Kamchatka-Aleutian junction.}
+\label{fig:FOCMAP1}
+\end{figure}
+
+
+One difficulty in plotting numerous focal mechanisms as beachballs
+is that they may overlap or othewise obscure 
+important information on the underlying geographical map.
+RFOC provides an alternative, succinct representation that 
+plots only the primary fault plane and the associated slip
+vector(Figure~\ref{fig:FOCMAP2}).
+
+<<include=FALSE, echo=TRUE, results=hide, label=focNIP>>=
+plot(range(KAMCORN$LON), range(KAMCORN$LAT), type='n', xlab="LON", ylab="LAT", asp=1) 
+ 
+for(i in 1:length(KAMCORN$LAT) )
+{
+  mc  = CONVERTSDR(KAMCORN$STRIKE[i], KAMCORN$DIP[i], KAMCORN$RAKE[i] )
+ 
+  MEC <- MRake(mc$M)
+  MEC$UP = FALSE
+  Fcol <- foc.color(foc.icolor(MEC$rake1), pal=1)
+
+  nipXY( MEC,  x=KAMCORN$LON[i],  y=KAMCORN$LAT[i], size = c(.5,.5), fcol = Fcol )
+
+
+}
+
+
+
+@ 
+\begin{figure}
+\begin{center}
+<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<focNIP>>
+@ 
+\end{center}
+\caption{Plane-Slip focal mechanisms plotted at Kamchatka-Aleutian junction.}
+\label{fig:FOCMAP2}
+\end{figure}
+
+
+\section{Summary Representations}
+
+Often there are too many focal planes to deal with reasonably 
+and summary statistics/graphics are required.  
+In this case a selected set of focal solutions 
+can be presented graphically via two kinds of  plots in RFOC: 
+a stereo-net of the P-T axes projections  (Figure~\ref{fig:ALLPT}) and a ternary plot  (Figure~\ref{fig:ternary1}) of all
+the focal mechanisms in the selection categorized by pure strike-slip,
+normal or reverse faulting. 
+Here I am presenting the accumulated set of focal mechanisms
+distributed over the Aleutian-Kamchatka Arcs 
+from \Sexpr{numk}  earthquakes extracted from the Harvard CMT catalogue 
+({http://www.seismology.harvard.edu/projects/CMT},  \Sexpr{payr}).
+Density plots
+of these distributions hi-lite average orientations
+of P and T axes and graphically indicate the variance of the
+distributions on the sphere (Figure~\ref{fig:CONTRDPT}).  
+
+<<include=FALSE, echo=TRUE, results=hide, label=ALLPT>>=
+
+ net()
+  PZZ =  focpoint(PKAM$Paz, PKAM$Pdip, col='red',  pch=3, lab="", UP=FALSE)
+ TZZ =  focpoint(PKAM$Taz, PKAM$Tdip, col='blue',  pch=4, lab="", UP=FALSE)
+  text(0,1.04,labels="P&T-axes Projected", font=2, cex=1.2)
+  legend("topright",c("P", "T") , col=c('red','blue') , pch=c(3,4))
+
+@ 
+\begin{figure}
+\begin{center}
+<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<ALLPT>>
+@ 
+\end{center}
+\caption{Summary of P-T axes from Kamchatka-Aleutian Arc}
+\label{fig:ALLPT}
+\end{figure}
+
+
+
+Geographically distributed ternary plots can be generated by dividing
+a target region into smaller subregions and plotting ternary and/or spherically contoured plots
+for each subset.  
+This approach provides an easy  way to visualize how fault zones vary
+spatially in complex geology  where data sets are large and
+heterogeneous.  
+RFOC provides an easy way to associate a subset of focal data with 
+a geographic location, and position the stereonet or ternary plot accordingly.
+Once a map is plotted, subsectioned and ternary plots are created, they can be plotted
+on the map by the same routine for plotting one Ternary diagram:
+
+<<include=FALSE, echo=TRUE, results=hide, label=TERN1>>=
+
+fcols = foc.color(PKAM$IFcol,1)
+
+ PlotTernfoc(PKAM$h,PKAM$v,x=0, y=0, siz=1, fcols=fcols, add=FALSE, LAB=TRUE)
+
+
+
+ MFOC3 = SDRfoc(135,45,90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
+   
+ Fcol3 = foc.color(foc.icolor(MFOC3$rake1), pal=1)
+
+
+ MFOC2 = SDRfoc(135,45,-90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
+    Fcol2 = foc.color(foc.icolor(MFOC2$rake1), pal=1)
+  MFOC1 = SDRfoc(65,90,1, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
+    Fcol1 = foc.color(foc.icolor(MFOC1$rake1), pal=1)
+
+justfocXY( MFOC3, fcol = Fcol3, 1.2, -0.9, size = c(.1,.1) )
+justfocXY( MFOC2, fcol = Fcol2, -1.2, -0.9, size = c(.1,.1) )
+justfocXY( MFOC1, fcol = Fcol1, 0, 1.414443+.2, size = c(.1,.1) )
+## mtext("Ternary Plot of focal mecahnisms", side = 1, line = 0 , font=2,  xpd=TRUE )
+ 
+@ 
+
+\begin{figure}
+\begin{center}
+<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<TERN1>>
+@ 
+\end{center}
+\caption{Ternary Plot of focal mecahnisms}
+\label{fig:ternary1}
+\end{figure}
+
+
+The P and T axes can be plotted as an image and contoured.
+
+<<include=FALSE, echo=TRUE, results=hide, label=CONTRDPT>>=
+
+
+ KP = kde2d(PZZ$x, PZZ$y, n=50, lims=c(-1, 1, -1, 1))
+  KT = kde2d(TZZ$x, TZZ$y, n=50, lims=c(-1, 1, -1, 1) )
+opar <- par(no.readonly = TRUE)
+
+ par(mfrow=c(1,3))
+
+    par(mai=c(0.2,0,.2,0))
+    CC = PLTcirc(PLOT=FALSE, add=FALSE,  ndiv=36,  angs=c(-pi, pi))
+
+    image(KP$x, KP$y, KP$z, add=TRUE, col=terrain.colors(100))
+
+    antipolygon(CC$x,CC$y,col="white")
+
+ net(add=1)
+    focpoint(PKAM$Paz, PKAM$Pdip, col='red',  pch=3, lab="", UP=FALSE)
+    text(0,1.04,labels="P-axes 2D Density", font=2, cex=1.2)
+
+ CC = PLTcirc(PLOT=FALSE, add=FALSE,  ndiv=36,  angs=c(-pi, pi))
+
+
+    image(KT$x, KT$y, KT$z, add=TRUE, col=terrain.colors(100))
+    
+    antipolygon(CC$x,CC$y,col="white")
+    net(add=1)
+    focpoint(PKAM$Taz, PKAM$Tdip, col='blue',  pch=4, lab="", UP=FALSE)
+    text(0,1.04,labels="T-axes 2D Density", font=2, cex=1.2)
+
+ CC = PLTcirc(PLOT=FALSE, add=FALSE,  ndiv=36,  angs=c(-pi, pi))
+
+    image(KP$x, KP$y, KP$z, add=TRUE, col=terrain.colors(100))
+
+
+    ##  focpoint(Paz, Pdip, col='red',  pch=3, lab="", UP=FALSE)
+
+    net(add=1)
+
+
+    contour(KT$x, KT$y, KT$z, add=TRUE, lwd=1.2)
+    
+
+    antipolygon(CC$x,CC$y,col="white")
+    text(0,1.04,labels="Combined P-T 2D Density", font=2, cex=1.2)
+  
+par(opar)
+
+@ 
+\begin{figure}
+\begin{center}
+<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<CONTRDPT>>
+@ 
+\end{center}
+\caption{}
+\label{fig:CONTRDPT}
+\end{figure}
+
+
+
+The summary plots presented by RFOC can
+just as well be distributed spatially to illustrate 
+smoothed or averaged properties over large geographic regions.
+
+A geographic region is
+commonly broken down into distinct areas and density plots show how
+the stress is distributed spatially or temporally over that region.
+First we divide the region into blocs that have 5 or more earthquakes.
+
+<<include=FALSE, echo=TRUE, results=hide, label=ternmapkam1>>=
+x = fmod(PKAM$LONS, 360)
+y = PKAM$LATS
+plot(x, y, asp=1, type="p", xlab="LON", ylab="LAT" )
+
+ u = par("usr")
+
+    RI = RectDense( x, y, icut=5, u=u, ndivs=10)
+   rect(RI$icorns[,1],RI$icorns[,2],RI$icorns[,3],RI$icorns[,4], col=NA, border='blue')
+@ 
+
+\begin{figure}
+\begin{center}
+<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<ternmapkam1>>
+@ 
+\end{center}
+\caption{}
+\label{fig:ternmapkam1}
+\end{figure}
+
+The ternary plots can then be added by looping through the 
+individual sections.
+
+<<include=FALSE, echo=TRUE, results=hide, label=ternmapkam2>>=
+
+
+Fcol = foc.color(PKAM$IFcol, pal=1)
+i = 1
+sizy = RI$icorns[i,4]-RI$icorns[i,2]
+sizx = RI$icorns[i,3]-RI$icorns[i,1]
+siz = .5*min(c(sizy, sizx))
+
+
+plot(x, y, asp=1, type="p" , xlab="LON", ylab="LAT" )
+
+ u = par("usr")
+
+    RI = RectDense( x, y, icut=5, u=u, ndivs=10)
+   rect(RI$icorns[,1],RI$icorns[,2],RI$icorns[,3],RI$icorns[,4], col=NA, border='blue')
+
+for(i in 1:length(RI$ipass))
+      {
+        flag = x>RI$icorns[i,1]& y>RI$icorns[i,2] & x<RI$icorns[i,3] & y<RI$icorns[i,4]
+        jh =PKAM$h[flag]
+        jv= PKAM$v[flag]
+        PlotTernfoc(jh,jv,x=mean(RI$icorns[i,c(1,3)]), y=mean(RI$icorns[i,c(2,4)]), siz=siz, fcols=Fcol[flag], add=TRUE)
+      }
+
+
+@  
+
+\begin{figure}
+\begin{center}
+<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<ternmapkam2>>
+@ 
+\end{center}
+\caption{P and T axes as ternary plots distributed across Aleutian Arc}
+\label{fig:ternmapkam2}
+\end{figure}
+
+Then we can also plot orientations of P and T-axes by applying the same approach:
+
+<<include=FALSE, echo=TRUE, results=hide, label=smomapkam2  >>=
+##   plot(x, y, asp=1, type="p" , xlab="LON", ylab="LAT" )
+x = fmod(PKAM$LONS, 360)
+y = PKAM$LATS
+plot(x, y, asp=1, type="p", xlab="LON", ylab="LAT" )
+
+ u = par("usr")
+KPspat =  matrix(NA, nrow=length(RI$ipass), ncol=10)
+KTspat =  matrix(NA, nrow=length(RI$ipass), ncol=10)
+colnames(KTspat) = c("x", "y", "n", "Ir",  "Dr", "R", "K", "S", "Alph95" , "Kappa")
+colnames(KPspat) = c("x", "y", "n", "Ir",  "Dr", "R", "K", "S", "Alph95" , "Kappa")
+
+    
+    for(i in 1:length(RI$ipass))
+      {
+        flag = x>RI$icorns[i,1]& y>RI$icorns[i,2] & x<RI$icorns[i,3] & y<RI$icorns[i,4]
+        paz=PKAM$Paz[flag]
+        pdip=PKAM$Pdip[flag]
+         taz=PKAM$Taz[flag]
+        tdip=PKAM$Tdip[flag]
+        ax=mean(RI$icorns[i,c(1,3)])
+        ay=mean(RI$icorns[i,c(2,4)])
+        siz=(RI$icorns[1,3]-RI$icorns[1,1])/2.5
+
+        PlotPTsmooth(paz, pdip, x=ax, y=ay, siz=siz, border=NA, bcol='white' , LABS=FALSE, add=FALSE, IMAGE=TRUE, CONT=FALSE)
+          PlotPTsmooth(taz, tdip, x=ax, y=ay, siz=siz, border=NA, bcol='white' , LABS=FALSE, add=TRUE, IMAGE=FALSE, CONT=TRUE)
+
+######dev.set(2)
+######pnet(MN, add=FALSE)
+  
+    ALPH = alpha95(paz, pdip)
+        n = length( paz)
+      KPspat[i,] =   c(ax, ay, n, ALPH$Ir,  ALPH$Dr, ALPH$R, ALPH$K, ALPH$S, ALPH$Alph95 , ALPH$Kappa)
+
+        ALPH = alpha95(taz, tdip) 
+      KTspat[i,] =    c(ax, ay, n, ALPH$Ir,  ALPH$Dr, ALPH$R, ALPH$K, ALPH$S, ALPH$Alph95 , ALPH$Kappa)
+
+        
+
+      }
+
+   
+   
+
+@ 
+
+\begin{figure}
+\begin{center}
+<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<smomapkam2>>
+@ 
+\end{center}
+\caption{P and T axes stereonet projections distributed across Aleutian Arc}
+\label{fig:smomapkam2}
+\end{figure}
+
+
+
+\section{Conclusion}
+
+In summary, I have present one aspect of the RFOC  package that will
+be useful for earth scientists who work with earthquakes and faults.
+The stereo-net analysis is completely general and can be used for
+graphical illustration of any process that is distributed on a sphere.
+The graphical representations of spherical data can be plotted
+spatially to indicate patterns of variation relevant to earth
+processes and hazard reduction in earthquake prone regions.  Summaries
+of large numbers of earthquake pressure or tension axes can be
+graphically displayed as sets of ternary diagrams or density plots in
+stereo-graphic projections.  These can further be plotted on maps to
+show spatial variations important for earthquake analysis, hazard
+mitigation and volcano dynamics.
+     
+      
+
+
+\end{document}
+

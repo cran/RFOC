@@ -1,6 +1,6 @@
 \name{inside}
 \alias{inside}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Determine if point is inside polygon}
 \description{
   Given a polygon and a point, determine if point is
@@ -12,7 +12,7 @@
 \usage{
 inside(A, POK)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{A}{Point, list with x, y}
   \item{POK}{list of x,y values of polygon }
@@ -23,8 +23,7 @@ inside(A, POK)
 }
 
 \author{Jonathan M. Lees <jonathan.lees@unc.edu>}
-\note{
-}
+
 \seealso{Lintersect, ccw, inpoly}
 \examples{
 
