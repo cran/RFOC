@@ -25,7 +25,7 @@ analyses.
 \tabular{ll}{
 Package: \tab RFOC\cr
 Type: \tab Package\cr
-Version: \tab 1.0-9\cr
+Version: \tab 1.1-0\cr
 Date: \tab 2008-08-17\cr
 License: \tab GPL\cr
 }
