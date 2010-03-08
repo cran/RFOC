@@ -18,7 +18,7 @@ Wpoint(az1, dip1, col = 2, pch = 5, lab = "", UP = FALSE)
   \item{UP}{logical, TRUE=Upperhemisphere }
 }
 \details{
-  ~~ If necessary, more details than the description above ~~
+  Wulff net point is added to existing plot.
 }
 \value{
 graphical side effects

@@ -39,7 +39,7 @@ function(paz, pdip, x=0, y=0, siz=1, bcol='white', border="black", IMAGE=TRUE, C
          flag = sqrt(M$x^2+M$y^2)>1
          KP$z[flag] = NA
 
-    image(x+siz*KP$x,  y+siz*KP$y, KP$z, add=TRUE, col=terrain.colors(100))
+    image(x+siz*KP$x,  y+siz*KP$y, KP$z, add=TRUE, col=pal, xpd=TRUE)
     
     ##### polygon(blankx, blanky , border=bcol,col=bcol)
 
@@ -47,7 +47,7 @@ function(paz, pdip, x=0, y=0, siz=1, bcol='white', border="black", IMAGE=TRUE, C
 
     if(CONT==TRUE)
       {
-        if(IMAGE==FALSE & add==FALSE )  polygon(x+siz*CC$x,  y+siz*CC$y , border=bcol,col=bcol)
+        if(IMAGE==FALSE & add==FALSE )  polygon(x+siz*CC$x,  y+siz*CC$y , border=bcol,col=bcol, xpd=TRUE)
               #####  polygon(x+siz*CC$x,  y+siz*CC$y , border=border,col=bcol)
 
          
@@ -60,7 +60,7 @@ function(paz, pdip, x=0, y=0, siz=1, bcol='white', border="black", IMAGE=TRUE, C
            flag = sqrt((cx-x)^2+(cy-y)^2)> siz
            cx[flag] = NA
            cy[flag] = NA
-           lines(cx, cy, col=cont.col)
+           lines(cx, cy, col=cont.col, xpd=TRUE)
          }
          
          invisible(lapply(cline.list, templines))
@@ -69,7 +69,7 @@ function(paz, pdip, x=0, y=0, siz=1, bcol='white', border="black", IMAGE=TRUE, C
          
        }
 
-    if(!is.na(border)) { lines(x+siz*CC$x,  y+siz*CC$y , col=border) }
+    if(!is.na(border)) { lines(x+siz*CC$x,  y+siz*CC$y , col=border, xpd=TRUE) }
     if(FALSE)
       {
 

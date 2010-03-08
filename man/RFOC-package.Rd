@@ -10,17 +10,22 @@ geological fault data, crystallography,
 earthquake focal mechanisms,
 radiation patterns,
 ternary plots and geographical/geological maps.
-Given strike-dip-rake or a set of
+Given strike-dip-rake or a set of fault planes, 
 focal planes, RFOC creates structures for manipulating
 and plotting
 earthquake focal mechanisms
 as individual plots or distributed spatially maps.
+
+RFOC can be used for analysis of plane orientation,
+geologic structure, distribution of stress and strain
+analyses.
+
 }
 \details{
 \tabular{ll}{
 Package: \tab RFOC\cr
 Type: \tab Package\cr
-Version: \tab 1.0-6\cr
+Version: \tab 1.0-9\cr
 Date: \tab 2008-08-17\cr
 License: \tab GPL\cr
 }
@@ -54,7 +59,7 @@ Maintainer: Jonathan M. Lees <jonathan.lees@unc.edu>
 
 }
 \keyword{ package }
-\seealso{RSEIS
+\seealso{RSEIS, GEOmap, zoeppritz
 }
 \examples{
 
