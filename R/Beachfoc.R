@@ -25,7 +25,7 @@ function(MEC, fcol=gray(0.90), fcolback="white", ALIM = c(-1, -1, +1, +1))
   
   PLS = polyfoc(MEC$az1, MEC$dip1, MEC$az2, MEC$dip2, UP=MEC$UP)
   
-  POK = list(x=PLS$Px, y =PLS$Py)
+###   POK = list(x=PLS$Px, y =PLS$Py)
   
   ###  OLD, does not work: kin = inpoly(pax$x, pax$y,POK)
  kin = inout(cbind(pax$x, pax$y) ,cbind(PLS$Px, y =PLS$Py), bound=TRUE)
@@ -39,5 +39,9 @@ function(MEC, fcol=gray(0.90), fcolback="white", ALIM = c(-1, -1, +1, +1))
     polygon(C$x,C$y, col=fcol )
     polygon(PLS$Px, PLS$Py, col=fcolback )
   }
+
+###  lines(PLS$Px, PLS$Py, col="black", lwd=2)
+
+  
 }
 

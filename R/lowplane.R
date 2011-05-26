@@ -19,7 +19,7 @@ function( az, dip, col = par("col"), UP=FALSE, PLOT=TRUE)
     if(missing(UP)) { UP=FALSE }
     
                           #  if(!UP) { dip = 90-dip; lam=lam+180 }
-    if(UP) { beta = beta+pi }
+    if(UP==TRUE) { beta = beta+pi }
     
   #   beta = (90+az)* DEG2RAD;
      

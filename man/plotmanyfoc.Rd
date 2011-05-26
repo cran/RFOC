@@ -6,7 +6,7 @@
 \description{Plot a long list of focal mechanisms
 }
 \usage{
-plotmanyfoc(MEK, PROJ, focsiz = 0.04, foccol = NULL, PMAT = NULL, LEG = FALSE, DOBAR = FALSE)
+plotmanyfoc(MEK, PROJ, focsiz = 0.04, foccol = NULL, UP=TRUE, PMAT = NULL, LEG = FALSE, DOBAR = FALSE)
 }
 \arguments{
   \item{MEK}{List of Focal Mechanisms, see details
@@ -16,7 +16,10 @@ plotmanyfoc(MEK, PROJ, focsiz = 0.04, foccol = NULL, PMAT = NULL, LEG = FALSE, D
   \item{focsiz}{focal size
 }
   \item{foccol}{focal color
-}
+  }
+  \item{UP}{logical, UP=TRUE means plot upper hemisphere (DEFAULT=TRUE) 
+  }
+  
   \item{PMAT}{Projection Matrix from persp
 }
   \item{LEG}{logical, TRUE= add focal legend for color codes

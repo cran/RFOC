@@ -1,4 +1,4 @@
-plotmanyfoc<-function(MEK, PROJ, focsiz=0.04, foccol=NULL, PMAT=NULL, LEG = FALSE, DOBAR=FALSE)
+plotmanyfoc<-function(MEK, PROJ, focsiz=0.04, foccol=NULL, UP=TRUE , PMAT=NULL, LEG = FALSE, DOBAR=FALSE)
   {
 
     ############################  focal mech have this list structure
@@ -9,6 +9,8 @@ plotmanyfoc<-function(MEK, PROJ, focsiz=0.04, foccol=NULL, PMAT=NULL, LEG = FALS
     
     if(missing(PMAT)) PMAT=NULL
     if(missing(foccol)) foccol=NULL
+    if(missing(UP)) UP=TRUE
+    
     if(missing(LEG))   LEG = FALSE
     if(missing(DOBAR))  DOBAR=FALSE
 
@@ -48,7 +50,7 @@ if(length(MEK$Elat)<1 | (length(MEK$Elon)<1))
        focal.col = foc.color(lind, pal=1)
 
         
-        MEC =  SDRfoc(MEK$str1[i], MEK$dip1[i],MEK$rake1[i] , u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
+        MEC =  SDRfoc(MEK$str1[i], MEK$dip1[i],MEK$rake1[i] , u=UP, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
 
        if( is.na(tem2$x[i]) |  is.na(tem2$y[i]))
           {

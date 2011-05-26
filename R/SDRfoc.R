@@ -26,8 +26,15 @@ function(s,d,r, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=TRUE)
       ## addPT(MEC)
       addmecpoints(MEC)
       PlotPlanes(MEC, col1="blue", col2=grey(.6) )
+
       
-      tit1 = paste(sep=" ", paste(sep="","Strike=", MEC$az1), paste(sep="","Dip=", MEC$dip1), paste(sep="","Rake=", formatC(MEC$rake1)) )
+      
+      tit1 = paste(sep=" ",
+        paste(sep="","Strike=", formatC(MEC$az1, digits=5) ),
+        paste(sep="","Dip=", formatC(MEC$dip1, digits=5)   ),
+        paste(sep="","Rake=", formatC(MEC$rake1)) )
+
+      
       tit2 = focleg(MEC$icol)
       if(MEC$UP) { tit3 = "UPPER HEMI" } else {   tit3 = "LOWER HEMI" }
       

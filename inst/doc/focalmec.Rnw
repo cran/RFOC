@@ -63,7 +63,7 @@ Plot focal Mechanisms and stereonets for  seismic data.
 
 Start out by calling the RFOC library,
 
-<<fig=FALSE, echo=TRUE, results=HIDE>>=
+<<fig=FALSE, echo=TRUE, results=hide>>=
 library(RFOC)
 data(PKAM)
 numk = length(PKAM$LATS)
@@ -117,7 +117,7 @@ The slip vectors correspond possibly to
 striations one might observe on the fault surface as the earth scrapes
 the two planes during rupture.
 
-<<echo=FALSE, results=HIDE, label=fig1plot, include=FALSE>>=
+<<echo=FALSE, results=hide, label=fig1plot, include=FALSE>>=
 load(file='./EYEVIEW.RData')
 
 `emptyplot` <-
@@ -379,7 +379,7 @@ MFOC2 = SDRfoc(0,45,-90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
 
 \begin{figure}
 \begin{center}
-<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig=TRUE, echo=FALSE, results=hide >>=
 <<fig1plot>>
 @ 
 \end{center}
@@ -392,7 +392,7 @@ MFOC2 = SDRfoc(0,45,-90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
 
 \begin{figure}
 \begin{center}
-<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig=TRUE, echo=FALSE, results=hide >>=
 ### par(asp=1)
 
 TEACHFOC(65, 32, -34, up=TRUE)
@@ -444,7 +444,7 @@ printMEC(mc)
 @ 
 and, since a plotting function has been defined for the MEC
 structure, the result can be graphically viewed with,
-<<fig=FALSE, echo=TRUE, results=HIDE>>=
+<<fig=FALSE, echo=TRUE, results=hide>>=
 plotMEC(mc, detail=2, up=FALSE)
 @ 
 as shown in Figure~\ref{fig:TEACH}.
@@ -479,7 +479,7 @@ The following code shows how the focal mechanisms are interpreted by
 a geologist for three end-member cases.  These figures can be animated
 for student easier understanding of faulting in an interactive R session.
 
-<<fig=TRUE, echo=TRUE, results=HIDE, label=faults1>>=
+<<fig=TRUE, echo=TRUE, results=hide, label=faults1>>=
 opar <- par(no.readonly = TRUE)
 
   par(MFA=c(1,3))
@@ -494,7 +494,7 @@ opar <- par(no.readonly = TRUE)
       mtext("Strike-slip fault", side = 3, line =-1.5)
 #### box()
 @ 
-<<fig=TRUE, echo=TRUE, results=HIDE, label=faults2>>=
+<<fig=TRUE, echo=TRUE, results=hide, label=faults2>>=
 ############
     normal.fault(45, anim=anim, KAPPA=4, Light=c(-20, 80))
     MFOC2 = SDRfoc(135,45,-90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
@@ -504,7 +504,7 @@ opar <- par(no.readonly = TRUE)
        mtext("Normal fault", side = 3, line =-1.5)
 #### box()
 @ 
-<<fig=TRUE, echo=TRUE, results=HIDE, label=faults3>>=
+<<fig=TRUE, echo=TRUE, results=hide, label=faults3>>=
 ############
     thrust.fault(anim=anim, KAPPA=4, Light=c(-20, 80))
     MFOC3 = SDRfoc(135,45,90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
@@ -542,7 +542,7 @@ The code to produce the radiation pattern display first sets up a
 nice color palette with two simple functions and
 then calls the radiation routines.
 
-<<include=FALSE, echo=TRUE, results=HIDE, label=focArad>>=
+<<include=FALSE, echo=TRUE, results=hide, label=focArad>>=
 `tomo.colors` <-
 function(n, alpha = 1)
   {
@@ -628,7 +628,7 @@ text(0,1, labels="SH-wave  radiation, Lower Hemisphere", pos=3, cex=1.5)
 @  
 \begin{figure}[ht]
 \centering
-<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig=TRUE, echo=FALSE, results=hide >>=
 <<focArad>>
 @ 
 \caption{Radiation Patterns}\label{fig:focArad}
@@ -678,7 +678,7 @@ for(i in 1:length(KAMCORN$LAT) )
 @ 
 \begin{figure}
 \begin{center}
-<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig=TRUE, echo=FALSE, results=hide >>=
 <<focmap1>>
 @ 
 \end{center}
@@ -715,7 +715,7 @@ for(i in 1:length(KAMCORN$LAT) )
 @ 
 \begin{figure}
 \begin{center}
-<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig=TRUE, echo=FALSE, results=hide >>=
 <<focNIP>>
 @ 
 \end{center}
@@ -753,7 +753,7 @@ distributions on the sphere (Figure~\ref{fig:CONTRDPT}).
 @ 
 \begin{figure}
 \begin{center}
-<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig=TRUE, echo=FALSE, results=hide >>=
 <<ALLPT>>
 @ 
 \end{center}
@@ -801,7 +801,7 @@ justfocXY( MFOC1, fcol = Fcol1, 0, 1.414443+.2, size = c(.1,.1) )
 
 \begin{figure}
 \begin{center}
-<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig=TRUE, echo=FALSE, results=hide >>=
 <<TERN1>>
 @ 
 \end{center}
@@ -863,7 +863,7 @@ par(opar)
 @ 
 \begin{figure}
 \begin{center}
-<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig=TRUE, echo=FALSE, results=hide >>=
 <<CONTRDPT>>
 @ 
 \end{center}
@@ -899,7 +899,7 @@ plot(x, y, asp=1, type="p", xlab="LON", ylab="LAT" )
 
 \begin{figure}
 \begin{center}
-<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig=TRUE, echo=FALSE, results=hide >>=
 <<ternmapkam1>>
 @ 
 \end{center}
@@ -940,7 +940,7 @@ for(i in 1:length(RI$ipass))
 
 \begin{figure}
 \begin{center}
-<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig=TRUE, echo=FALSE, results=hide >>=
 <<ternmapkam2>>
 @ 
 \end{center}
@@ -998,7 +998,7 @@ colnames(KPspat) = c("x", "y", "n", "Ir",  "Dr", "R", "K", "S", "Alph95" , "Kapp
 
 \begin{figure}
 \begin{center}
-<<fig=TRUE, echo=FALSE, results=HIDE >>=
+<<fig=TRUE, echo=FALSE, results=hide >>=
 <<smomapkam2>>
 @ 
 \end{center}

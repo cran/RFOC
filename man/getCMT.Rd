@@ -6,11 +6,14 @@
 \description{Read and reformat CMT solutions downloaded from the web.
 }
 \usage{
-getCMT(fn)
+getCMT(fn, skip=1)
 }
 \arguments{
   \item{fn}{character file name
-}
+  }
+  \item{skip}{number of lines to skip (e.g. header)
+  }
+   
 }
 \details{
 
@@ -65,6 +68,39 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
 \note{
   Use ExplodeSymbols or explode to get new locations
   for expanding the plotting points.
+}
+
+
+\examples{
+
+\dontrun{
+
+
+g = getCMT("/home/lees/aleut.cmt")
+
+pg = prepFOCS(g)
+
+
+plot(range(pg$LONS), range(pg$LATS), type = "n", xlab = "LON",
+    ylab = "LAT", asp = 1)
+
+
+ for (i in 1:length(pg$LATS)) {
+    mc = CONVERTSDR(g$str1[i], g$dip1[i], g$rake1[i])
+     MEC <- MRake(mc$M)
+MEC$UP = FALSE
+     Fcol <- foc.color(foc.icolor(MEC$rake1), pal = 1)
+     justfocXY(MEC, x = pg$LONS[i], y = pg$LATS[i], size = c(0.5,
+         0.5), fcol = Fcol, xpd = FALSE)
+ }
+
+
+
+}
+
+
+
+
 }
 
 

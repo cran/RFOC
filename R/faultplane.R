@@ -13,7 +13,7 @@ function(az,  dip,  col = par("col"), PLOT=TRUE, UP=FALSE)
     if(missing(PLOT)) { UP=FALSE }
 
     
-    if(UP) { beta = beta+pi }
+    if(UP==TRUE) { beta = beta+pi }
          
     pi180 = pi / 180;
     phi = pi180*seq(-90,90, by=1);

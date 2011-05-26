@@ -1,9 +1,10 @@
-getCMT<-function(fn)
+getCMT<-function(fn, skip=1)
 {
+  if(missing(skip)) { skip=1 }
 
   #####  scan the CMT data from the harvard site:
   ####   values are separated by a space
-  CMT = scan(file=fn, skip=1, what=list(lon=0, lat=0, str1=0, dip1=0, rake1=0, str2=0, dip2=0, rake2=0, sc=0, iexp=0, name=""))
+  CMT = scan(file=fn, skip=skip, what=list(lon=0, lat=0, str1=0, dip1=0, rake1=0, str2=0, dip2=0, rake2=0, sc=0, iexp=0, name=""))
 
 ######  mechs on this site have two forms for the name
   LENDATE = nchar(CMT$name)
@@ -25,9 +26,6 @@ getCMT<-function(fn)
   HR[LENDATE>7] = as.numeric(substr(CMT$name[LENDATE>7] , 9,10))
   MI[LENDATE>7] = as.numeric(substr(CMT$name[LENDATE>7] , 11,12))
  ##  SE[LENDATE>7] = as.numeric(substr(CMT$name[LENDATE>7] , 13, 14))
-
-
-  
 
   YR[YR<70] = YR[YR<70] + 2000
   YR[YR<100] = YR[YR<100] + 1900

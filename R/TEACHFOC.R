@@ -41,7 +41,7 @@ function(s,d,r, up=FALSE)
     lines(ex,why, lwd=2, lty=2)
     arrows(ex[naz-1],why[naz-1], ex[naz],why[naz])
     iaz = floor(naz/2 )
-    text(ex[iaz],why[iaz], labels=paste("Az=", AZIM)  , pos=4, font=2, xpd=TRUE)
+    text(ex[iaz],why[iaz], labels=paste("Az=", formatC(AZIM, digits=6))  , pos=4, font=2, xpd=TRUE)
 
 
     NIP = nipXY( MEC,  0, 0, fcol = "blue" , nipcol='black',  size = c(1,1), cex=1 )
@@ -69,7 +69,7 @@ function(s,d,r, up=FALSE)
     upperlower = "Lower Hemisphere"
     if(MEC$UP)  upperlower = "Upper Hemisphere"
     
-    title(main=paste(sep=" ", "Strike=", s, "Dip=", d, "Rake=", r), xlab= upperlower)
+    title(main=paste(sep=" ", "Strike=", formatC(s, digits=6) , "Dip=", formatC(d, digits=6), "Rake=", formatC(r, digits=6)), xlab= upperlower)
     
     
   }
