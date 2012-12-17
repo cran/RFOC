@@ -33,10 +33,10 @@ DEG2RAD = pi/180
 # print(paste(sep=" ", "in GetRake: plane 1", az1, dip1, "plane 2: ", az2, dip2,  "dir=",dir))
       dipaz1= az1 + 90.0;
 #dipaz1= az1 - 90.0;
-      if (dipaz1 >= 360.0) { dipaz1= fmod(dipaz1, 360)  }
+      if (dipaz1 >= 360.0) { dipaz1= RPMG::fmod(dipaz1, 360)  }
       dipaz2 = az2 + 90.0;
 #dipaz2 = az2 - 90.0;
-      if (dipaz2 >= 360.0) { dipaz2=  fmod(dipaz2, 360.0) }
+      if (dipaz2 >= 360.0) { dipaz2=  RPMG::fmod(dipaz2, 360.0) }
 
 # /*     Convert angles to radians*/
       raz1=   az1*DEG2RAD;

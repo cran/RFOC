@@ -4,16 +4,16 @@ function(MEC)
 
    if(MEC$UP==TRUE)
     {
-      az1=fmod(MEC$P$az+180, 360)
+      az1=RPMG::fmod(MEC$P$az+180, 360)
     }
   else
     {
-      az1=fmod(MEC$P$az, 360)
+      az1=RPMG::fmod(MEC$P$az, 360)
     }
  
   dip = 90-MEC$P$dip
   Ppnt = focpoint(MEC$P$az, MEC$P$dip, pch=18, lab="P", UP=MEC$UP, PLOT=FALSE)
-  JIMP  = TOCART(az1, dip)
+  JIMP  = RSEIS::TOCART(az1, dip)
    if(MEC$UP==FALSE ) JIMP$z = -JIMP$z
 ###  here x is pointing to the north, y to the east
 #######   points( JIMP$y,JIMP$x) 
@@ -38,14 +38,14 @@ pcol = rgb(1,.5,.5)
   Ppnt = focpoint(MEC$T$az, MEC$T$dip, pch=18, lab="P", UP=MEC$UP, PLOT=FALSE)
   if(MEC$UP==TRUE)
     {
-      az1=fmod(MEC$T$az+180, 360)
+      az1=RPMG::fmod(MEC$T$az+180, 360)
     }
   else
     {
-      az1=fmod(MEC$T$az, 360)
+      az1=RPMG::fmod(MEC$T$az, 360)
     }
   dip = 90-MEC$T$dip
-  JIMP  = TOCART(az1, dip)
+  JIMP  = RSEIS::TOCART(az1, dip)
      if(MEC$UP==FALSE ) JIMP$z = -JIMP$z
 ###  here x is pointing to the north, y to the east
   len = 1

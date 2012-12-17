@@ -6,7 +6,8 @@
   add scale to side of an image plot
 }
 \usage{
-imageSCALE(z, col, x, y = NULL, size = NULL, digits = 2, labels = c("breaks", "ranges"), nlab = 10)
+imageSCALE(z, col, x, y = NULL, size = NULL, digits = 2,
+labels = c("breaks", "ranges"), nlab = 10)
 }
 
 \arguments{
@@ -31,7 +32,8 @@ imageSCALE(z, col, x, y = NULL, size = NULL, digits = 2, labels = c("breaks", "r
 data(volcano)
 image(volcano, col=rainbow(100) )
 
-imageSCALE(volcano, rainbow(100), 1.015983, y = 0.874668, size = .01, digits =
+imageSCALE(volcano, rainbow(100), 1.015983, y = 0.874668,
+size = .01, digits =
 2, labels = "breaks", nlab = 20)
 
 

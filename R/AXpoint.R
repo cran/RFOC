@@ -26,7 +26,7 @@ function(UP=TRUE, col=2, n=1)
     {
       iang = 180-iang
     }
-  a = TOCART(phiang, iang)
+  a = RSEIS::TOCART(phiang, iang)
   return(list(az=phiang, dip=iang, x=a$x, y=a$y, z=a$z, gx=p$x, gy=p$y))
 }
 

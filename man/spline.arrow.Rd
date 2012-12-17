@@ -6,7 +6,9 @@
   affix an arrow at the end.
 }
 \usage{
-spline.arrow(x, y = 0, kdiv = 20, arrow = 1, length = 0.2, col = "black", thick = 0.01, headlength = 0.2, headthick = 0.1, code = 2, ...)
+spline.arrow(x, y = 0, kdiv = 20, arrow = 1,
+ length = 0.2, col = "black", thick = 0.01,
+headlength = 0.2, headthick = 0.1, code = 2, ...)
 }
 \arguments{
   \item{x}{vector, x-coordinates

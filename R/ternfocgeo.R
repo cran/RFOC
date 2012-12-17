@@ -7,7 +7,7 @@ ternfocgeo<-function(CMTSOL, PROJ=NULL, icut=5, ndivs=10,   bbox=c(0,1, 0, 1)  ,
     if(missing(PROJ))
       {
 
-        PROJ = setPROJ(type=2, LAT0=mean(CMTSOL$lat) , LON0=mean(CMTSOL$lon) )   ##   utm
+        PROJ = GEOmap::setPROJ(type=2, LAT0=mean(CMTSOL$lat) , LON0=mean(CMTSOL$lon) )   ##   utm
 
 
       }
@@ -37,7 +37,7 @@ ternfocgeo<-function(CMTSOL, PROJ=NULL, icut=5, ndivs=10,   bbox=c(0,1, 0, 1)  ,
     PHAIT = prepFOCS(CMTSOL)
     
 
-XY = GLOB.XY(CMTSOL$lat, CMTSOL$lon, PROJ)
+XY = GEOmap::GLOB.XY(CMTSOL$lat, CMTSOL$lon, PROJ)
 
 if(PLOT)
   {

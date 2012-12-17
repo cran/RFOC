@@ -46,7 +46,7 @@ data(PKAM)
 ## 
 
 ######  plot the locations:
-plot( fmod(PKAM$LONS, 360), PKAM$LATS)
+plot( RPMG::fmod(PKAM$LONS, 360), PKAM$LATS)
 ######  
 
   PlotTernfoc(PKAM$h,PKAM$v,x=0, y=0, siz=1, fcols='black', add=FALSE,

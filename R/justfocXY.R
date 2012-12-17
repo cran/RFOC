@@ -4,7 +4,7 @@ function(MEC, x=x, y=y, size=c(1,1), fcol=gray(0.90), fcolback="white", xpd=TRUE
     if(missing(fcol)) { fcol = gray(0.90) }
     if(missing(fcolback)) { fcolback =  "white"  }
     if(missing(xpd)) {  xpd=TRUE}
-    C = circle()
+    C = RPMG::circle()
     
     
     lines(x+size[1]*C$x,  y+size[2]*C$y, type='l', xpd=xpd)

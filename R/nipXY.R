@@ -10,8 +10,8 @@ function(MEC, x=x, y=y, size=c(1,1), fcol=gray(0.90), nipcol="black", cex=.4)
 
     lines(x+size[1]*LP1$x, y+size[2]*LP1$y, col=fcol, xpd=TRUE )
 
-    A1 = TOCART(MEC$U$az, 90-MEC$U$dip)
-    A2 =TOCART(MEC$V$az,  90-MEC$V$dip)
+    A1 = RSEIS::TOCART(MEC$U$az, 90-MEC$U$dip)
+    A2 = RSEIS::TOCART(MEC$V$az,  90-MEC$V$dip)
     N = CROSSL(A1, A2)
     Q = qpoint(N$az, N$dip , lab="N", UP=MEC$UP, PLOT=FALSE)
     points(x+size[1]*Q$x, y+size[2]*Q$y, pch=16, col=nipcol, cex=cex, xpd=TRUE)

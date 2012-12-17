@@ -7,7 +7,8 @@
   distributed geographically.
 }
 \usage{
-ternfocgeo(CMTSOL, PROJ = NULL, icut = 5, ndivs = 10,  bbox=c(0,1, 0, 1), PLOT = TRUE, add = FALSE, RECT = FALSE)
+ternfocgeo(CMTSOL, PROJ = NULL, icut = 5, ndivs = 10,
+ bbox=c(0,1, 0, 1), PLOT = TRUE, add = FALSE, RECT = FALSE)
 }
 \arguments{
   \item{CMTSOL}{see output of getCMT for list input
@@ -62,14 +63,16 @@ name=seq(from=1, to=length(lon), by=1)
 Elat=NULL
 Elon=NULL
 
- MEKS = list(lon=lon, lat=lat, str1=str1, dip1=dip1, rake1=rake1, dep=dep, name=name)
-PROJ = setPROJ(type=2, LAT0=mean(lat) , LON0=mean(lon) )   ##   utm
-XY = GLOB.XY(lat, lon, PROJ)
+ MEKS = list(lon=lon, lat=lat, str1=str1, dip1=dip1,
+rake1=rake1, dep=dep, name=name)
+PROJ = GEOmap::setPROJ(type=2, LAT0=mean(lat) , LON0=mean(lon) )   ##   utm
+XY = GEOmap::GLOB.XY(lat, lon, PROJ)
 plot(range(XY$x), range(XY$y), type='n', asp=1)
 
 ##  points(XY$x, XY$y)
 
-ternfocgeo(MEKS , PROJ, PLOT=TRUE, icut = 3, ndivs = 4, add=TRUE, RECT=TRUE)
+ternfocgeo(MEKS , PROJ, PLOT=TRUE, icut = 3,
+ndivs = 4, add=TRUE, RECT=TRUE)
 
 points(XY$x, XY$y, pch=8, col="purple" )
 
@@ -77,7 +80,8 @@ points(XY$x, XY$y, pch=8, col="purple" )
 plot(range(XY$x), range(XY$y), type='n', asp=1)
 points(XY$x, XY$y)
 
-ternfocgeo(MEKS , PROJ, PLOT=TRUE, icut = 3, ndivs = 5, bbox=c(-2000,2000,-2000,2000) , add=TRUE, RECT=TRUE)
+ternfocgeo(MEKS , PROJ, PLOT=TRUE, icut = 3, ndivs = 5,
+ bbox=c(-2000,2000,-2000,2000) , add=TRUE, RECT=TRUE)
 
 
 \dontrun{
@@ -91,8 +95,10 @@ image(x=IZ$x, y=IZ$y, z=(AZ), col=terrain.colors(100) , add=TRUE)
 
 
  plotGEOmapXY(haiti.map,
-              LIM = c(Lon.range[1],Lat.range[1] ,Lon.range[2] ,Lat.range[2]),
-              PROJ =PROJ, MAPstyle = 2,   MAPcol = 'black' , add=TRUE  )
+              LIM = c(Lon.range[1],Lat.range[1] ,
+Lon.range[2] ,Lat.range[2]),
+              PROJ =PROJ, MAPstyle = 2,
+MAPcol = 'black' , add=TRUE  )
 
 H = rectPERIM(JMAT$xo, JMAT$yo)
 

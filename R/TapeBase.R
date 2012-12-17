@@ -2,7 +2,7 @@ TapeBase<-function( )
   {
 ###   TATE plot from Tape and Tape 
 
-    require(GEOmap)
+  ###  require(GEOmap)
    
     d1=list()
     d1$'lam'=c(0,0,0,-30,-30,-30,-30,30,30,30,30)
@@ -12,7 +12,7 @@ TapeBase<-function( )
     d1$'a2'=c(-15,15,15,0,0,0,0,0,0,0,0)
 
 ###########  first PATCH
-    g = getgreatarc(d1$phi[5],d1$lam[5],d1$phi[11],d1$lam[11],    100)
+    g = GEOmap::getgreatarc(d1$phi[5],d1$lam[5],d1$phi[11],d1$lam[11],    100)
     
     PATCH11 = HAMMERprojXY(g$lat*pi/180, g$lon*pi/180)
 
@@ -34,7 +34,7 @@ TapeBase<-function( )
 
 
 ###########  second PATCH
-    g = getgreatarc(d1$phi[7],d1$lam[7],d1$phi[9],d1$lam[9],    100)
+    g = GEOmap::getgreatarc(d1$phi[7],d1$lam[7],d1$phi[9],d1$lam[9],    100)
     
     PATCH21 = HAMMERprojXY(g$lat*pi/180, g$lon*pi/180)
 

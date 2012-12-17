@@ -2,7 +2,7 @@
 function(amfile)
   {
 ##############   FS = getAMcards(amfile)
-    require(RSEIS)
+   ####  require(RSEIS)
 
     getMCARD<-function(MCARD)
       {
@@ -57,7 +57,7 @@ function(amfile)
       {
        
         
-        GA =  unpackAcard(APF[i])
+        GA =  RSEIS::unpackAcard(APF[i])
         GF =  getMCARD(APF[i+1])
         
         K[[i]] = list(A=GA, M=GF)

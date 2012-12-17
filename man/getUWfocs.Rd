@@ -54,12 +54,13 @@ G1 = getUWfocs(uwpickfile)
 
 plot(G1$lon, G1$lat)
 
- MEKS = list(lon=G1$lon, lat=G1$lat, str1=G1$str1, dip1=G1$dip1, rake1=G1$rake1, dep=G1$z, name=G1$name)
+ MEKS = list(lon=G1$lon, lat=G1$lat, str1=G1$str1,
+dip1=G1$dip1, rake1=G1$rake1, dep=G1$z, name=G1$name)
 
+##   utm projection
+ PROJ = GEOmap::setPROJ(type=2, LAT0=mean(G1$lat) , LON0=mean(G1$lon) )   
 
- PROJ = setPROJ(type=2, LAT0=mean(G1$lat) , LON0=mean(G1$lon) )   ##   utm
-
-     XY = GLOB.XY(G1$lat, G1$lon, PROJ)
+     XY = GEOmap::GLOB.XY(G1$lat, G1$lon, PROJ)
 
      plot(range(XY$x), range(XY$y), type='n', asp=1)
 

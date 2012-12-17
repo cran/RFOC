@@ -7,7 +7,9 @@
   distributed geographically.
 }
 \usage{
-spherefocgeo(CMTSOL, PROJ = NULL, icut = 5, ndivs = 10,  bbox=c(0,1, 0, 1), PLOT = TRUE, add = FALSE, RECT = FALSE, pal = terrain.colors(100))
+spherefocgeo(CMTSOL, PROJ = NULL, icut = 5,
+ndivs = 10,  bbox=c(0,1, 0, 1), PLOT = TRUE,
+ add = FALSE, RECT = FALSE, pal = terrain.colors(100))
 }
 \arguments{
   \item{CMTSOL}{see output of getCMT for list input
@@ -65,13 +67,15 @@ name=seq(from=1, to=length(lon), by=1)
 Elat=NULL
 Elon=NULL
 
- MEKS = list(lon=lon, lat=lat, str1=str1, dip1=dip1, rake1=rake1, dep=dep, name=name)
-PROJ = setPROJ(type=2, LAT0=mean(lat) , LON0=mean(lon) )   ##   utm
-XY = GLOB.XY(lat, lon, PROJ)
+ MEKS = list(lon=lon, lat=lat, str1=str1, dip1=dip1,
+ rake1=rake1, dep=dep, name=name)
+PROJ = GEOmap::setPROJ(type=2, LAT0=mean(lat) , LON0=mean(lon) )   ##   utm
+XY = GEOmap::GLOB.XY(lat, lon, PROJ)
 plot(range(XY$x), range(XY$y), type='n', asp=1)
 
   points(XY$x, XY$y)
-spherefocgeo(MEKS, PROJ, PLOT=TRUE, icut = 3, ndivs = 4, add=TRUE, pal=terrain.colors(100), RECT=TRUE )
+spherefocgeo(MEKS, PROJ, PLOT=TRUE, icut = 3, ndivs = 4,
+ add=TRUE, pal=terrain.colors(100), RECT=TRUE )
 
 
 
@@ -89,8 +93,10 @@ image(x=IZ$x, y=IZ$y, z=(AZ), col=terrain.colors(100) , add=TRUE)
 
 
  plotGEOmapXY(haiti.map,
-              LIM = c(Lon.range[1],Lat.range[1] ,Lon.range[2] ,Lat.range[2]),
-              PROJ =PROJ, MAPstyle = 2,   MAPcol = 'black' , add=TRUE  )
+              LIM = c(Lon.range[1],Lat.range[1] ,
+Lon.range[2] ,Lat.range[2]),
+              PROJ =PROJ, MAPstyle = 2,
+ MAPcol = 'black' , add=TRUE  )
 
 H = rectPERIM(JMAT$xo, JMAT$yo)
 

@@ -31,7 +31,7 @@ tocartL(A)
 x positive north, y positive east, z positive downward
  
 }
-\seealso{TOCART.DIP, TOCART, tosphereL, to.spherical}
+\seealso{TOCART.DIP, RSEIS::TOCART, tosphereL, to.spherical}
 \examples{
 
 A = list(az=23, dip=84)

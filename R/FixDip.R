@@ -6,7 +6,7 @@ function(A)
     dip = A$dip
     DEG2RAD = pi/180;
     RAD2DEG = 180/pi;
-    tdip = DEG2RAD*fmod(dip, 360.);
+    tdip = DEG2RAD*RPMG::fmod(dip, 360.);
     co = cos(tdip)
     si = sin(tdip)
     ang = RAD2DEG*atan2(si, co)
@@ -32,7 +32,7 @@ function(A)
     az[quad==4] = 180+az[quad==4]
     
 
-    A$az = fmod(az, 360.);
+    A$az = RPMG::fmod(az, 360.);
 
     
     A$dip = dip

@@ -26,7 +26,7 @@ function(m, PLOT=TRUE, col=rgb(1, .75, .75))
   WHY = seq(from=y.min, by=dy, to=y.max)
   ndim = length(EX)
   
-  M = meshgrid(EX ,WHY  )
+  M = RPMG::meshgrid(EX ,WHY  )
 
   
   r = sqrt(M$x^2+M$y^2)

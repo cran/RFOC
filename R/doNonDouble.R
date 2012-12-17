@@ -40,7 +40,7 @@ function(moments, sel=1, col=rgb(1, .75, .75))
 ### -------------------------------------
 ###  plotting the solution
 ### ----------------------------------------
-###  boundary circle
+###  boundary RPMG::circle
         Fi=seq(from=0, by=0.1, to=361)
 ###  dev.new()
         plot(cos(Fi*pi/180.0),sin(Fi*pi/180.0),type='l', asp=1 , ann=FALSE, axes=FALSE)

@@ -28,7 +28,8 @@
  
 \examples{
 data(KAMCORN)
-plot(KAMCORN$LON, KAMCORN$LAT, xlab="LON", ylab="LAT" , main="Kamchatka-Aleutian Inersection", asp=1)
+plot(KAMCORN$LON, KAMCORN$LAT, xlab="LON", ylab="LAT" ,
+          main="Kamchatka-Aleutian Inersection", asp=1)
 ######  
 Paz =vector()
 Pdip =vector()
@@ -42,7 +43,8 @@ Fcol = vector()
 
 for(i in 1:10)
   {
-    Msdr = CONVERTSDR(KAMCORN$STRIKE[i], KAMCORN$DIP[i], KAMCORN$RAKE[i]   )
+    Msdr = CONVERTSDR(KAMCORN$STRIKE[i],
+          KAMCORN$DIP[i], KAMCORN$RAKE[i]   )
   MEC = MRake(Msdr$M)
   MEC$UP = FALSE
   IFcol[i] = foc.icolor(MEC$rake1)
@@ -61,7 +63,8 @@ for(i in 1:10)
   h[i] = V$h
   v[i] = V$v
 
-     justfocXY( MEC, fcol = Fcol[i], KAMCORN$LON[i], KAMCORN$LAT[i] , size = c(.21,.21) )
+     justfocXY( MEC, fcol = Fcol[i], KAMCORN$LON[i],
+          KAMCORN$LAT[i] , size = c(.21,.21) )
   }
 }
 

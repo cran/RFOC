@@ -23,7 +23,7 @@ cross.prod(B, A)
 
 \author{Jonathan M. Lees<jonathan.lees@unc.edu>}
 
-\seealso{xprod}
+\seealso{RSEIS::xprod}
 \examples{
 B1 = list(x=4, y=9, z=2)
 B2 = list(x=2,y=-5,z=4)

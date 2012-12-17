@@ -2,7 +2,7 @@
 function()
 {
 ###########   MN = make.net()
-                                        #% SMALL circles  (Latitudes)
+                                        #% SMALL RPMG::circles  (Latitudes)
   alons = pi*seq(from=0, to=180, by=5)/180
   alats = seq(from=-80, to=80, by=10)
   x1 =  matrix(nrow= (length(alons)+1),  ncol=(length(alats)))

@@ -34,7 +34,7 @@ getCMT<-function(fn, skip=1)
   CMT$mo = MO
   CMT$dom = DY
 
-  CMT$jd = getjul(CMT$yr,CMT$mo,CMT$dom )
+  CMT$jd = RSEIS::getjul(CMT$yr,CMT$mo,CMT$dom )
 
   CMT$hr = HR
   CMT$mi = MI

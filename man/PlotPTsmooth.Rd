@@ -53,7 +53,6 @@ opposite hemisphere are reflected through the origin.
 }
 \seealso{kde2d}
 \examples{
-library(MASS)
 
 plot(c(-1,1), c(-1,1), asp=1, type='n')
 

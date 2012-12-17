@@ -5,7 +5,8 @@
 \description{Plot moment tensors on map
 }
 \usage{
-MapNonDouble(Locs, moments, sel = 1, siz = 0.2, col=rgb(1, .75, .75), PLANES = TRUE, add = FALSE, LEG=FALSE)
+MapNonDouble(Locs, moments, sel = 1, siz = 0.2,
+col=rgb(1, .75, .75), PLANES = TRUE, add = FALSE, LEG=FALSE)
 }
 \arguments{
   \item{Locs}{Locations, x,y
@@ -129,11 +130,11 @@ Gutah   = maps2GEOmap(UTAH)
 
 
 ############   for mercator projection
-PROJ =  setPROJ(type = 1, LAT0 = mlat , LON0 = mlon)
-Glocs = GLOB.XY(Locs$y, Locs$x, PROJ       )
+PROJ =  GEOmap::setPROJ(type = 1, LAT0 = mlat , LON0 = mlon)
+Glocs = GEOmap::GLOB.XY(Locs$y, Locs$x, PROJ       )
 ############   for UTM projection
-PROJ =  setPROJ(type = 2, LAT0 = mlat , LON0 = mlon)
-Glocs = GLOB.XY(Locs$y, Locs$x, PROJ       )
+PROJ =  GEOmap::setPROJ(type = 2, LAT0 = mlat , LON0 = mlon)
+Glocs = GEOmap::GLOB.XY(Locs$y, Locs$x, PROJ       )
 
 LIMlat = expandbound(Gutah$POINTS$lat)
 LIMlon = expandbound(Gutah$POINTS$lon)
@@ -146,12 +147,13 @@ PLAT =  pretty(LIMlat)
 ########  Utah is a little rectangular
 dev.new(width=9, height=12)
 
-plotGEOmapXY(Gutah, LIM = c(min(PLON), min(PLAT) , max(PLON) , max(PLAT)) ,
+plotGEOmapXY(Gutah,
+LIM = c(min(PLON), min(PLAT) , max(PLON) , max(PLAT)) ,
              PROJ=PROJ, axes=FALSE, xlab="", ylab="" )
 
 
 ### add tic marks
-kbox = GLOB.XY(PLAT,PLON, PROJ)
+kbox = GEOmap::GLOB.XY(PLAT,PLON, PROJ)
 
       sqrTICXY(kbox , PROJ, side=c(1,2,3,4), LLgrid=TRUE, col=grey(.7) )
 

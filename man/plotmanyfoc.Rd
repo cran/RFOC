@@ -6,7 +6,8 @@
 \description{Plot a long list of focal mechanisms
 }
 \usage{
-plotmanyfoc(MEK, PROJ, focsiz = 0.04, foccol = NULL, UP=TRUE, PMAT = NULL, LEG = FALSE, DOBAR = FALSE)
+plotmanyfoc(MEK, PROJ, focsiz = 0.04, foccol = NULL,
+UP=TRUE, PMAT = NULL, LEG = FALSE, DOBAR = FALSE)
 }
 \arguments{
   \item{MEK}{List of Focal Mechanisms, see details
@@ -61,11 +62,12 @@ name=seq(from=1, to=length(lon), by=1)
 Elat=NULL
 Elon=NULL
 
- MEKS = list(lon=lon, lat=lat, str1=str1, dip1=dip1, rake1=rake1, dep=dep, name=name)
+ MEKS = list(lon=lon, lat=lat, str1=str1, dip1=dip1,
+rake1=rake1, dep=dep, name=name)
 
-PROJ = setPROJ(type=2, LAT0=mean(lat) , LON0=mean(lon) )   ##   utm
+PROJ = GEOmap::setPROJ(type=2, LAT0=mean(lat) , LON0=mean(lon) )   ##   utm
 
-XY = GLOB.XY(lat, lon, PROJ)
+XY = GEOmap::GLOB.XY(lat, lon, PROJ)
 
 plot(range(XY$x), range(XY$y), type='n', asp=1)
 

@@ -7,7 +7,7 @@ function(r=1, dr=.02, dang=10,... )
  
     
     
-# %    plot a set of tic marks and the center of the circle
+# %    plot a set of tic marks and the center of the RPMG::circle
     #########
 
     

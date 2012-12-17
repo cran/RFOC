@@ -20,7 +20,7 @@ function(aglyph,  M=diag(1, nrow=4), M2=diag(1, nrow=4), Light=c(45,45)   , anor
         anorms = list()
         for(i in 1:length(aglyph))
           {
-            XX = xprod(aglyph[[i]][3,]-aglyph[[i]][2,], aglyph[[i]][2,]-aglyph[[i]][1,])
+            XX = RSEIS::xprod(aglyph[[i]][3,]-aglyph[[i]][2,], aglyph[[i]][2,]-aglyph[[i]][1,])
            ## print(paste(sep=' ', c(i, XX) ))
             anorms[[i]] = XX
           }
@@ -35,7 +35,7 @@ function(aglyph,  M=diag(1, nrow=4), M2=diag(1, nrow=4), Light=c(45,45)   , anor
         Xt = cbind(aglyph[[i]], 1)  %*% M
 ####  get cross product of second vector versus first
 #########   vectors should be oriented so this points out from object
-###   XX = xprod( Xt[2,]-Xt[1,], Xt[3,]-Xt[2,])
+###   XX = RSEIS::xprod( Xt[2,]-Xt[1,], Xt[3,]-Xt[2,])
         XX = c(anorms[[i]], 0)  %*% M2
         
         ##  print(XX[3] )

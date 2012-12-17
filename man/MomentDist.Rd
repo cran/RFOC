@@ -30,12 +30,14 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
 \examples{
 
 Mtens = c(-0.412, 0.084, 0.328 ,0.398, -1.239, 1.058)
-M1 = matrix(c(Mtens[1], Mtens[4], Mtens[5], Mtens[4], Mtens[2], Mtens[6], Mtens[5],Mtens[6], Mtens[3]), ncol=3, nrow=3, byrow=TRUE)
+M1 = matrix(c(Mtens[1], Mtens[4], Mtens[5], Mtens[4], Mtens[2],
+Mtens[6], Mtens[5],Mtens[6], Mtens[3]), ncol=3, nrow=3, byrow=TRUE)
 
 
 
 Mtens = c(5.054, -2.235, -2.819, -0.476, 5.420, 5.594)
-M2 = matrix(c(Mtens[1], Mtens[4], Mtens[5], Mtens[4], Mtens[2], Mtens[6], Mtens[5],Mtens[6], Mtens[3]), ncol=3, nrow=3, byrow=TRUE)
+M2 = matrix(c(Mtens[1], Mtens[4], Mtens[5], Mtens[4], Mtens[2],
+Mtens[6], Mtens[5],Mtens[6], Mtens[3]), ncol=3, nrow=3, byrow=TRUE)
 
 E1 = eigen(M1)
 

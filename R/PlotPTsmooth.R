@@ -21,7 +21,7 @@ function(paz, pdip, x=0, y=0, siz=1, bcol='white', border="black", IMAGE=TRUE, C
 
     
     PZZ =  focpoint(paz, pdip, col='red',  pch=3, lab="", UP=FALSE, PLOT=FALSE)
-    KP = kde2d(PZZ$x, PZZ$y, n=NCP, lims=c(-1, 1, -1, 1))
+    KP = MASS::kde2d(PZZ$x, PZZ$y, n=NCP, lims=c(-1, 1, -1, 1))
 
     
     CC = PLTcirc(PLOT=FALSE, add=TRUE,  ndiv=72,  angs=c(-pi, pi))
@@ -35,8 +35,8 @@ function(paz, pdip, x=0, y=0, siz=1, bcol='white', border="black", IMAGE=TRUE, C
       {
        ##### polygon(x+siz*CC$x,  y+siz*CC$y , border=bcol,col=bcol)
        
-         KP = kde2d(PZZ$x, PZZ$y, n=NIP, lims=c(-1, 1, -1, 1))
-         M  = meshgrid(KP$x, KP$y)
+         KP = MASS::kde2d(PZZ$x, PZZ$y, n=NIP, lims=c(-1, 1, -1, 1))
+         M  = RPMG::meshgrid(KP$x, KP$y)
          flag = sqrt(M$x^2+M$y^2)>1
          KP$z[flag] = NA
 

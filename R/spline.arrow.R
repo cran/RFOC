@@ -5,11 +5,11 @@ spline.arrow<-function(x,y=0,kdiv=20, arrow=1, length=.2, col="black",
   ####   add an arrow at the end
 
   ###   arrow=2 -> fancy arrow
-  require(GEOmap)
+ ### require(GEOmap)
   if(arrow>1)
     {
       ###   should be plotted with asp=1
-      require(RFOC)
+      ###require(RFOC)
     }
   
   if(is.list(x))
@@ -18,7 +18,7 @@ spline.arrow<-function(x,y=0,kdiv=20, arrow=1, length=.2, col="black",
       x = x$x
     }
 
-  G = getspline(x, y, kdiv=kdiv)
+  G = GEOmap::getspline(x, y, kdiv=kdiv)
   lines(G, col = col, ...)
   n = length(G$x)
    if(arrow==1)

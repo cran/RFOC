@@ -39,8 +39,8 @@ function(x1,y1,z1,x2,y2,z2, aglyph=NULL, Rview=ROTX(0), col=grey(.5),  border='b
         SC[3,3 ] = thelen
         gamma = 180*atan2(y2[i]-y1[i], x2[i]-x1[i] )/pi
         beta  = 180*atan2( sqrt( (x2[i]-x1[i])^2+(y2[i]-y1[i])^2),   z2[i] -  z1[i] )/pi
-        gamma =  fmod(gamma, 360)
-        beta = fmod(beta, 360)
+        gamma =  RPMG::fmod(gamma, 360)
+        beta = RPMG::fmod(beta, 360)
         R3 = ROTZ(gamma)
         R2 = ROTY(beta)
         R1 = ROTZ(alpha)

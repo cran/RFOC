@@ -37,7 +37,7 @@ FixDip(A)
 
 \author{Jonathan M. Lees<jonathan.lees@unc.edu>}
 
-\seealso{fmod}
+\seealso{RPMG::fmod}
 \examples{
 
 B = list(az=231, dip = -65)

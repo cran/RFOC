@@ -39,20 +39,22 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
 \examples{
 
 ###  HAiti Earthquake Jan, 2010
-MEC =  SDRfoc(71, 64, 25 , u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
+MEC <-  SDRfoc(71, 64, 25 , u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
 plot(c(0, 1), c(0,1), type='n', asp=1)
-u = par("usr")
+u <- par("usr")
 
-focsiz = 0.06* (u[2]-u[1])
+focsiz <-  0.06* (u[2]-u[1])
 
-justfocXY(MEC, x=.5,  y= .5,  size = c(focsiz, focsiz), fcol ='brown' , fcolback = "white", xpd = TRUE)
+justfocXY(MEC, x=.5,  y= .5,  size = c(focsiz, focsiz),
+fcol ='brown' , fcolback = "white", xpd = TRUE)
 
 
  StrikeDip(1.0, .5 , MEC  ,focsiz, col="purple", lwd=3 )
  
 
 
-nipXY(MEC, x = 0.25, y = .5, size = c(focsiz, focsiz), fcol ='purple', nipcol = "black", cex = 0.4)
+nipXY(MEC, x = 0.25, y = .5, size = c(focsiz, focsiz),
+fcol ='purple', nipcol = "black", cex = 0.4)
 
 
 

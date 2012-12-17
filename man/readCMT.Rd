@@ -68,8 +68,8 @@ mlon = mean(Locs$x, na.rm=TRUE)
 mlat = mean(Locs$y, na.rm=TRUE)
 
 
-PROJ =  setPROJ(type = 1, LAT0 = mlat , LON0 = mlon)
-Glocs = GLOB.XY(Locs$y, Locs$x, PROJ       )
+PROJ =  GEOmap::setPROJ(type = 1, LAT0 = mlat , LON0 = mlon)
+Glocs = GEOmap::GLOB.XY(Locs$y, Locs$x, PROJ       )
 
 
 LIMlat = expandbound(Locs$y)
@@ -85,7 +85,7 @@ plotGEOmapXY(worldmap, LIM = c(LIMlon[1],LIMlat[1] ,LIMlon[2],LIMlat[2]) ,
              PROJ=PROJ, axes=FALSE, xlab="", ylab="" )
 
 ### add tic marks
-kbox = GLOB.XY(PLAT,PLON, PROJ)
+kbox = GEOmap::GLOB.XY(PLAT,PLON, PROJ)
 
       sqrTICXY(kbox , PROJ, side=c(1,2,3,4), LLgrid=TRUE, col=grey(.7) )
 

@@ -10,7 +10,7 @@ function(strike, dip, rake)
      signforp = 1;
 
     #  /* Compute F plane dip direction and dip */
-    phif = fmod(dipdir, 360.);
+    phif = RPMG::fmod(dipdir, 360.);
     deltaf = dip;
 
     #  /* Compute U slip vector */
@@ -34,7 +34,7 @@ function(strike, dip, rake)
     
     phiu = dipdir - 90. + asin( tandy) *RAD2DEG;
     deltau = deltau*RAD2DEG;
-    phiu = fmod(phiu+360., 360.);
+    phiu = RPMG::fmod(phiu+360., 360.);
      # /* reflect(&phiu, &deltau); */
 
      # /* Compute G plane dip direction and dip */
@@ -60,11 +60,11 @@ function(strike, dip, rake)
       }
     
     
-    phig = fmod(phig, 360.);
+    phig = RPMG::fmod(phig, 360.);
 
      # /* Compute V slip vector */
     deltav = 90 - deltaf;
-    phiv = fmod(phif + 180, 360.);
+    phiv = RPMG::fmod(phif + 180, 360.);
      # /* reflect(&phiv, &deltav); */
 
      # /* Find P axis, as 1/2 way between U and V */
@@ -80,7 +80,7 @@ function(strike, dip, rake)
 
     
     P =  to.spherical( U$x+V$x, U$y+V$y, U$z+V$z)
-    P$az = fmod(P$az+ 360. , 360);
+    P$az = RPMG::fmod(P$az+ 360. , 360);
      
        P = REFLECT(P);
 
@@ -93,7 +93,7 @@ function(strike, dip, rake)
      y2 = -V$y;
      z2 = -V$z;
     T = to.spherical( U$x+x2, U$y+y2, U$z+z2 );
-    T$az = fmod( T$az , 360.);
+    T$az = RPMG::fmod( T$az , 360.);
      
     T = REFLECT(T);
     

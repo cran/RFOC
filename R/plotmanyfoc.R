@@ -24,16 +24,16 @@ if(length(MEK$Elat)<1 | (length(MEK$Elon)<1))
 
   }
 
-    require(GEOmap)
+    ## require(GEOmap)
     
     u = par("usr")
     
     focsiz = focsiz* (u[2]-u[1])
     
     
-    EQxy = GLOB.XY(MEK$lat, MEK$lon, PROJ)
+    EQxy = GEOmap::GLOB.XY(MEK$lat, MEK$lon, PROJ)
 
-    XYplode = GLOB.XY(MEK$Elat, MEK$Elon, PROJ)
+    XYplode = GEOmap::GLOB.XY(MEK$Elat, MEK$Elon, PROJ)
 
     tem1 = EQxy
     tem2 = XYplode

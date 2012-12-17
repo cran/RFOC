@@ -7,7 +7,8 @@
   that do not have geographic coordinates and projection.
 }
 \usage{
-xsecmanyfoc(MEK, focsiz = 0.04, theta=NULL, foccol = NULL, UP=TRUE, LEG = FALSE, DOBAR = FALSE)
+xsecmanyfoc(MEK, focsiz = 0.04, theta=NULL,
+ foccol = NULL, UP=TRUE, LEG = FALSE, DOBAR = FALSE)
 }
 \arguments{
   \item{MEK}{List of Focal Mechanisms, see details
@@ -85,11 +86,12 @@ lon=runif(20, 235, 243)
      Elat=NULL
      Elon=NULL
 
-      MEKS = list(lon=lon, lat=lat, str1=str1, dip1=dip1, rake1=rake1, dep=dep, name=name)
+      MEKS = list(lon=lon, lat=lat, str1=str1, dip1=dip1,
+ rake1=rake1, dep=dep, name=name)
 
-     PROJ = setPROJ(type=2, LAT0=mean(lat) , LON0=mean(lon) )   ##   utm
+     PROJ = GEOmap::setPROJ(type=2, LAT0=mean(lat) , LON0=mean(lon) )   ##   utm
 
-     XY = GLOB.XY(lat, lon, PROJ)
+     XY = GEOmap::GLOB.XY(lat, lon, PROJ)
 
      plot(range(XY$x), range(XY$y), type='n', asp=1)
 
@@ -102,7 +104,7 @@ why = range(XY$y)
 JJ = list(x=ex, y=why)
 
 
-SWA = eqswath(XY$x, XY$y, MEKS$dep, JJ, width = diff(why) , PROJ = PROJ)
+SWA = GEOmap::eqswath(XY$x, XY$y, MEKS$dep, JJ, width = diff(why) , PROJ = PROJ)
 
 
 MEKS$x = rep(NA, length(XY$x))
@@ -113,7 +115,8 @@ MEKS$x[SWA$flag] = SWA$r
 MEKS$y[SWA$flag] = -SWA$depth
 bigR = sqrt(  (JJ$x[2]-JJ$x[1])^2 + (JJ$y[2]-JJ$y[1])^2)
 
-plot(c(0,bigR)   , c(0, min(-SWA$depth)) , type='n', xlab="Distance, KM", ylab="Depth")
+plot(c(0,bigR)   , c(0, min(-SWA$depth)) , type='n',
+ xlab="Distance, KM", ylab="Depth")
 points(SWA$r, -SWA$depth)
 
 xsecmanyfoc(MEKS, focsiz=0.2,  LEG = TRUE, DOBAR=FALSE)

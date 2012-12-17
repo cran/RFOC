@@ -23,7 +23,7 @@ CROSSL(A1, A2)
 
 \author{Jonathan M. Lees<jonathan.lees@unc.edu>}
 
-\seealso{xprod}
+\seealso{RSEIS::xprod}
 \examples{
 
 A1 = list(x=1,y=2, z=3)

@@ -45,7 +45,7 @@ function(x, detail=0, up=FALSE)
 
     naz = 100
 
-    AZIM = min(fmod(xmec$az1-180, 360), xmec$az1)
+    AZIM = min(RPMG::fmod(xmec$az1-180, 360), xmec$az1)
     
     
     alph  = 90-seq(from=0,to=AZIM , length=naz)

@@ -80,27 +80,27 @@ function(len = 1 , basethick = 0.1, headlen = .6, headlip=.1 )
             headthick,-headthick, len,
             headthick,headthick, len
             ) ,  ncol=3, nrow=3, byrow=TRUE)
-    anorm[[i]]  = xprod( aglyph[[i]][2,]-aglyph[[i]][1,], aglyph[[i]][3,]-aglyph[[i]][1,])
+    anorm[[i]]  = RSEIS::xprod( aglyph[[i]][2,]-aglyph[[i]][1,], aglyph[[i]][3,]-aglyph[[i]][1,])
     ##  upper
     i = 1+i
     aglyph[[i]] = matrix(c(    0,         0, len+headlen,
             headthick, headthick, len,
             -headthick,  headthick, len) ,  ncol=3, nrow=3, byrow=TRUE)
-   anorm[[i]]  = xprod( aglyph[[i]][2,]-aglyph[[i]][1,], aglyph[[i]][3,]-aglyph[[i]][1,])
+   anorm[[i]]  = RSEIS::xprod( aglyph[[i]][2,]-aglyph[[i]][1,], aglyph[[i]][3,]-aglyph[[i]][1,])
   
     ###  left
     i = 1+i
     aglyph[[i]] = matrix(c(     0, 0,len+headlen,
             -headthick , headthick, len,
             -headthick,  -headthick,len) ,  ncol=3, nrow=3, byrow=TRUE)
-   anorm[[i]]  = xprod( aglyph[[i]][2,]-aglyph[[i]][1,], aglyph[[i]][3,]-aglyph[[i]][1,])
+   anorm[[i]]  = RSEIS::xprod( aglyph[[i]][2,]-aglyph[[i]][1,], aglyph[[i]][3,]-aglyph[[i]][1,])
   
     ##  lower
     i = 1+i
     aglyph[[i]] = matrix(c( 0,0, len+headlen,
             -headthick ,-headthick, len,
             headthick,  -headthick,  len) ,  ncol=3, nrow=3, byrow=TRUE)
-   anorm[[i]]  = xprod( aglyph[[i]][2,]-aglyph[[i]][1,], aglyph[[i]][3,]-aglyph[[i]][1,])
+   anorm[[i]]  = RSEIS::xprod( aglyph[[i]][2,]-aglyph[[i]][1,], aglyph[[i]][3,]-aglyph[[i]][1,])
   
  ## }
 
@@ -123,7 +123,7 @@ function(len = 1 , basethick = 0.1, headlen = .6, headlip=.1 )
 #########  test to make sure all the vectors are point in correct direction
      #####   for(i in 1:length(aglyph))
        #####   {
-        #####    XX = xprod( aglyph[[i]][2,]-aglyph[[i]][1,], aglyph[[i]][3,]-aglyph[[i]][2,])
+        #####    XX = RSEIS::xprod( aglyph[[i]][2,]-aglyph[[i]][1,], aglyph[[i]][3,]-aglyph[[i]][2,])
             #####print(paste(sep=' ', c(i, XX) ))
         #####  }
    #####   }

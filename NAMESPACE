@@ -1,2 +1,8 @@
 # Export all names
 exportPattern(".")
+import(RPMG)
+import(GEOmap)
+import(RSEIS)
+importFrom(MASS, kde2d)
+importFrom(splancs,inout)
+
