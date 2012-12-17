@@ -1,5 +1,5 @@
 `PlotPTsmooth` <-
-function(paz, pdip, x=0, y=0, siz=1, bcol='white', border="black", IMAGE=TRUE, CONT=TRUE, cont.col = 'black', pal=terrain.colors(100), LABS=FALSE, add=FALSE)
+function(paz, pdip, x=0, y=0, siz=1, bcol='white', border="black", IMAGE=TRUE, CONT=TRUE, cont.col = 'black', pal=terrain.colors(100), LABS=FALSE, add=FALSE, NCP=50, NIP=200 )
   {
     
     ############  plot a smoothed density plot of the P and T axes
@@ -15,12 +15,13 @@ function(paz, pdip, x=0, y=0, siz=1, bcol='white', border="black", IMAGE=TRUE, C
     if(missing(pal)) { pal=terrain.colors(100) }
     if(missing(IMAGE)) { IMAGE=TRUE }
     if(missing(CONT)) { CONT=FALSE }
-    if(missing(cont.col)) {    cont.col = 'black'}
+    if(missing(cont.col)) {cont.col = 'black'}
+       if(missing(NCP)) { NCP = 50 }
+        if(missing(NIP)) { NIP=200 }
 
     
-    
     PZZ =  focpoint(paz, pdip, col='red',  pch=3, lab="", UP=FALSE, PLOT=FALSE)
-    KP = kde2d(PZZ$x, PZZ$y, n=50, lims=c(-1, 1, -1, 1))
+    KP = kde2d(PZZ$x, PZZ$y, n=NCP, lims=c(-1, 1, -1, 1))
 
     
     CC = PLTcirc(PLOT=FALSE, add=TRUE,  ndiv=72,  angs=c(-pi, pi))
@@ -34,7 +35,7 @@ function(paz, pdip, x=0, y=0, siz=1, bcol='white', border="black", IMAGE=TRUE, C
       {
        ##### polygon(x+siz*CC$x,  y+siz*CC$y , border=bcol,col=bcol)
        
-         KP = kde2d(PZZ$x, PZZ$y, n=200, lims=c(-1, 1, -1, 1))
+         KP = kde2d(PZZ$x, PZZ$y, n=NIP, lims=c(-1, 1, -1, 1))
          M  = meshgrid(KP$x, KP$y)
          flag = sqrt(M$x^2+M$y^2)>1
          KP$z[flag] = NA

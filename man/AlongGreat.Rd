@@ -1,6 +1,6 @@
 \name{AlongGreat}
 \alias{AlongGreat}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Get Points Along Great Circle}
 \description{
   Using a Starting LAT-LON, return points along an azimuth 
@@ -8,7 +8,7 @@
 \usage{
 AlongGreat(LON1, LAT1, km1, ang,  EARTHRAD= 6371)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{LON1}{Longitude, point}
   \item{LAT1}{Latitude, point  }
@@ -41,6 +41,5 @@ AlongGreat(london[2], london[1], 450, 56)
 
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{misc}

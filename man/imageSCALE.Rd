@@ -38,6 +38,5 @@ imageSCALE(volcano, rainbow(100), 1.015983, y = 0.874668, size = .01, digits =
 
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{aplot}

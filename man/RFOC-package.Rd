@@ -25,8 +25,8 @@ analyses.
 \tabular{ll}{
 Package: \tab RFOC\cr
 Type: \tab Package\cr
-Version: \tab 2.0-01\cr
-Date: \tab 2011-05-26\cr
+Version: \tab 2.0-03\cr
+Date: \tab 2012-05-31\cr
 License: \tab GPL\cr
 }
 Visualize focal mechanisms in a

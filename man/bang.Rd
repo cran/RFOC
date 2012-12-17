@@ -1,6 +1,6 @@
 \name{bang}
 \alias{bang}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Angle between two 2D normalized vectors}
 \description{
   Calculates the angle between two 2D normalized vectors using dot and
@@ -9,7 +9,7 @@
 \usage{
 bang(x1, y1, x2, y2)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{x1}{ x coordinate of first normalized vector }
   \item{y1}{ y coordinate of first normalized vector }
@@ -48,6 +48,5 @@ title(paste(sep=" ", "Angle from V1 to V2=",format(B, digits=2)) )
 
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{array}

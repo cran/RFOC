@@ -1,6 +1,6 @@
 \name{faultplane}
 \alias{faultplane}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{fault plane projection on focal sphere}
 \description{
   given azimuth and dip of fault mechanism, calculate and plot the
@@ -9,7 +9,7 @@
 \usage{
 faultplane(az, dip, col = par("col"), PLOT = TRUE, UP = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{az}{degrees, strike of the plane (NOT down dip azimuth)}
   \item{dip}{degrees,  dip from horizontal}
@@ -49,6 +49,5 @@ faultplane(65, 34)
 
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{aplot}

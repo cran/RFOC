@@ -1,6 +1,6 @@
 \name{imageP}
 \alias{imageP}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{P-wave radiation pattern}
 \description{
  Amplitude of P-wave radiation pattern from Double-Couple earthquake
@@ -8,7 +8,7 @@
 \usage{
 imageP(phiS, del, lam, SCALE = FALSE, UP = FALSE, col = NULL)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{phiS}{strike }
   \item{del}{dip }
@@ -36,6 +36,5 @@ MEC =SDRfoc(65,25,13, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
 imageP(MEC$az1, MEC$dip1, MEC$rake1, SCALE=TRUE, UP=MEC$UP, col=rainbow(100) )
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{hplot}

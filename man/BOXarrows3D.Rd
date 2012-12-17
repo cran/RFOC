@@ -1,6 +1,6 @@
 \name{BOXarrows3D}
 \alias{BOXarrows3D}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Create a 3D Arrow structure}
 \description{
 Create and project and plot 3D arrows with viewing Matrix.
@@ -10,7 +10,7 @@ BOXarrows3D(x1, y1, z1, x2, y2, z2, aglyph = NULL, Rview = ROTX(0),
 col = grey(0.5), border = "black", len = 0.7, basethick = 0.05,
 headlen = 0.3, headlip = 0.02)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{x1}{x-coordinates of base of arrows }
   \item{y1}{y-coordinates of base of arrows }
@@ -39,7 +39,7 @@ headlen = 0.3, headlip = 0.02)
 }
 \seealso{Z3Darrow}
 \examples{
-
+\dontrun{
 #### animate 10 random arrow vectors
 
 
@@ -69,7 +69,6 @@ headlen = 0.3, headlip = 0.02)
 
 ##  aglyph = gblock
 
-  
   for(j in 1:length(angz))
     {
       Rview  =    ROTZ(angz[j])%*%  ROTX(-angx[j])
@@ -79,10 +78,9 @@ headlen = 0.3, headlip = 0.02)
       
       Sys.sleep(.1)
     }
-  
+}
 
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{aplot}

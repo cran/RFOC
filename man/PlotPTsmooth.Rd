@@ -9,7 +9,7 @@ requires function kde2d, from the MASS library.
 \usage{
 PlotPTsmooth(paz, pdip, x = 0, y = 0, siz = 1, bcol = "white", border ="black",
         IMAGE = TRUE, CONT = TRUE, cont.col = "black",
-         pal = terrain.colors(100), LABS = FALSE, add = FALSE)
+         pal = terrain.colors(100), LABS = FALSE, add = FALSE, NCP=50, NIP=200)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -26,9 +26,20 @@ PlotPTsmooth(paz, pdip, x = 0, y = 0, siz = 1, bcol = "white", border ="black",
   \item{pal}{pallete for image plot}
   \item{LABS}{text Label for image}
   \item{add}{logical, TRUE=add to plot}
+  \item{NCP}{integer, Number of points to use for calculating smoothed
+    contours, default=50}
+  \item{NIP}{integer, Number of points to use for calculating smoothed
+    image, default=200}
+  
 }
 \details{
   Program requires MASS libary for 2D smoothing routine kde2d.
+
+  For calculating contours the kde2d program creates a
+  smoothed 2D image using NCP points per side.
+  For the images, NIP points are used.  To reduce the size of
+  plots, or, if the subplots are very small, reduce NIP to a smaller
+  value for faster plotting.
   
 }
 \value{

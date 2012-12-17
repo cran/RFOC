@@ -1,6 +1,6 @@
 \name{polyfoc}
 \alias{polyfoc}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Polt the focal mechanism polygon }
 \description{
   Calculate the projection of the focal mechanism polygon
@@ -8,7 +8,7 @@
 \usage{
 polyfoc(strike1, dip1, strike2, dip2, PLOT = FALSE, UP = TRUE)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{strike1}{strike of plane 1, degrees}
   \item{dip1}{dip of plane 1, degrees}
@@ -34,6 +34,4 @@ net()
 ply = polyfoc(MEC$az1, MEC$dip1, MEC$az2, MEC$dip2, PLOT = TRUE, UP = TRUE)
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{aplot}

@@ -43,7 +43,7 @@ item{JDHMS}{Julian Day, hour, minute, seconds}
  
 \examples{
 data(PKAM)
-## maybe str(PKAM) ; plot(PKAM) ...
+## 
 
 ######  plot the locations:
 plot( fmod(PKAM$LONS, 360), PKAM$LATS)

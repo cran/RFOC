@@ -1,6 +1,6 @@
 \name{foc.icolor}
 \alias{foc.icolor}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Get Fault Style}
 \description{
   Use Rake Angle to determine style of faulting
@@ -8,7 +8,7 @@
 \usage{
 foc.icolor(rake)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{rake}{degrees, rake angle of fault plane}
 }
@@ -48,6 +48,5 @@ foc.icolor(25)
 
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{misc}

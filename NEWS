@@ -1,0 +1,13 @@
+NEWS for RFOC
+========================
+
+3.2	2012-12-17
+	Major change: added non-double couple decomposition to
+	focal mechanisms.  Added Tape and Hudson displays
+	for source types.
+	Added NCP and NIP options in PlotPTsmooth for controlling 
+	the size of images.
+	Removed vignette focalmec.
+
+ 
+

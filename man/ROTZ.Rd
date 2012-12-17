@@ -1,6 +1,6 @@
 \name{ROTZ}
 \alias{ROTZ}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Z-axis Rotation Matrix}
 \description{
   Matrix rotation about the Z-axis
@@ -8,7 +8,7 @@
 \usage{
 ROTZ(deg)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{deg}{Angle in degrees}
 }
@@ -29,7 +29,6 @@ vp = c(v, 1)  %*% A
 
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{dplot}
 \keyword{array}

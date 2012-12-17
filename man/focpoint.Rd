@@ -1,6 +1,6 @@
 \name{focpoint}
 \alias{focpoint}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{add point on focal sphere}
 \description{
 Add points on equal-area focal plot
@@ -8,7 +8,7 @@ Add points on equal-area focal plot
 \usage{
 focpoint(az1, dip1, col = 2, pch = 5, lab = "", UP = FALSE, PLOT = TRUE)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{az1}{degrees, azimuth angle }
   \item{dip1}{degrees, dip angle }
@@ -52,6 +52,5 @@ focpoint(MEC$F$az, MEC$F$dip, pch=5, lab="F", UP=MEC$UP)
 
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{aplot}
