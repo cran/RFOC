@@ -58,8 +58,17 @@ function(x, detail=0, up=FALSE)
     iaz = floor(naz/2 )
     text(ex[iaz],why[iaz], labels=paste("Az=", AZIM)  , pos=4, font=2, xpd=TRUE)
 
+ #####  to get the nipXY working correctly need to convert to inches
+    pinch = par('pin')
+    puser = par('usr')
 
-    NIP = nipXY( xmec,  0, 0, fcol = "blue" , nipcol='black',  size = c(1,1), cex=1 )
+    
+    DINCHX =pinch[1]/ (puser[2]-puser[1])
+    DINCHY = pinch[2]/ (puser[4]-puser[3])
+
+    
+
+    NIP = nipXY( xmec,  0, 0, fcol = "blue" , nipcol='black',  focsiz=2*DINCHX  , cex=1 )
 
     thick = 0.01; headlength = 0.2; headthick = 0.1
     fancyarrows(0,0, U$x, U$y, thick =thick , headlength =  headlength, headthick =headthick)

@@ -1,4 +1,4 @@
-TapePlot<-function(TapeList=list(),add=FALSE, ann=TRUE,pcol= c(grey(0.85) , grey(0.95))  )
+TapePlot<-function(TapeList=list(),add=FALSE, ann=TRUE, pcol= c(grey(0), grey(0.85) , grey(0.95))  )
   {
 
     if(is.null(TapeList))
@@ -12,21 +12,23 @@ TapePlot<-function(TapeList=list(),add=FALSE, ann=TRUE,pcol= c(grey(0.85) , grey
              type='n', asp=1, axes=FALSE, ann=FALSE)
       }
 
-
+    linecolor = pcol[1]
+    topcolor = pcol[2]
+    botcolor=  pcol[3]
     ## Underneath: filled Polygon patches 
-    polygon(TapeList$POLYh1$x, TapeList$POLYh1$y, col=pcol[1] , border=NA)
+    polygon(TapeList$POLYh1$x, TapeList$POLYh1$y, col=topcolor , border=NA)
     
-    polygon(TapeList$POLYh2$x, TapeList$POLYh2$y, col=pcol[2] , border=NA)
+    polygon(TapeList$POLYh2$x, TapeList$POLYh2$y, col=botcolor , border=NA)
     for(i in 1:length(TapeList$LONSp1))
       {
         
-        segments(TapeList$LONSp1[[i]]$x, TapeList$LONSp1[[i]]$y, TapeList$LONSp2[[i]]$x, TapeList$LONSp2[[i]]$y)
+        segments(TapeList$LONSp1[[i]]$x, TapeList$LONSp1[[i]]$y, TapeList$LONSp2[[i]]$x, TapeList$LONSp2[[i]]$y, col=linecolor)
       }
 
     for(i in 1:length(TapeList$LATSp1))
       {
         
-        lines(TapeList$LATSp1[[i]]$x, TapeList$LATSp1[[i]]$y)
+        lines(TapeList$LATSp1[[i]]$x, TapeList$LATSp1[[i]]$y, col=linecolor)
       }
 
     points(TapeList$PTSh1$x, TapeList$PTSh1$y,  pch=21, bg="white" )
@@ -40,18 +42,18 @@ TapePlot<-function(TapeList=list(),add=FALSE, ann=TRUE,pcol= c(grey(0.85) , grey
 
 
 
-     lines(TapeList$HOZh1$x, TapeList$HOZh1$y, lty=2, lwd=2)
+     lines(TapeList$HOZh1$x, TapeList$HOZh1$y, lty=2, lwd=2, col=linecolor)
  
- lines(TapeList$VERTh1$x, TapeList$VERTh1$y, lty=2, lwd=2)
+ lines(TapeList$VERTh1$x, TapeList$VERTh1$y, lty=2, lwd=2, col=linecolor)
 
     ###  add in a bold dotted line for LVD-1
-    lines(TapeList$PATCH11$x, TapeList$PATCH11$y, lty=2, lwd=2)
+    lines(TapeList$PATCH11$x, TapeList$PATCH11$y, lty=2, lwd=2, col=linecolor)
 ###  add in a bold dotted line for LVD-2
     
-    lines(TapeList$PATCH21$x, TapeList$PATCH21$y, lty=2, lwd=2)
+    lines(TapeList$PATCH21$x, TapeList$PATCH21$y, lty=2, lwd=2, col=linecolor)
 ###  connect up the Crack lines
     
-    lines(TapeList$CRACKh1$x, TapeList$CRACKh1$y, lty=2, lwd=2)
+    lines(TapeList$CRACKh1$x, TapeList$CRACKh1$y, lty=2, lwd=2, col=linecolor)
 
 
   }

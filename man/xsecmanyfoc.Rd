@@ -7,13 +7,13 @@
   that do not have geographic coordinates and projection.
 }
 \usage{
-xsecmanyfoc(MEK, focsiz = 0.04, theta=NULL,
- foccol = NULL, UP=TRUE, LEG = FALSE, DOBAR = FALSE)
+xsecmanyfoc(MEK,  theta=NULL, focsiz = 0.5, 
+ foccol = NULL, UP=TRUE, focstyle=1, LEG = FALSE, DOBAR = FALSE)
 }
 \arguments{
   \item{MEK}{List of Focal Mechanisms, see details
 }
-  \item{focsiz}{focal size
+  \item{focsiz}{focal size, inches
   }
   \item{theta}{degrees, angle from north  for projecting the focal mechs
   }
@@ -23,7 +23,7 @@ xsecmanyfoc(MEK, focsiz = 0.04, theta=NULL,
 
   \item{UP}{logical, UP=TRUE means plot upper hemisphere (DEFAULT=TRUE) 
   }
-
+ \item{focstyle}{integer, 1=beach ball, 2=nipplot }
   
   \item{LEG}{logical, TRUE= add focal legend for color codes
 }
@@ -95,7 +95,7 @@ lon=runif(20, 235, 243)
 
      plot(range(XY$x), range(XY$y), type='n', asp=1)
 
-     plotmanyfoc(MEKS, PROJ, focsiz=0.05)
+     plotmanyfoc(MEKS, PROJ, focsiz=0.5)
 
 ex = range(XY$x)
 why = range(XY$y)
@@ -119,7 +119,7 @@ plot(c(0,bigR)   , c(0, min(-SWA$depth)) , type='n',
  xlab="Distance, KM", ylab="Depth")
 points(SWA$r, -SWA$depth)
 
-xsecmanyfoc(MEKS, focsiz=0.2,  LEG = TRUE, DOBAR=FALSE)
+xsecmanyfoc(MEKS, focsiz=0.5,  LEG = TRUE, DOBAR=FALSE)
 title("cross section: focals are plotted as if in plan view")
 
 
@@ -128,7 +128,7 @@ ang1 = atan2( JJ$y[2]-JJ$y[1] , JJ$x[2]-JJ$x[1])
  degang =  ang1*180/pi
 
 
-xsecmanyfoc(MEKS, focsiz=0.2, theta=degang, LEG = TRUE, DOBAR=FALSE)
+xsecmanyfoc(MEKS, focsiz=0.5, theta=degang, LEG = TRUE, DOBAR=FALSE)
 title("cross section: focals are view from the side projection (outer hemisphere)")
 
 

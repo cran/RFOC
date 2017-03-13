@@ -76,9 +76,9 @@ MFOC1 = SDRfoc(65,90,1, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
  MFOC3 = SDRfoc(135,45,90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
     Fcol3 = foc.color(foc.icolor(MFOC3$rake1), pal=1)
 
-justfocXY( MFOC3, fcol = Fcol3, 1.2, -0.9, size = c(.1,.1) )
-justfocXY( MFOC2, fcol = Fcol2, -1.2, -0.9, size = c(.1,.1) )
-justfocXY( MFOC1, fcol = Fcol1, 0, 1.414443+.2, size = c(.1,.1) )
+justfocXY( MFOC3, fcol = Fcol3, 1.2, -0.9, focsiz = 0.4 )
+justfocXY( MFOC2, fcol = Fcol2, -1.2, -0.9,  focsiz = 0.4  )
+justfocXY( MFOC1, fcol = Fcol1, 0, 1.414443+.2,  focsiz = 0.4  )
 
 
 }

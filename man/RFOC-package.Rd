@@ -101,7 +101,7 @@ paste(MZ[i,3], MZ[i,4], MZ[i,5])
 
 MEC =  SDRfoc(MZ[i,3], MZ[i,4], MZ[i,5], u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
 fcol =  foc.color(foc.icolor(MEC$rake1), pal=1)
-justfocXY(MEC, x=MZ[i,1], y =MZ[i,2] , size = c(1, 1), fcol =fcol , fcolback = "white", xpd = TRUE)
+justfocXY(MEC, x=MZ[i,1], y =MZ[i,2] , focsiz=0.5, fcol =fcol , fcolback = "white", xpd = TRUE)
 
 
 }

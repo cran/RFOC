@@ -5,4 +5,9 @@ import(GEOmap)
 import(RSEIS)
 importFrom(MASS, kde2d)
 importFrom(splancs,inout)
-
+importFrom("grDevices", "col2rgb", "contourLines", "gray", "grey",
+             "heat.colors", "hsv", "rgb", "rgb2hsv", "terrain.colors",
+             "trans3d", "xy.coords")
+importFrom("graphics", "arrows", "image", "legend", "lines", "locator",
+             "par", "plot", "points", "polygon", "rect", "segments",
+             "text", "title", "grconvertX", "grconvertY")

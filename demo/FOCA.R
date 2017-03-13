@@ -86,7 +86,7 @@ KP = kde2d(PZZ$x, PZZ$y, n = 100, lims = c(-1, 1, -1, 1))
 
 ##########  use meshgrid to set up image:
 ######                blank out points outside of sphere
-  M = meshgrid(KP$x, KP$y)
+  M = RPMG::meshgrid(KP$x, KP$y)
         flag = sqrt(M$x^2 + M$y^2) > 1
         KP$z[flag] = NA
 

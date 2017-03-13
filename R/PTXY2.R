@@ -1,11 +1,7 @@
-nipXY <-
-function(MEC, x=x, y=y, focsiz=1, fcol=gray(0.90), nipcol="black", cex=.4)
-  {
-    if(missing(fcol)) { fcol = gray(0.90) }
-    if(missing(nipcol)) { nipcol =  fcol  }
-    if(is.null(MEC$UP)) MEC$UP = TRUE
-    if(missing(cex)) { cex=.4  }
-
+PTXY2 <-
+function (x = x, y = y, MEC, focsiz=0.5, pt=0,  ...) 
+{
+    if(missing(pt)) { pt=0 }
 ###############  use this to set plotting region for symbols
     
     vadj=0.5
@@ -47,15 +43,24 @@ function(MEC, x=x, y=y, focsiz=1, fcol=gray(0.90), nipcol="black", cex=.4)
     par(usr=c(-1,1,-1,1))
 ######################
 
-    LP1 = lowplane( MEC$az1, MEC$dip1, col=1, UP=MEC$UP, PLOT=FALSE)
 
-    lines(LP1$x, LP1$y, col=fcol, xpd=TRUE )
 
-    A1 = RSEIS::TOCART(MEC$U$az, 90-MEC$U$dip)
-    A2 = RSEIS::TOCART(MEC$V$az,  90-MEC$V$dip)
-    N = CROSSL(A1, A2)
-    Q = qpoint(N$az, N$dip , lab="N", UP=MEC$UP, PLOT=FALSE)
-    points(Q$x, Q$y, pch=16, col=nipcol, cex=cex, xpd=TRUE)
+    
+    if(pt==0 | pt==1)
+        {
+            Ppnt = focpoint(MEC$P$az, MEC$P$dip, pch=18, lab="P", UP=MEC$UP, PLOT=FALSE)
+            p1x =  Ppnt$x
+            p1y =  Ppnt$y
+            segments(0, 0, p1x, p1y, ...)
+        }
 
-    invisible(list(Q=Q, N=N) )
-  }
+    if(pt==0 | pt==2)
+        {
+            Tpnt = focpoint(MEC$T$az, MEC$T$dip, pch=18, lab="P", UP=MEC$UP, PLOT=FALSE)
+            p3x =  Tpnt$x
+            p3y =  Tpnt$y
+            segments(0, 0, p3x, p3y, ...)
+        }
+
+    
+}

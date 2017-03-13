@@ -44,7 +44,17 @@ function(s,d,r, up=FALSE)
     text(ex[iaz],why[iaz], labels=paste("Az=", formatC(AZIM, digits=6))  , pos=4, font=2, xpd=TRUE)
 
 
-    NIP = nipXY( MEC,  0, 0, fcol = "blue" , nipcol='black',  size = c(1,1), cex=1 )
+    #####  to get the nipXY working correctly need to convert to inches
+    pinch = par('pin')
+    puser = par('usr')
+
+    
+    DINCHX =pinch[1]/ (puser[2]-puser[1])
+    DINCHY = pinch[2]/ (puser[4]-puser[3])
+
+    ## print(DINCHX)
+    
+    NIP = nipXY( MEC,  0, 0, fcol = "blue" , nipcol='black',  focsiz=2*DINCHX , cex=1 )
 
     thick = 0.01; headlength = 0.2; headthick = 0.1
     fancyarrows(0,0, U$x, U$y, thick =thick , headlength =  headlength, headthick =headthick)

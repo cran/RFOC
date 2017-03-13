@@ -41,7 +41,8 @@ function(amfile)
     
 
 
-    CMT = list(lon=0, lat=0, str1=0, dip1=0, rake1=0, str2=0, dip2=0, rake2=0, sc=0, iexp=0, name="", yr=0, mo=0, dom=0, jd=0, hr=0, mi=0, se=0)
+    CMT = list(lon=0, lat=0, str1=0, dip1=0, rake1=0, str2=0, dip2=0, rake2=0,
+        sc=0, iexp=0, name="", yr=0, mo=0, dom=0, jd=0, hr=0, mi=0, sec=0)
 
  
     
@@ -68,7 +69,8 @@ function(amfile)
         CMT$jd[j] =  GA$jd
         CMT$hr[j] = GA$hr
         CMT$mi[j] = GA$mi
-        CMT$se[j] = GA$se
+        
+        CMT$sec[j] = GA$sec
         
         CMT$lat[j] = GA$lat
         CMT$lon[j] = GA$lon

@@ -105,19 +105,6 @@ Rotfocphi<-function(phi, urot, udip, vrot,
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 rotateFoc<-function(MEX, phi)
   {
     vertrot<-function(phi)
@@ -180,9 +167,6 @@ rotateFoc<-function(MEX, phi)
 
     mc = CONVERTSDR(M1$az1, M1$dip1, M1$rake1 )
 
-
-
-    
     MEC = MRake(mc$M)
     MEC$UP = FALSE
     MEC$icol =  foc.icolor(MEC$rake1)

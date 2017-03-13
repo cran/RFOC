@@ -90,8 +90,8 @@ plot(range(pg$LONS), range(pg$LATS), type = "n", xlab = "LON",
      MEC <- MRake(mc$M)
 MEC$UP = FALSE
      Fcol <- foc.color(foc.icolor(MEC$rake1), pal = 1)
-     justfocXY(MEC, x = pg$LONS[i], y = pg$LATS[i], size = c(0.5,
-         0.5), fcol = Fcol, xpd = FALSE)
+     justfocXY(MEC, x = pg$LONS[i], y = pg$LATS[i], focsiz = 0.4,
+     fcol = Fcol, xpd = FALSE)
  }
 
 

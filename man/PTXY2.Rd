@@ -1,12 +1,11 @@
-\name{StrikeDip}
-\Rdversion{1.1}
-\alias{StrikeDip}
-\title{Plot Strike Dip Lines
+\name{PTXY2}
+\alias{PTXY2}
+\title{Plot P-T Axes
 }
-\description{Given a focal mechanism, add Strike Dip lines to a plot.
+\description{given a focal mechanism, add P-T lines to a plot
 }
 \usage{
-StrikeDip(x = x, y = y, MEC, focsiz, addDIP = TRUE, ...)
+PTXY2(x = x, y = y, MEC, focsiz, pt = 0, ...)
 }
 \arguments{
   \item{x}{x-location on plot
@@ -17,7 +16,7 @@ StrikeDip(x = x, y = y, MEC, focsiz, addDIP = TRUE, ...)
 }
   \item{focsiz}{size of mechanism, inches
 }
-  \item{addDIP}{Logical, TRUE = add dip line perpendicular to strike
+  \item{pt}{pt = 0(plot both), 1=only P axes, 2=only T axes, default=0
 }
   \item{\dots}{graphical parameters
 }
@@ -34,7 +33,7 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
 }
 
 
-\seealso{nipXY, justfocXY, plotmanyfoc
+\seealso{nipXY, justfocXY
 }
 \examples{
 
@@ -42,14 +41,14 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
 MEC <-  SDRfoc(71, 64, 25 , u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
 plot(c(0, 1), c(0,1), type='n', asp=1)
 u <- par("usr")
-focsiz <-  0.5
+
 justfocXY(MEC, x=.5,  y= .5,  focsiz=0.5,
 fcol ='brown' , fcolback = "white", xpd = TRUE)
- StrikeDip(1.0, .5 , MEC  ,focsiz, col="purple", lwd=3 )
-nipXY(MEC, x = 0.25, y = .5,  focsiz=0.5,
-fcol ='purple', nipcol = "black", cex = 1)
 
-
+ PTXY2(1.0, .5 , MEC  ,0.5, col="purple", lwd=3 )
+ 
+nipXY(MEC, x = 0.25, y = .5, focsiz=0.5,
+fcol ='purple', nipcol = "black", cex = 0.4)
 #####  or
 set.seed(2015)
 lon=runif(20, 268.1563 , 305)
@@ -80,10 +79,12 @@ for(i in 1:length(XY$x))
 
          jcol =  foc.color(foc.icolor(MEC$rake1), pal=1)
 
-
-StrikeDip(XY$x[i], XY$y[i] , MEC  ,focsiz, col=jcol, lwd=3 )
+PTXY2(XY$x[i], XY$y[i] , MEC  ,focsiz=0.5, col=jcol, lwd=3)
 
 }
+
+
+
 
 }
 \keyword{misc}

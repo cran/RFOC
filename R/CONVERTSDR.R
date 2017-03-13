@@ -26,9 +26,11 @@ function(strike, dip, rake)
     }
     
     temp1 = tmprake * DEG2RAD;
-    temp2 = dip * DEG2RAD;
+  temp2 = dip * DEG2RAD;
+   
     deltau = asin(-1*sin(temp1) * sin(temp2) );      # /* leave in radians */
-    tandy =  tan(deltau) / tan(temp2)
+  tandy =  tan(deltau) / tan(temp2)
+    if(is.nan(tandy) ) tandy= 1
     if( tandy<(-1) ) tandy= (-1)
     if( tandy>(1) ) tandy= (1)
     

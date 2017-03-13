@@ -6,20 +6,21 @@
 \description{Plot a long list of focal mechanisms
 }
 \usage{
-plotmanyfoc(MEK, PROJ, focsiz = 0.04, foccol = NULL,
-UP=TRUE, PMAT = NULL, LEG = FALSE, DOBAR = FALSE)
+plotmanyfoc(MEK, PROJ, focsiz = 0.5, foccol = NULL,
+UP=TRUE, focstyle=1, PMAT = NULL, LEG = FALSE, DOBAR = FALSE)
 }
 \arguments{
   \item{MEK}{List of Focal Mechanisms, see details
 }
   \item{PROJ}{Projection
 }
-  \item{focsiz}{focal size
+  \item{focsiz}{focal size, inches
 }
   \item{foccol}{focal color
   }
   \item{UP}{logical, UP=TRUE means plot upper hemisphere (DEFAULT=TRUE) 
   }
+    \item{focstyle}{integer, 1=beach ball, 2=nipplot, 3=strike-slip, 4=P-T, 5=P, 6=T }
   
   \item{PMAT}{Projection Matrix from persp
 }
@@ -51,6 +52,7 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
 }
 \examples{
 
+set.seed(2015)
 lon=runif(20, 268.1563 , 305)
 lat=runif(20, 7.593004,  25.926045)
 str1=runif(20,50,100)
@@ -71,7 +73,7 @@ XY = GEOmap::GLOB.XY(lat, lon, PROJ)
 
 plot(range(XY$x), range(XY$y), type='n', asp=1)
 
-plotmanyfoc(MEKS, PROJ, focsiz=0.05)
+plotmanyfoc(MEKS, PROJ, focsiz=0.5)
 
 
 

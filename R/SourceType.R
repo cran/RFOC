@@ -5,14 +5,14 @@ SourceType <- function(v)
 
 ###  step 2 in:
     ##   Miscellaneous notes for
-    ##   Tape and Tape (2012a): “A geometric setting for moment tensors”
-    ##    Carl Tape (carltape@gi.alaska.edu) October 19, 2012
-                                        # http://www.giseis.alaska.edu/input/carl/research/beachball.html
+    ##   Tape and Tape (2012a): A geometric setting for moment tensors
+    ##    Carl Tape 
+    #### http://www.giseis.alaska.edu/input/carl/research/beachball.html
 
     ##  equation 4 from
     ## Walter Tape and Carl Tape
     ## A geometric comparison of source-type plots for moment tensors
-    ## Geophys. J. Int. (2012) 190, 499–510 doi: 10.1111/j.1365-246X.2012.05490.x
+    ## Geophys. J. Int. (2012) 190, 499-510 doi: 10.1111/j.1365-246X.2012.05490.x
 
     v = sort(v, decreasing=TRUE)
     

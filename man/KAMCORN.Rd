@@ -64,7 +64,7 @@ for(i in 1:10)
   v[i] = V$v
 
      justfocXY( MEC, fcol = Fcol[i], KAMCORN$LON[i],
-          KAMCORN$LAT[i] , size = c(.21,.21) )
+          KAMCORN$LAT[i] , focsiz = 0.4 )
   }
 }
 

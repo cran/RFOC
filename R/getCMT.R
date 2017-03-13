@@ -38,7 +38,7 @@ getCMT<-function(fn, skip=1)
 
   CMT$hr = HR
   CMT$mi = MI
-  CMT$se = SE
+  CMT$sec = SE
 
   invisible(CMT)
 

@@ -44,7 +44,7 @@ print("Illustration of differnt kinds of faults")
     MFOC1 = SDRfoc(65,90,1, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
     Fcol1 = foc.color(foc.icolor(MFOC1$rake1), pal=1)
 
-    justfocXY( MFOC1, fcol = Fcol1, .5, .7 , size = c(.4,.4) )
+    justfocXY( MFOC1, fcol = Fcol1, .5, .7 , focsiz=.4 )
     title("Strike-slip fault")
 
    
@@ -54,7 +54,7 @@ print("Illustration of differnt kinds of faults")
     MFOC2 = SDRfoc(135,45,-90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
     Fcol2 = foc.color(foc.icolor(MFOC2$rake1), pal=1)
 
-    justfocXY( MFOC2, fcol = Fcol2, .5, 1 , size = c(.45,.45) )
+    justfocXY( MFOC2, fcol = Fcol2, .5, 1 , focsiz=.4 )
     title("Normal fault")
 
 ############
@@ -64,7 +64,7 @@ print("Illustration of differnt kinds of faults")
     MFOC3 = SDRfoc(135,45,90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
     Fcol3 = foc.color(foc.icolor(MFOC3$rake1), pal=1)
 
-    justfocXY( MFOC3, fcol = Fcol3, 0, -1 , size = c(.45,.45) )
+    justfocXY( MFOC3, fcol = Fcol3, 0, -1 , focsiz=.4 )
 
     title("Reverse (Thrust) fault")
 readline("To Continue Hit Enter Key\n")
@@ -119,7 +119,7 @@ for(i in 1:length(KAMCORN$LON))
   h[i] = V$h
   v[i] = V$v
 
-     justfocXY( MEC, fcol = Fcol[i], KAMCORN$LON[i], KAMCORN$LAT[i] , size = c(.21,.21) )
+     justfocXY( MEC, fcol = Fcol[i], KAMCORN$LON[i], KAMCORN$LAT[i] , focsiz=.2 )
   }
 
 
@@ -138,7 +138,7 @@ plot(KAMCORN$LON, KAMCORN$LAT, xlab="LON", ylab="LAT" , main="Kamchatka-Aleutian
       MEC = MRake(Msdr$M)
       MEC$UP = FALSE 
       ##  points(fxy$x, fxy$y)
-      nipXY( MEC,  KAMCORN$LON[i], KAMCORN$LAT[i] , fcol = Fcol[i], nipcol=Fcol[i],  size = c(.21,.21) )
+      nipXY( MEC,  KAMCORN$LON[i], KAMCORN$LAT[i] , fcol = Fcol[i], nipcol=Fcol[i],  focsiz=.2  )
 
     }
 
@@ -198,7 +198,7 @@ library(MASS)
 
     image(KP$x, KP$y, KP$z, add=TRUE, col=terrain.colors(100))
 
-    antipolygon(CC$x,CC$y,col="white")
+    GEOmap::antipolygon(CC$x,CC$y,col="white")
 
     net(add=1)
     focpoint(Paz, Pdip, col='red',  pch=3, lab="", UP=FALSE)
@@ -210,7 +210,7 @@ library(MASS)
 
     image(KT$x, KT$y, KT$z, add=TRUE, col=terrain.colors(100))
     
-    antipolygon(CC$x,CC$y,col="white")
+    GEOmap::antipolygon(CC$x,CC$y,col="white")
     net(add=1)
     focpoint(Taz, Tdip, col='blue',  pch=4, lab="", UP=FALSE)
     text(0,1.04,labels="T-axes 2D Density", font=2, cex=1.2)
@@ -230,7 +230,7 @@ library(MASS)
     contour(KT$x, KT$y, KT$z, add=TRUE, lwd=1.2)
     
 
-    antipolygon(CC$x,CC$y,col="white")
+    GEOmap::antipolygon(CC$x,CC$y,col="white")
     text(0,1.04,labels="Combined P-T 2D Density", font=2, cex=1.2)
   
 
@@ -254,9 +254,9 @@ MFOC1 = SDRfoc(65,90,1, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
  MFOC3 = SDRfoc(135,45,90, u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
     Fcol3 = foc.color(foc.icolor(MFOC3$rake1), pal=1)
 
-justfocXY( MFOC3, fcol = Fcol3, 1.2, -0.9, size = c(.1,.1) )
-justfocXY( MFOC2, fcol = Fcol2, -1.2, -0.9, size = c(.1,.1) )
-justfocXY( MFOC1, fcol = Fcol1, 0, 1.414443+.2, size = c(.1,.1) )
+justfocXY( MFOC3, fcol = Fcol3, 1.2, -0.9,  focsiz=.4 )
+justfocXY( MFOC2, fcol = Fcol2, -1.2, -0.9, focsiz=.4 )
+justfocXY( MFOC1, fcol = Fcol1, 0, 1.414443+.2, focsiz=.4 )
 
 mtext("Ternary Plot of focal mecahnisms", side=1, line = 1, font=2)
 

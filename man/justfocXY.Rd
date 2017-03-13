@@ -6,7 +6,7 @@
   Add simple focal mechanisms to plot
 }
 \usage{
-justfocXY(MEC, x = x, y = y, size = c(1, 1), fcol = gray(0.9),
+justfocXY(MEC, x = x, y = y, focsiz=1 , fcol = gray(0.9),
           fcolback = "white", xpd = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -14,7 +14,7 @@ justfocXY(MEC, x = x, y = y, size = c(1, 1), fcol = gray(0.9),
   \item{MEC}{MEC structure}
   \item{x}{x-coordinate of center}
   \item{y}{y-coordinate of center}
-  \item{size}{size of focal sphere in user coordinates}
+  \item{focsiz}{size of focal sphere in inches}
   \item{fcol}{color of shaded region}
   \item{fcolback}{color of background region}
   \item{xpd}{logical, whether to extend the plot beyond, or to clip}
@@ -59,7 +59,7 @@ paste(MZ[i,3], MZ[i,4], MZ[i,5])
 
 MEC =  SDRfoc(MZ[i,3], MZ[i,4], MZ[i,5], u=FALSE, ALIM=c(-1,-1, +1, +1), PLOT=FALSE)
 fcol =  foc.color(foc.icolor(MEC$rake1), pal=1)
-justfocXY(MEC, x=MZ[i,1], y =MZ[i,2] , size = c(1, 1), fcol =fcol , fcolback = "white", xpd = TRUE)
+justfocXY(MEC, x=MZ[i,1], y =MZ[i,2] , focsiz=.5, fcol =fcol , fcolback = "white", xpd = TRUE)
 
 
 }
