@@ -75,6 +75,7 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
 \examples{
 
 ############# create and  plot the mechs in plan view:
+N = 20
 lon=runif(20, 235, 243)
      lat=runif(20, 45.4, 49)
      str1=runif(20,50,100)
@@ -85,9 +86,11 @@ lon=runif(20, 235, 243)
      name=seq(from=1, to=length(lon), by=1)
      Elat=NULL
      Elon=NULL
+yr = rep(2017, times=N)
+jd = runif(N, min=1, max=365)
 
       MEKS = list(lon=lon, lat=lat, str1=str1, dip1=dip1,
- rake1=rake1, dep=dep, name=name)
+ rake1=rake1, dep=dep, name=name, yr=yr, jd = jd)
 
      PROJ = GEOmap::setPROJ(type=2, LAT0=mean(lat) , LON0=mean(lon) )   ##   utm
 

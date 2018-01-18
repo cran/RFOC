@@ -66,9 +66,13 @@ dep=runif(N,1,15)
 name=seq(from=1, to=length(lon), by=1)
 Elat=NULL
 Elon=NULL
+yr = rep(2017, times=N)
+jd = runif(N, min=1, max=365)
+
 
  MEKS = list(lon=lon, lat=lat, str1=str1, dip1=dip1,
- rake1=rake1, dep=dep, name=name)
+ rake1=rake1, dep=dep, name=name, yr=yr, jd = jd)
+ 
 PROJ = GEOmap::setPROJ(type=2, LAT0=mean(lat) , LON0=mean(lon) )   ##   utm
 XY = GEOmap::GLOB.XY(lat, lon, PROJ)
 plot(range(XY$x), range(XY$y), type='n', asp=1)

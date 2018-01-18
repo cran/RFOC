@@ -11,3 +11,4 @@ importFrom("grDevices", "col2rgb", "contourLines", "gray", "grey",
 importFrom("graphics", "arrows", "image", "legend", "lines", "locator",
              "par", "plot", "points", "polygon", "rect", "segments",
              "text", "title", "grconvertX", "grconvertY")
+importFrom("stats", "runif")

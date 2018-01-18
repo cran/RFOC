@@ -2,6 +2,7 @@ prepFOCS<-function(CMTSOL)
   {
 
 
+     K = length(CMTSOL$str1)
     PHAIT = list(
       Paz =vector(),
       Pdip =vector(),
@@ -12,7 +13,14 @@ prepFOCS<-function(CMTSOL)
       fcols = vector(),
       LATS =vector(),
       LONS = vector(),
-      IFcol = vector(), yr=vector(), JDHM=vector() )
+        IFcol = vector(),
+        yr=vector(),
+        JDHM=vector() )
+    
+
+     if( length(CMTSOL$yr)<1 ) {  CMTSOL$yr = rep(2017, times=K) }
+     if( length(CMTSOL$jd)<1 ) {  CMTSOL$jd = runif(K, 1,365) }
+     
 
     for(i in 1:length(CMTSOL$str1) )
       {
@@ -42,6 +50,7 @@ prepFOCS<-function(CMTSOL)
         PHAIT$v[i] = V$v
         PHAIT$LATS[i] = CMTSOL$lat[i]
         PHAIT$LONS[i] = CMTSOL$lon[i]
+       
         PHAIT$yr[i] = CMTSOL$yr[i]
         PHAIT$JDHMS[i] = CMTSOL$jd[i]
 

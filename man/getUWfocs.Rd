@@ -50,6 +50,7 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
 \examples{
 
 \dontrun{
+#####  uwpickfile is an ascii format file from University of Washington
 G1 = getUWfocs(uwpickfile)
 
 plot(G1$lon, G1$lat)

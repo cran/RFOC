@@ -1,5 +1,5 @@
-d8271b992794f723b099b1eaa2af090a *DESCRIPTION
-d616d5bbe1189a8a8cae64947c7fdb19 *NAMESPACE
+900c52810722beb64fabf8d5974a8c84 *DESCRIPTION
+3ade28b5584d3b8736c9b47268e20b05 *NAMESPACE
 7d7a601d0fa6f043dcf7eedce967a1a0 *NEWS
 5c4ffdf30616d1737b787308abd56674 *R/AXpoint.R
 51ab2c5d73495073de06d9aa622afe35 *R/AlongGreat.R
@@ -92,7 +92,7 @@ e4af35a4dab8b200e37b16b70e2c89ee *R/plotfoc.R
 9ab807a09e370539867d94087b15bfe9 *R/plotmanyfoc.R
 daa31b7eec90faa59af538b326b2e0eb *R/pnet.R
 72fbe5b3fb34faffa865fa76733b35de *R/polyfoc.R
-177c33f330758df4078c906eb87a5922 *R/prepFOCS.R
+31a7ec36148200693019a03593f36357 *R/prepFOCS.R
 9486eec7bac6c7c8db18e7a1d9e2a967 *R/printMEC.R
 45290167f664014c6838b3416d365264 *R/qpoint.R
 d59fd60cb9cf8fcd0802f0e1a2c8e9df *R/radP.R
@@ -153,7 +153,7 @@ ad0298c8d2bb29a2473ff57af0cdd757 *man/MRake.Rd
 551fcc8fd0d41193ff947be03b4d24c7 *man/PKAM.Rd
 acc44126f1469c3144c36dd114e8e2e9 *man/PLTcirc.Rd
 a089831cf3838a0d18b3ff1e7391fe28 *man/PROJ3D.Rd
-1a1eb04ab3ba5d2cf4e760baf1bfda86 *man/PTXY2.Rd
+aa7d4921e5b6e47193ce539270cc7732 *man/PTXY2.Rd
 ce96ce7da3a1d37c930466fc53979d47 *man/PTaxes.Rd
 be03bcf22283c214c5cc8f5bd0261823 *man/PlotPTsmooth.Rd
 1a3c05ca8b75bc19d18d689dea6a77eb *man/PlotPlanes.Rd
@@ -173,7 +173,7 @@ f6dbf0845026048ec5df68636799d020 *man/SHradfoc.Rd
 13cbd1596ac0343f4f53ff29327cc629 *man/SVradfoc.Rd
 bf6515a03aed16e89473fe55fbd6a469 *man/ShadowCLVD.Rd
 d0bc7dd0e39a874ba7c0b2149546d51b *man/SourceType.Rd
-0b31e2790785e69529adc2787b3966cd *man/StrikeDip.Rd
+23c2f22de8ac96fb17cf83c827421561 *man/StrikeDip.Rd
 9425e08fddf01edc327b55b3b1e40de9 *man/TEACHFOC.Rd
 cfc18660418bb9ed66e93d305926a966 *man/TOCART.DIP.Rd
 3da5e854fb55113a2c239754534bc39d *man/TOSPHERE.DIP.Rd
@@ -205,7 +205,7 @@ edabc37892829375422da89fcf37bb88 *man/focleg.Rd
 13e2aae2eeb410d42e1a104b1995c4d1 *man/focpoint.Rd
 fda229eeb67d42ba70448865d34ec604 *man/forcerighthand.Rd
 2e570c60b107634718601d9758a5ed8f *man/getCMT.Rd
-f0cdefc6651fdab6f322c367f1f124b0 *man/getUWfocs.Rd
+31ea3a191d9790600a0893ce215fc8d1 *man/getUWfocs.Rd
 a9cfc4ffdd4a73063b9d81377536e5da *man/hudson.net.Rd
 f59a37ff12e9e693b42cf56ffb2025d1 *man/hudson.plot.Rd
 ac504618cd2d8b4d925b4f052194a6d8 *man/imageP.Rd
@@ -222,7 +222,7 @@ a828d314da658d7b10e149646ee1fbb9 *man/lowplane.Rd
 826f3261510064f582904e2ffd4eb1dc *man/mc2cart.Rd
 ed5022ca1374aba2816e19f779731657 *man/mijsdr.Rd
 21acbbb66a0d54700bd336898ee84bba *man/net.Rd
-fbda30584b60a5ee19cfea121950d1ea *man/nipXY.Rd
+523cc18f6fb4ccdb60c3dfa76b62a5cb *man/nipXY.Rd
 81fde38db91a5191dc99aaca59bbbb6d *man/nodalLines.Rd
 3ce52fa884bb618d53757ce64ea99cef *man/normal.fault.Rd
 382bd3cb59e76befa206ce0d101aa232 *man/pcirc.Rd
@@ -230,7 +230,7 @@ fbda30584b60a5ee19cfea121950d1ea *man/nipXY.Rd
 451222a7bd110e931d5053c597eb78ab *man/phong3D.Rd
 0c240c436cc1a552ed8465fece5e0297 *man/plotMEC.Rd
 9e0c3d7fc43338c81ac0e89f254df960 *man/plotfoc.Rd
-ab34bf632ecaad0ad14a8e200babcbba *man/plotmanyfoc.Rd
+201da70a659318295cba747bb9bcde00 *man/plotmanyfoc.Rd
 43d4ffdd34f46b65a747d90673755f5e *man/pnet.Rd
 b975fe7c0a755acf6b158ddd4c554146 *man/polyfoc.Rd
 ec066a88ff830421b0c014dc1456d148 *man/prepFOCS.Rd
@@ -248,11 +248,11 @@ b0c9b24bdd009b604360c361b4310039 *man/rotateFoc.Rd
 f3139f57869d0b5adb10c1ed50042913 *man/rotx3.Rd
 795a89099a44fa6110b5090e62f68398 *man/roty3.Rd
 5c7d6adbb52d3db47e04b9e7d1165c09 *man/rotz3.Rd
-4e1f2bb883d8e6de749101daa45afcd4 *man/spherefocgeo.Rd
+396224b60142bba0dd9e4e73c9344f31 *man/spherefocgeo.Rd
 56f71ee697b1e0d58376ce483cb63549 *man/spline.arrow.Rd
 1536d8210cba44f1e7798653bda1c883 *man/strikeslip.fault.Rd
 3d269f41fb0c8816f03548636aae42f7 *man/ternfoc.point.Rd
-b2890dd29adda98123db47f75b7dd94d *man/ternfocgeo.Rd
+a2e1f29643308e635a9e90a6814ae0eb *man/ternfocgeo.Rd
 2aba581494dad7882ee1cda3fbbf8c82 *man/testrightHAND.Rd
 97cf4d89ddfbf82b6033f300682b0e38 *man/thrust.fault.Rd
 9a7ae57ad91bf3b1ce04881ce4bc7264 *man/tk2uv.Rd
@@ -260,4 +260,4 @@ a4aabb70e29d2598127a0caf01cab426 *man/to.spherical.Rd
 0d4b41dc8b8a556b6206c38b8a720435 *man/tocartL.Rd
 a784107e7e6541be3357c7d541979938 *man/tosphereL.Rd
 c7ee3195455aa5d33a07f9b89f928a48 *man/widdenMoments.Rd
-98432838524d6bcae391296e13dd0832 *man/xsecmanyfoc.Rd
+2f75144ef6ea95475bc5c3ed3a2f07bc *man/xsecmanyfoc.Rd
