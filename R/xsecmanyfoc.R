@@ -75,7 +75,7 @@ function(MEK, theta=NULL, focsiz=0.5,  foccol=NULL, UP=TRUE, focstyle=1,  LEG = 
                         pax = focpoint(FMEC$P$az, FMEC$P$dip,  lab="P", UP=FMEC$UP, PLOT=FALSE)
                         
                         PLS = polyfoc(FMEC$az1, FMEC$dip1, FMEC$az2, FMEC$dip2, UP=FMEC$UP, PLOT = FALSE)
-                        kin = splancs::inout(cbind(pax$x, pax$y) ,cbind(PLS$Px, y =PLS$Py), bound=TRUE)
+                        kin = fields::in.poly(cbind(pax$x, pax$y) ,cbind(PLS$Px, y =PLS$Py) )
 
                         if(kin==0) FMEC$sense = 1
                         

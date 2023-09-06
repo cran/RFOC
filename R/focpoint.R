@@ -1,5 +1,5 @@
 `focpoint` <-
-function(az1, dip1, col=2, pch=5, lab="", UP=FALSE, PLOT=TRUE )
+function(az1, dip1, col=2, pch=5, lab="", cex=1,  UP=FALSE, PLOT=TRUE, ... )
 {
                                         #    azimuth is degrees from north
                                         #    dip is degrees from down direction?  or degrees from horizontal?
@@ -44,11 +44,11 @@ function(az1, dip1, col=2, pch=5, lab="", UP=FALSE, PLOT=TRUE )
   plty = tq * cos(trot);
   if(PLOT==TRUE)
     {
-      points( pltx, plty , pch=pch, col=col)
+      points( pltx, plty , pch=pch, col=col, cex=cex, ...)
       
       if(!missing(lab)) 
         {
-          text( pltx, plty, labels=lab, pos=4)
+          text( pltx, plty, labels=lab, pos=4, cex=cex, ...)
         }
     }
   invisible(list(x=pltx, y=plty))

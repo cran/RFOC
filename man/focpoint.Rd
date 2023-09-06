@@ -6,7 +6,7 @@
 Add points on equal-area focal plot
 }
 \usage{
-focpoint(az1, dip1, col = 2, pch = 5, lab = "", UP = FALSE, PLOT = TRUE)
+focpoint(az1, dip1, col = 2, pch = 5, lab = "", cex=1,  UP = FALSE, PLOT = TRUE, ...)
 }
 
 \arguments{
@@ -15,8 +15,10 @@ focpoint(az1, dip1, col = 2, pch = 5, lab = "", UP = FALSE, PLOT = TRUE)
   \item{col}{color  }
   \item{pch}{plot character for point }
   \item{lab}{text lable for point }
+  \item{cex}{Character Size }
   \item{UP}{upper or lower hemisphere  }
   \item{PLOT}{logical, PLOT=TRUE add points to current plot }
+  \item{\dots}{graphical parameters}
 }
 
 \value{

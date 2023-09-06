@@ -4,7 +4,7 @@ import(RPMG)
 import(GEOmap)
 import(RSEIS)
 importFrom(MASS, kde2d)
-importFrom(splancs,inout)
+importFrom(fields,in.poly)
 importFrom("grDevices", "col2rgb", "contourLines", "gray", "grey",
              "heat.colors", "hsv", "rgb", "rgb2hsv", "terrain.colors",
              "trans3d", "xy.coords")

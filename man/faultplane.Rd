@@ -7,7 +7,7 @@
   fault plane.
 }
 \usage{
-faultplane(az, dip, col = par("col"), PLOT = TRUE, UP = FALSE)
+faultplane(az, dip, col = par("col"), PLOT = TRUE, UP = FALSE,lwd=2, lty=1, ...)
 }
 
 \arguments{
@@ -16,6 +16,9 @@ faultplane(az, dip, col = par("col"), PLOT = TRUE, UP = FALSE)
   \item{col}{color for line}
   \item{PLOT}{option for adding to plot}
   \item{UP}{upper or lower hemisphere}
+  \item{lwd}{Line Width}
+  \item{lty}{Line Type}
+  \item{\dots}{graphical parameters}
 }
 \details{
   Azimuth is the strike in degrees, not the down dip azimuth as

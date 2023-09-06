@@ -1,5 +1,5 @@
 `faultplane` <-
-function(az,  dip,  col = par("col"), PLOT=TRUE, UP=FALSE) 
+function(az,  dip,  col = par("col"), PLOT=TRUE, UP=FALSE,lwd=2, lty=1, ...) 
   {    
 #      az = strike of the plane (NOT down dip azimuth)
 #      dip = dip from horizontal
@@ -51,7 +51,7 @@ function(az,  dip,  col = par("col"), PLOT=TRUE, UP=FALSE)
         y1 =  -si  * x +  co * y;
     if(PLOT)
       {
-        lines(x1,y1, lwd=2, col=col, xpd=TRUE)
+        lines(x1,y1, lwd=lwd, col=col, lty=lty,  xpd=TRUE, ...)
       }
     return(list(x=x1, y=y1))
 

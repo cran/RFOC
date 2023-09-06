@@ -22,13 +22,7 @@ analyses.
 
 }
 \details{
-\tabular{ll}{
-Package: \tab RFOC\cr
-Type: \tab Package\cr
-Version: \tab 2.0-03\cr
-Date: \tab 2012-05-31\cr
-License: \tab GPL\cr
-}
+
 Visualize focal mechanisms in a
 number of modes, including: beachball plots, radiation plots,
 fault planes and ternary diagrams.  Shows spatial distribution of

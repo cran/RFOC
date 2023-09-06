@@ -28,7 +28,7 @@ function(MEC, fcol=gray(0.90), fcolback="white", ALIM = c(-1, -1, +1, +1))
 ###   POK = list(x=PLS$Px, y =PLS$Py)
   
   ###  OLD, does not work: kin = inpoly(pax$x, pax$y,POK)
- kin = splancs::inout(cbind(pax$x, pax$y) ,cbind(PLS$Px, y =PLS$Py), bound=TRUE)
+ kin = fields::in.poly(cbind(pax$x, pax$y) ,cbind(PLS$Px, y =PLS$Py)  )
 
   if(kin==0)
     {
