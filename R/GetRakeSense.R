@@ -29,13 +29,13 @@ function(uaz, upl, vaz,  vpl , paz,  ppl,  taz, tpl)
     dprodp =  (x1*x3+y1*y3+z1*z3)/(sqrt(x1*x1+y1*y1+z1*z1)*sqrt(x3*x3+y3*y3+z3*z3));
     dprodt =  (x2*x3+y2*y3+z2*z3)/(sqrt(x2*x2+y2*y2+z2*z2)*sqrt(x3*x3+y3*y3+z3*z3));
 
-    if(is.null(dprodt)) { print("NULL   dprodt"); return(1) }
-    if(is.null(dprodp)) { print("NULL   dprodp"); return(1) }
+    if(is.null(dprodt)) { warning("NULL   dprodt"); return(1) }
+    if(is.null(dprodp)) { warning("NULL   dprodp"); return(1) }
 
-    if(length(dprodt)<1) { print("No   dprodt"); return(1) }
-    if(length(dprodp)<1) { print("N0   dprodp"); return(1) }
+    if(length(dprodt)<1) { warning("No   dprodt"); return(1) }
+    if(length(dprodp)<1) { warning("N0   dprodp"); return(1) }
 
-  ####   print(paste(sep=' ', "NULL   dprodt",dprodt, dprodp ));
+  ####   message(paste(sep=' ', "NULL   dprodt",dprodt, dprodp ));
       if(dprodt>dprodp)	{  ang2 = 1.0; }   else { ang2 = -1.0;}
 
       return(ang2);

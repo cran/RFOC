@@ -30,7 +30,7 @@ function( az1, dip1, az2, dip2,  dir)
 #    double dot1, dot2;     
 
 DEG2RAD = pi/180
-# print(paste(sep=" ", "in GetRake: plane 1", az1, dip1, "plane 2: ", az2, dip2,  "dir=",dir))
+# message(paste(sep=" ", "in GetRake: plane 1", az1, dip1, "plane 2: ", az2, dip2,  "dir=",dir))
       dipaz1= az1 + 90.0;
 #dipaz1= az1 - 90.0;
       if (dipaz1 >= 360.0) { dipaz1= RPMG::fmod(dipaz1, 360)  }

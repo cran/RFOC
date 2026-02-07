@@ -7,7 +7,7 @@ function(az,  dip,  col = par("col"), PLOT=TRUE, UP=FALSE,lwd=2, lty=1, ...)
     DEG2RAD = pi/180;
     beta = az * DEG2RAD;
     
-    # print(paste(" ","FaultPLANE: ", az, dip, UP))
+    # message(paste(" ","FaultPLANE: ", az, dip, UP))
                                         
     if(missing(PLOT)) { PLOT=TRUE }
     if(missing(PLOT)) { UP=FALSE }

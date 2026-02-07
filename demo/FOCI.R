@@ -2,9 +2,9 @@
 #############  this demo shows how to
 ###########  use RFOC to interactively plot and rotate focal planes
 
-library(tcltk) 
-library(tkrplot) 
-library(rpanel)
+require(tcltk) 
+# require(tkrplot) 
+require(rpanel)
 library(RFOC)
 
 #####################  create a set of data points
@@ -70,9 +70,9 @@ focal.draw <- function(panel)
 }
 #############  define control sequence
 
-panel <- rp.control(az1=0, dip1=40, rake1=132)
-
+panel <- rpanel::rp.control( size = c(500, 200), az1=0, dip1=40, rake1=132)
+####  might resize this panel before adding the controls
 ############## define and stack the slider panels: 
-rp.slider(panel, az1, 0, 360,initval=0,   action = focal.draw)
-rp.slider(panel, dip1, 0, 90,initval=0,   action = focal.draw)
-rp.slider(panel, rake1, 0, 180,initval=0,   action = focal.draw)
+rpanel::rp.slider(panel, az1, 0, 360,initval=0,   action = focal.draw)
+rpanel::rp.slider(panel, dip1, 0, 90,initval=0,   action = focal.draw)
+rpanel::rp.slider(panel, rake1, 0, 180,initval=0,   action = focal.draw)

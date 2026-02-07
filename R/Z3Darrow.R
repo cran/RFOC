@@ -124,7 +124,7 @@ function(len = 1 , basethick = 0.1, headlen = .6, headlip=.1 )
      #####   for(i in 1:length(aglyph))
        #####   {
         #####    XX = RSEIS::xprod( aglyph[[i]][2,]-aglyph[[i]][1,], aglyph[[i]][3,]-aglyph[[i]][2,])
-            #####print(paste(sep=' ', c(i, XX) ))
+            #####message(paste(sep=' ', c(i, XX) ))
         #####  }
    #####   }
 

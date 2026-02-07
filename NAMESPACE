@@ -10,5 +10,6 @@ importFrom("grDevices", "col2rgb", "contourLines", "gray", "grey",
              "trans3d", "xy.coords")
 importFrom("graphics", "arrows", "image", "legend", "lines", "locator",
              "par", "plot", "points", "polygon", "rect", "segments",
-             "text", "title", "grconvertX", "grconvertY")
+           "text", "title", "grconvertX", "grconvertY")
+importFrom("rpanel", "rp.control", "rp.slider")
 importFrom("stats", "runif")

@@ -92,91 +92,59 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
   focal.color,  foc.icolor
 }
 \examples{
-
-\dontrun{
-
-library(maps)
-library(GEOmap)
-
-##########  load the data
-data(widdenMoments)
-
-#################   to read in the data from a file,
-##   GG = scan("widdenMoments.txt",sep=" ",
-## what=list(ID=0,Event="",Lat=0,Long=0,Depth=0,Mw=0,ML=0,DC=0,
-## CLVD=0,ISO=0,VR=0,nsta=0,Mxx=0,Mxy=0,Mxz=0,
-##  Myy=0,Myz=0,Mzz=0,Mo=0,Ftest=0) )
-
-
-
-GG = widdenMoments
-Locs = list(y=GG$Lat,x=GG$Long)
-
-
-ef = 1e20
-moments = cbind(GG$ID, ef*GG$Mxx, ef*GG$Myy,
-ef*GG$Mzz, ef*GG$Myz, ef*GG$Mxz,ef*GG$Mxy)
-
-
-
-
-UTAH =  map('state', region = c('utah'), plot=FALSE )
-
-mlon = mean(UTAH$x, na.rm=TRUE)
-mlat = mean(UTAH$y, na.rm=TRUE)
-
-
+ if(requireNamespace("maps")){
+    library(maps)
+    library(GEOmap)
+    ##########  load the data
+    data(widdenMoments)
+    #################   to read in the data from a file,
+    ##   GG = scan("widdenMoments.txt",sep=" ",
+    ## what=list(ID=0,Event="",Lat=0,Long=0,Depth=0,Mw=0,ML=0,DC=0,
+    ## CLVD=0,ISO=0,VR=0,nsta=0,Mxx=0,Mxy=0,Mxz=0,
+    ##  Myy=0,Myz=0,Mzz=0,Mo=0,Ftest=0) )
+    GG = widdenMoments
+    Locs = list(y=GG$Lat,x=GG$Long)
+    ef = 1e20
+    moments = cbind(GG$ID, ef*GG$Mxx, ef*GG$Myy,
+    ef*GG$Mzz, ef*GG$Myz, ef*GG$Mxz,ef*GG$Mxy)
+    UTAH =  map('state', region = c('utah'), plot=FALSE )
+    mlon = mean(UTAH$x, na.rm=TRUE)
+    mlat = mean(UTAH$y, na.rm=TRUE)
 Gutah   = maps2GEOmap(UTAH)
-
-
 ############   for mercator projection
 PROJ =  GEOmap::setPROJ(type = 1, LAT0 = mlat , LON0 = mlon)
 Glocs = GEOmap::GLOB.XY(Locs$y, Locs$x, PROJ       )
 ############   for UTM projection
 PROJ =  GEOmap::setPROJ(type = 2, LAT0 = mlat , LON0 = mlon)
 Glocs = GEOmap::GLOB.XY(Locs$y, Locs$x, PROJ       )
-
 LIMlat = expandbound(Gutah$POINTS$lat)
 LIMlon = expandbound(Gutah$POINTS$lon)
-
 PLAT =  pretty(LIMlat)
  PLON  = pretty(LIMlon)
-
 ###############  plot the map
-
 ########  Utah is a little rectangular
-dev.new(width=9, height=12)
-
+###       dev.new(width=9, height=12)
 plotGEOmapXY(Gutah,
 LIM = c(min(PLON), min(PLAT) , max(PLON) , max(PLAT)) ,
              PROJ=PROJ, axes=FALSE, xlab="", ylab="" )
-
-
 ### add tic marks
 kbox = GEOmap::GLOB.XY(PLAT,PLON, PROJ)
-
       sqrTICXY(kbox , PROJ, side=c(1,2,3,4), LLgrid=TRUE, col=grey(.7) )
-
 ########  add focal mechs
 siz = 0.2
-
 MapNonDouble(Glocs, moments,col=NULL,  add=TRUE, LEG=TRUE)
-
   up = par("usr")
     ui = par("pin")
     ratx = (up[2] - up[1])/ui[1]
     raty = (up[4] - up[3])/ui[2]
 usizx = siz * ratx
-
 AXY = NoOverlap(Glocs$x,Glocs$y, usizx )
-
  MapNonDouble(AXY, moments,col=NULL,  add=TRUE, LEG=TRUE)
-
 ####  MapNonDouble(NXY, moments,col=NULL,  add=TRUE, LEG=TRUE)
 
-
-
 }
+
+
 
 }
 \keyword{misc}

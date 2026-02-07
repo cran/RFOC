@@ -33,7 +33,8 @@ LIST:
 ####################  this is interactive
 
 ###  collect points with locator()
-\dontrun{
+
+if(interactive()){ 
 net()
 eps = EApoint()
 

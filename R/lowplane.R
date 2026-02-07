@@ -14,7 +14,7 @@ function( az, dip, col = par("col"), UP=FALSE, PLOT=TRUE)
 #    lam = A$rem
     beta = az * DEG2RAD;
     
-   #  print(paste(" ","LOWPLANE: ", az, dip, UP))
+   #  message(paste(" ","LOWPLANE: ", az, dip, UP))
                   #   given the dip and strike of a plan, plot it
     if(missing(UP)) { UP=FALSE }
     

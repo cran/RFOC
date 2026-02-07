@@ -1,30 +1,24 @@
 `printMEC` <-
 function(x, digits = max(3, getOption("digits") - 3), ...)
   {
-    cat("Plane 1: ")
-    print.default(format(c(x$F$az, x$F$dip), digits = digits), print.gap = 2,
-            quote = FALSE)
-    cat("Plane 2: ")
-    print.default(format(c(x$G$az, x$G$dip), digits = digits), print.gap = 2,
-            quote = FALSE)
+   #  message("Plane 1: ")
+    message("Plane 1: ", paste(collapse=' ',  format(c(x$F$az, x$F$dip), digits = digits) ))
+    #  message("Plane 2: ")
+    message("Plane 2: " ,paste(collapse=' ', format(c(x$G$az, x$G$dip), digits = digits) ))
 
-    cat("Vector 1: ")
-    print.default(format(c(x$U$az, x$U$dip), digits = digits), print.gap = 2,
-            quote = FALSE)
-    cat("Vector 2: ")
-    print.default(format(c(x$V$az, x$V$dip), digits = digits), print.gap = 2,
-            quote = FALSE)
+    #  message("Vector 1: ")
+    message("Vector 1: " , paste(collapse=' ', format(c(x$U$az, x$U$dip), digits = digits) ))
+    #  message("Vector 2: ")
+    message("Vector 2: " , paste(collapse=' ',format(c(x$V$az, x$V$dip), digits = digits) ))
 
-    cat("P-axis: ")
-    print.default(format(c(x$P$az, x$P$dip), digits = digits), print.gap = 2,
-            quote = FALSE)
-    cat("T-axis: ")
-    print.default(format(c(x$T$az, x$T$dip), digits = digits), print.gap = 2,
-            quote = FALSE)
+     # message("P-axis: ")
+    message("P-axis: " ,paste(collapse=' ', format(c(x$P$az, x$P$dip), digits = digits) ))
+     #  message("T-axis: ")
+    message("T-axis: ", paste(collapse=' ', format(c(x$T$az, x$T$dip), digits = digits) ))
 
     
 
-    cat("\n")
+    message("\n")
 
 
   }

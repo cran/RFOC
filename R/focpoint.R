@@ -1,11 +1,11 @@
 `focpoint` <-
 function(az1, dip1, col=2, pch=5, lab="", cex=1,  UP=FALSE, PLOT=TRUE, ... )
 {
-                                        #    azimuth is degrees from north
-                                        #    dip is degrees from down direction?  or degrees from horizontal?
+#####    azimuth is degrees from north
+####    dip is degrees from down direction?  or degrees from horizontal?
 
   
-                                        # print(paste(sep=" ", "focpoint", az1, dip1, lab)); 
+##### message(paste(sep=" ", "focpoint", az1, dip1, lab)); 
   if(missing(col))  { col=rep(1,length(az1)) }
   if(missing(pch))  { pch=rep(5,length(az1)) }
   if(missing(PLOT)) { PLOT=TRUE; }
@@ -25,7 +25,7 @@ function(az1, dip1, col=2, pch=5, lab="", cex=1,  UP=FALSE, PLOT=TRUE, ... )
       az1=az1+180
       
     }
-                                        # print(paste(sep=" ", "dip1=", dip1, "az1=", az1))
+##### message(paste(sep=" ", "dip1=", dip1, "az1=", az1))
   DEG2RAD = pi/180;
 
 

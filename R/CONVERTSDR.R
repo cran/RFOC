@@ -57,7 +57,7 @@ function(strike, dip, rake)
       {
         ############   special case where above breaks down
        phig =  180 - phif 
-       ###print(paste("special case", phig) )
+       ###message(paste("special case", phig) )
         
       }
     

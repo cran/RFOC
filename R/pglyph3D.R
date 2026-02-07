@@ -13,7 +13,7 @@ pglyph3D<-function(aglyph,  M=diag(1, nrow=4), M2=diag(1, nrow=4)   , anorms=lis
         for(i in 1:length(aglyph))
           {
             XX = RSEIS::xprod(aglyph[[i]][3,]-aglyph[[i]][2,], aglyph[[i]][2,]-aglyph[[i]][1,])
-            print(paste(sep=' ', c(i, XX) ))
+            message(paste(sep=' ', c(i, XX) ))
             anorms[[i]] = XX
           }
       }
@@ -28,7 +28,7 @@ pglyph3D<-function(aglyph,  M=diag(1, nrow=4), M2=diag(1, nrow=4)   , anorms=lis
 ###   XX = RSEIS::xprod( Xt[2,]-Xt[1,], Xt[3,]-Xt[2,])
         XX = c(anorms[[i]], 1)  %*% M2
         
-        ##  print(XX[3] )
+        ##  message(XX[3] )
         ## if(XX[3]>0) polygon(Xt[,1], Xt[,2], col="white", border="black")
 ######   get depth of faces
         zd = mean(Xt[,3])
@@ -39,7 +39,7 @@ pglyph3D<-function(aglyph,  M=diag(1, nrow=4), M2=diag(1, nrow=4)   , anorms=lis
     for( i in order(bvec))
       {
         zdot = (bglyph[[i]]$xp[1]*zee[1]+bglyph[[i]]$xp[2]*zee[2]+bglyph[[i]]$xp[3]*zee[3]   )
-      ###  print(c( i, bvec[i], bglyph[[i]]$xp, zdot))
+      ###  message(c( i, bvec[i], bglyph[[i]]$xp, zdot))
         if(zdot>=0) polygon(bglyph[[i]]$x,bglyph[[i]]$y, col=col, border=border, xpd=TRUE)
         ###  polygon(bglyph[[i]]$x,bglyph[[i]]$y, col=NA, border=grey(0.8))
       }

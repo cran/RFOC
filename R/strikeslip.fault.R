@@ -56,7 +56,7 @@ function(anim= seq(from=0, to=1, by=.1), KAPPA = 2,  Light=c(45,45) )
 
     Z4 =     PROJ3D(Bblock1$aglyph, M=M,  anorms=Bblock1$anorm , zee=c(0,0,1))
 #######################         #######################
-
+ 
     RangesX = range(c(attr(Z1, "RangesX"), attr(Z2, "RangesX"), attr(Z3, "RangesX") , attr(Z4, "RangesX")))
 
     RangesY = range(c(attr(Z1, "RangesY"), attr(Z2, "RangesY"), attr(Z3, "RangesY") , attr(Z4, "RangesY")))

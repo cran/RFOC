@@ -13,7 +13,7 @@ function(MEC, fcol=gray(0.90), fcolback="white", ALIM = c(-1, -1, +1, +1))
   
 ##### net(1)
   C = RPMG::circle()
- #####  print(MEC$LIM)
+ #####  message(MEC$LIM)
   
   plot(C$x,C$y, type='n', axes=FALSE, asp=1, xlab="", ylab="", xlim=c(MEC$LIM[1],MEC$LIM[3]), ylim=c(MEC$LIM[2],MEC$LIM[4]) )
   lines(C$x,C$y, type='l')

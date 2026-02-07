@@ -21,7 +21,7 @@ function(aglyph,  M=diag(1, nrow=4), M2=diag(1, nrow=4), Light=c(45,45)   , anor
         for(i in 1:length(aglyph))
           {
             XX = RSEIS::xprod(aglyph[[i]][3,]-aglyph[[i]][2,], aglyph[[i]][2,]-aglyph[[i]][1,])
-           ## print(paste(sep=' ', c(i, XX) ))
+           ## message(paste(sep=' ', c(i, XX) ))
             anorms[[i]] = XX
           }
       }
@@ -38,19 +38,19 @@ function(aglyph,  M=diag(1, nrow=4), M2=diag(1, nrow=4), Light=c(45,45)   , anor
 ###   XX = RSEIS::xprod( Xt[2,]-Xt[1,], Xt[3,]-Xt[2,])
         XX = c(anorms[[i]], 0)  %*% M2
         
-        ##  print(XX[3] )
+        ##  message(XX[3] )
         ## if(XX[3]>0) polygon(Xt[,1], Xt[,2], col="white", border="black")
 ######   get depth of faces
         zd = mean(Xt[,3])
         bvec[i] = zd
         bglyph[[i]] = list(x=Xt[,1], y= Xt[,2], z= Xt[,3]    , xp=XX, zd=zd  )
       }
- ####   print('###################phonger##################')
+ ####   message('###################phonger##################')
     for( i in order(bvec))
       {
         zdot = (bglyph[[i]]$xp[1]*zee[1]+bglyph[[i]]$xp[2]*zee[2]+bglyph[[i]]$xp[3]*zee[3]   )
         
-   ####   print(c( i, bvec[i], bglyph[[i]]$xp, zdot))
+   ####   message(c( i, bvec[i], bglyph[[i]]$xp, zdot))
         if(zdot>=0)
           {
             phongdot = abs((bglyph[[i]]$xp[1]*lightvec[1]+bglyph[[i]]$xp[2]*lightvec[2]+bglyph[[i]]$xp[3]*lightvec[3]   ))
@@ -59,7 +59,7 @@ function(aglyph,  M=diag(1, nrow=4), M2=diag(1, nrow=4), Light=c(45,45)   , anor
             mycol = col2rgb(col[i])
             myhsv = rgb2hsv(mycol)
 
-            ## print(paste(sep=' ', i,phongdot))
+            ## message(paste(sep=' ', i,phongdot))
             
             vcol = phongdot*myhsv[3,1]
             if(vcol > 0.95) vcol=0.95

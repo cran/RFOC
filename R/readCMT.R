@@ -134,8 +134,8 @@ function(filename, PLOT=TRUE)
         H1 = read1CMTrecord(con1)
         if(length(H1)>6) P1 = ParseCMTrecord(H1)
         
-###### print(length(H1))
-######  print(H1)
+###### message(length(H1))
+######  message(H1)
        
         if(length(P1$Mrr)>0)
           {

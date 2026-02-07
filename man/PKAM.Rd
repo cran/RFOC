@@ -15,22 +15,22 @@
   The data is selected from the CMT catalog.  Parameters are
   extracted from the standard web distribution.  Format of the list
   of data save in PKAM is:
-  \describe{ 
-item{Paz}{P-axis azimuth angle}
-item{Pdip}{P-axis dip angle}
-item{Taz}{T-axis  azimuth angle}
-item{Tdip}{T-axis dip angle}
-item{h}{horizontal point to plot on ternary plot }
-item{v}{vertical point to plot on ternary plot }
-item{fcols}{colors, not used}
-item{LATS}{Latitude}
-item{LONS}{Longitude}
-item{IFcol}{integer pointer to internal color}
-item{yr}{year, not used}
-item{JDHM}{Julian Day, hour, minute, not used}
-item{JDHMS}{Julian Day, hour, minute, seconds}
+  \itemize{
+  \item Paz P-axis azimuth angle 
+  \item Pdip P-axis dip angle 
+  \item Taz  T-axis  azimuth angle 
+  \item Tdip  T-axis dip angle 
+  \item h  horizontal point to plot on ternary plot  
+  \item v  vertical point to plot on ternary plot  
+  \item fcols  colors, not used 
+  \item LATS  Latitude 
+  \item LONS  Longitude 
+  \item IFcol  integer pointer to internal color 
+  \item yr  year, not used 
+  \item JDHM  Julian Day, hour, minute, not used 
+  \item JDHMS  Julian Day, hour, minute, seconds 
 }
-  
+
 
 }
 \source{

@@ -27,7 +27,7 @@ function(MEK, PROJ, focsiz=0.5, foccol=NULL, UP=TRUE , focstyle=1, PMAT=NULL, LE
 
         ## require(GEOmap)
 
-        ### print(paste('FOC style = ', focstyle) )
+        ### message(paste('FOC style = ', focstyle) )
         
        ###   u = par("usr")
         
@@ -70,7 +70,7 @@ function(MEK, PROJ, focsiz=0.5, foccol=NULL, UP=TRUE , focstyle=1, PMAT=NULL, LE
                             }
                         if(focstyle==3)
                             {
-                                ###  print('try ralph method')
+                                ###  message('try ralph method')
                                 
                                StrikeDip( tem1$x[i], tem1$y[i] , MEC  ,focsiz, addDIP=TRUE, col=focal.col, lwd=2 )
        
@@ -108,7 +108,7 @@ function(MEK, PROJ, focsiz=0.5, foccol=NULL, UP=TRUE , focstyle=1, PMAT=NULL, LE
                     }
                 else
                     {
-                        ##  print(paste("Exploding, i=", i))
+                        ##  message(paste("Exploding, i=", i))
                         segments(tem1$x[i], tem1$y[i], tem2$x[i], tem2$y[i])
 
 
@@ -126,7 +126,7 @@ function(MEK, PROJ, focsiz=0.5, foccol=NULL, UP=TRUE , focstyle=1, PMAT=NULL, LE
                             }
                         if(focstyle==3)
                             {
-                                ###  print('try ralph method')
+                                ###  message('try ralph method')
                                 
                                StrikeDip( tem2$x[i], tem2$y[i] , MEC  ,focsiz, addDIP=TRUE, col=focal.col, lwd=2 )
        

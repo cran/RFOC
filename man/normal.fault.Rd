@@ -31,12 +31,13 @@ normal.fault(ANG = (45), anim = seq(from = 0, to = 1, by = 0.1),
 
 normal.fault(45, anim=0, KAPPA=4, Light=c(-20, 80))
 
-\dontrun{
+if(interactive()){
 #### execute a stop command to stop this animation
 anim= seq(from=0, to=1, by=.1) 
 
  normal.fault(45, anim=anim, KAPPA=4, Light=c(-20, 80))
  }
+
 }
 
 \keyword{hplot}

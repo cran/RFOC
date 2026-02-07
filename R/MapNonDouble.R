@@ -57,7 +57,7 @@ MapNonDouble <-
         m=matrix( c(moment_11[i],moment_12[i],moment_13[i],
           moment_12[i],moment_22[i],moment_23[i],
           moment_13[i],moment_23[i],moment_33[i]), ncol=3, byrow=TRUE)
-###    print(m)
+###    message(m)
 ### -----------------------------------------
 ###  calculation of a fault normal and slip from the moment tensor
         angles.all[j,] = FOCangles(m)

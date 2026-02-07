@@ -87,36 +87,6 @@ ternfocgeo(MEKS , PROJ, PLOT=TRUE, icut = 3, ndivs = 5,
  bbox=c(-2000,2000,-2000,2000) , add=TRUE, RECT=TRUE)
 
 
-\dontrun{
-
-#####   this example shows a real application with a map
-plot(x=range(IZ$x), y=range(IZ$y), type='n', asp=1, axes=FALSE, ann=FALSE)
-
-image(x=IZ$x, y=IZ$y, z=(UZ), col=blues, add=TRUE)
-
-image(x=IZ$x, y=IZ$y, z=(AZ), col=terrain.colors(100) , add=TRUE)
-
-
- plotGEOmapXY(haiti.map,
-              LIM = c(Lon.range[1],Lat.range[1] ,
-Lon.range[2] ,Lat.range[2]),
-              PROJ =PROJ, MAPstyle = 2,
-MAPcol = 'black' , add=TRUE  )
-
-H = rectPERIM(JMAT$xo, JMAT$yo)
-
-
-antipolygon(H$x ,H$y,   col=grey(.85)  , corner=1, pct=.4)
-
-sqrTICXY(H , PROJ, side=c(1,2,3,4),   LLgrid=TRUE, col=grey(.7) )
-
-ternfocgeo(OLDCMT, PROJ, PLOT=TRUE, add=TRUE)
-
-
-
-}
-
-
 
 
   }

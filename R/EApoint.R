@@ -22,7 +22,7 @@ r = sqrt(p$x^2+p$y^2)
 if(r>1) break
 iang = rad2deg*2*asin(r/sqrt(2))
 phiang = rad2deg*( pi/2 - atan2(p$y,p$x))
-print(paste(" ", p$x, p$y, "iANG=", iang, "PHI=",phiang))
+message(paste(" ", p$x, p$y, "iANG=", iang, "PHI=",phiang))
 outx[k] = p$x
 outy[k] = p$y
 phis[k] = phiang

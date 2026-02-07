@@ -38,8 +38,8 @@ prepFOCS<-function(CMTSOL)
         dip2 = MEC$dip2
         BBB = Bfocvec(az1, dip1,  az2,  dip2)
         V = ternfoc.point(BBB$Bdip, MEC$P$dip, MEC$T$dip )
-        ## print(BBB)
-        ## print(V)
+        ## message(BBB)
+        ## message(V)
 
         PHAIT$Paz[i] = MEC$P$az
         PHAIT$Pdip[i] = MEC$P$dip

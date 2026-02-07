@@ -2,7 +2,7 @@
 function(M)
 {
 ############  prepare a MEC structure for a focal mechanism later used in other routines
-#####   print(M)
+#####   message(paste(collapse=' ',M))
   
 ang2 = GetRakeSense(M$uaz, M$ud, M$vaz, M$vd, M$paz, M$pd, M$taz, M$td)
 

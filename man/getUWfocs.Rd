@@ -49,9 +49,17 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
 }
 \examples{
 
-\dontrun{
 #####  uwpickfile is an ascii format file from University of Washington
-G1 = getUWfocs(uwpickfile)
+
+data(GH, package='RSEIS')
+
+pf = GH$pickfile$PF
+
+### save only the A and M cards to temp file:
+fn =  tempfile("temp", fileext = ".UW")
+cat(file=fn, c(pf[1], pf[34]) , sep='\n')
+
+G1 = getUWfocs(fn)
 
 plot(G1$lon, G1$lat)
 
@@ -65,11 +73,7 @@ dip1=G1$dip1, rake1=G1$rake1, dep=G1$z, name=G1$name)
 
      plot(range(XY$x), range(XY$y), type='n', asp=1)
 
-     plotmanyfoc(MEKS, PROJ, focsiz=0.05)
-
-
-
-}
+     plotmanyfoc(MEKS, PROJ, focsiz=0.5)
 
 
 

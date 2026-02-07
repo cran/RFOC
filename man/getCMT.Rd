@@ -73,13 +73,15 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
 
 \examples{
 
-\dontrun{
+fn =  tempfile("temp", fileext = ".cmt")
 
+cat(file=fn, c('-175.70 51.68 225 24 63 74 68 101 5.910 24 010677B',        
+'-168.18 52.40 221 27 62 72 66 103 1.780 25 032677A',        
+'-168.28 52.73 213 26 59 67 68 104 12.910 23 051577B') , sep="\n")
 
-g = getCMT("/home/lees/aleut.cmt")
+g = getCMT(fn)
 
 pg = prepFOCS(g)
-
 
 plot(range(pg$LONS), range(pg$LATS), type = "n", xlab = "LON",
     ylab = "LAT", asp = 1)
@@ -93,13 +95,6 @@ MEC$UP = FALSE
      justfocXY(MEC, x = pg$LONS[i], y = pg$LATS[i], focsiz = 0.4,
      fcol = Fcol, xpd = FALSE)
  }
-
-
-
-}
-
-
-
 
 }
 

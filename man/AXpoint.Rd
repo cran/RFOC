@@ -1,6 +1,5 @@
 \name{AXpoint}
 \alias{AXpoint}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{Extract Axis pole on Stereonet}
 \description{
 Interactive extract axis point on Stereonet
@@ -8,7 +7,7 @@ Interactive extract axis point on Stereonet
 \usage{
 AXpoint(UP = TRUE, col=2, n=1)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{UP}{logical, TRUE=upper hemisphere }
   \item{col}{plotting color }
@@ -37,9 +36,11 @@ AXpoint(UP = TRUE, col=2, n=1)
 \seealso{locator, qpoint, EApoint}
 \examples{
 ####################  this is interactive
-\dontrun{
+if(interactive()){ 
 net()
 Z = AXpoint(UP = TRUE)
+
+
 ##  click in steronet
 Z
 }

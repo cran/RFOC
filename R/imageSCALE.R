@@ -34,7 +34,7 @@ imageSCALE<-function (z, col, x, y = NULL, size = NULL, digits = 2, labels = c("
     if (is.null(y))
         y <- my + n*size[2]/2
 
-  #  print(paste(sep=" ", "nlab=", nlab, "n=", n, "size=", size))
+  # message(paste(sep=" ", "nlab=", nlab, "n=", n, "size=", size))
 
     
     # draw the image scale

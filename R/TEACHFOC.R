@@ -52,7 +52,7 @@ function(s,d,r, up=FALSE)
     DINCHX =pinch[1]/ (puser[2]-puser[1])
     DINCHY = pinch[2]/ (puser[4]-puser[3])
 
-    ## print(DINCHX)
+    ## message(DINCHX)
     
     NIP = nipXY( MEC,  0, 0, fcol = "blue" , nipcol='black',  focsiz=2*DINCHX , cex=1 )
 

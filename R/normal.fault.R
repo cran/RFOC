@@ -33,7 +33,7 @@ function(ANG=(45), anim=seq(from=0, to=1, by=.1) , KAPPA = 4,  Light=c(45,45) )
 
   AR2 = ROTX(-180)
 
-  ##   print(c(y1, y2) )
+  ##   message(c(y1, y2) )
 
   
 
@@ -178,7 +178,7 @@ function(ANG=(45), anim=seq(from=0, to=1, by=.1) , KAPPA = 4,  Light=c(45,45) )
           T2 =   TRANmat(dkm*shiftx, dkm*shifty, dkm*shiftz ) 
 
           T1 =  TRANmat(0,0,0 ) 
-###  print(dkm)
+###  message(dkm)
 
           MN =    T2 %*%  R1 %*%  R3    %*% Tshift1
           M =    T1 %*%  R1  %*%  R3   %*% Tshift1
@@ -188,7 +188,7 @@ function(ANG=(45), anim=seq(from=0, to=1, by=.1) , KAPPA = 4,  Light=c(45,45) )
           TO2 =   TRANmat(dkm2*shiftx2, dkm2*shifty2, dkm2*shiftz2 ) 
 
           TO1 =  TRANmat(0,0,0 ) 
-###  print(dkm)
+###  message(dkm)
 
           MNO =    TO2 %*%  R1 %*%  R3    %*% Tshift2
           MO =    TO1 %*%  R1  %*%  R3   %*% Tshift2

@@ -39,7 +39,7 @@ headlen = 0.3, headlip = 0.02)
 }
 \seealso{Z3Darrow}
 \examples{
-\dontrun{
+if(interactive()){
 #### animate 10 random arrow vectors
 
 

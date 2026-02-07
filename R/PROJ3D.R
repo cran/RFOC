@@ -12,7 +12,7 @@ function(aglyph,  M=diag(1, nrow=4), M2=diag(1, nrow=4)  , anorms=list() , zee=c
         for(i in 1:length(aglyph))
           {
             XX = RSEIS::xprod(aglyph[[i]][3,]-aglyph[[i]][2,], aglyph[[i]][2,]-aglyph[[i]][1,])
-           ## print(paste(sep=' ', c(i, XX) ))
+           ## message(paste(sep=' ', c(i, XX) ))
             anorms[[i]] = XX
           }
       }
@@ -30,7 +30,7 @@ function(aglyph,  M=diag(1, nrow=4), M2=diag(1, nrow=4)  , anorms=list() , zee=c
 ###   XX = RSEIS::xprod( Xt[2,]-Xt[1,], Xt[3,]-Xt[2,])
         XX = c(anorms[[i]], 0)  %*% M2
         
-        ##  print(XX[3] )
+        ##  message(XX[3] )
         ## if(XX[3]>0) polygon(Xt[,1], Xt[,2], col="white", border="black")
 ######   get depth of faces
         zd = mean(Xt[,3])
@@ -41,8 +41,8 @@ function(aglyph,  M=diag(1, nrow=4), M2=diag(1, nrow=4)  , anorms=list() , zee=c
         
       }
 
-   ### print(RangesX)
-   ### print(RangesY)
+   ### message(RangesX)
+   ### message(RangesY)
     
 
     attr(bglyph, "RangesX")<-RangesX

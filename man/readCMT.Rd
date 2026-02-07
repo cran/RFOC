@@ -41,61 +41,25 @@ Jonathan M. Lees<jonathan.lees@unc.edu>
 }
 \examples{
 
-\dontrun{
-Hcmt = readCMT("CMT_FULL_FORMAT.txt")
+Z = c('MLI 1981  1 30  8 52 44.10  51.7400  176.2700  33.0 6.3 7.0 RAT ISLANDS, ALEUTIANS',
+'event name:     013081B',         
+'time shift:      6.0000', 
+'half duration:   7.0000', 
+'latitude:       51.5200', 
+'longitude:     176.1000', 
+'vdepth:          20.0000', 
+'Mrr:       2.375000e+26', 
+'Mtt:      -2.777000e+26', 
+'Mpp:       4.030000e+25',
+'Mrt:        2.8e+26',
+'Mrp:       1.19e+26',
+'Mtp:      -5.39e+25'
+)
 
-########  or,
+fn =  tempfile("temp", fileext = ".cmt")
+cat(file=fn, Z, sep="\n")
 
-Hcmt = readCMT("CMT_FULL_FORMAT.txt", PLOT=FALSE)
-
- moments = matrix(ncol=7, nrow=length(Hcmt))
-Locs = list(y=vector(length=length(Hcmt)) ,x=vector(length=length(Hcmt)))
-
-
-for(i in 1:length(Hcmt))
-{
-P1 = Hcmt[[i]]
-#########  Note the change of sign for cartesian coordinates
- moments[i,] = cbind(i, P1$Mtt, P1$Mpp, P1$Mrr,
-        -P1$Mrp, P1$Mrt ,-P1$Mtp)
-Locs$y[i] = P1$lat
-Locs$x[i] = P1$lon
-
-}
-
-
-mlon = mean(Locs$x, na.rm=TRUE)
-mlat = mean(Locs$y, na.rm=TRUE)
-
-
-PROJ =  GEOmap::setPROJ(type = 1, LAT0 = mlat , LON0 = mlon)
-Glocs = GEOmap::GLOB.XY(Locs$y, Locs$x, PROJ       )
-
-
-LIMlat = expandbound(Locs$y)
-LIMlon = expandbound(Locs$x)
-
-PLAT =  pretty(LIMlat)
- PLON  = pretty(LIMlon)
-
-data(worldmap)
-par(xpd=FALSE)
-
-plotGEOmapXY(worldmap, LIM = c(LIMlon[1],LIMlat[1] ,LIMlon[2],LIMlat[2]) ,
-             PROJ=PROJ, axes=FALSE, xlab="", ylab="" )
-
-### add tic marks
-kbox = GEOmap::GLOB.XY(PLAT,PLON, PROJ)
-
-      sqrTICXY(kbox , PROJ, side=c(1,2,3,4), LLgrid=TRUE, col=grey(.7) )
-
-########  add focal mechs
-
-MapNonDouble(Glocs, moments, col=NULL, add=TRUE)
-
-
-
-}
+Hcmt = readCMT(fn, PLOT=FALSE)
 
 }
 \keyword{misc}

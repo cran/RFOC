@@ -46,7 +46,7 @@ function(x1,y1,z1,x2,y2,z2, aglyph=NULL, Rview=ROTX(0), col=grey(.5),  border='b
         R1 = ROTZ(alpha)
         M =      SC %*%  R1  %*% R2  %*%  R3  %*% T  %*% Rview
         M2 =       R1  %*% R2  %*%  R3 %*% Rview
-### print(paste("_________________________________________", i, j))
+### message(paste("_________________________________________", i, j))
         pglyph3D(aglyph$aglyph, anorms=aglyph$anorm  , M=M, M2=M2, zee=myzee , col=col[i] )
 ### text(L$x1[i],L$y1[i], labels=i)
 ###  title(main=j)

@@ -58,7 +58,7 @@ Rotfocphi<-function(phi, urot, udip, vrot,
     
     rotmat =  JMAT(p);
 
-   ### print(rotmat)
+   ### message(rotmat)
     
 ### /* Dump_Mat(rotmat); */
 
